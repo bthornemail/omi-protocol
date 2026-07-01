@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omi-Ring — Position IS Identity</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; background: #0f0f1a; color: #c8d6e5; padding: 20px; line-height: 1.5; }
+h1 { color: #00ff88; font-size: 24px; }
+h2 { color: #00ff88; font-size: 18px; margin: 20px 0 10px; border-bottom: 1px solid #1a3a5c; padding-bottom: 5px; }
+h3 { color: #54a0ff; font-size: 14px; margin: 10px 0 5px; }
+a { color: #54a0ff; }
+.container { max-width: 1100px; margin: 0 auto; }
+.panel { background: #141428; border: 1px solid #1a3a5c; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+.panel-title { font-size: 12px; color: #576574; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.row { display: flex; gap: 15px; flex-wrap: wrap; }
+.col { flex: 1; min-width: 280px; }
+label { display: block; font-size: 12px; color: #576574; margin-bottom: 5px; }
+textarea, input, select { width: 100%; background: #0a0a1a; color: #00ff88; border: 1px solid #1a3a5c; padding: 8px 12px; font-family: 'Courier New', monospace; font-size: 14px; border-radius: 4px; }
+textarea:focus, input:focus { outline: none; border-color: #00ff88; }
+textarea { height: 80px; resize: vertical; }
+button { background: #00ff88; color: #0f0f1a; border: none; padding: 8px 20px; font-family: 'Courier New', monospace; font-size: 14px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+button:hover { background: #00cc6a; }
+button:disabled { background: #1a3a5c; color: #576574; cursor: not-allowed; }
+.help { font-size: 11px; color: #576574; margin-top: 5px; }
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.result-item { background: #0a0a1a; padding: 8px 12px; border-radius: 4px; border-left: 3px solid #1a3a5c; }
+.result-item .label { font-size: 10px; color: #576574; text-transform: uppercase; }
+.result-item .value { font-size: 16px; color: #00ff88; font-weight: bold; font-family: 'Courier New', monospace; }
+.result-item .value.dim { color: #576574; }
+.highlight-green { color: #00ff88; }
+.highlight-blue { color: #54a0ff; }
+.highlight-yellow { color: #ffd700; }
+.highlight-red { color: #ff6b6b; }
+.pipeline { display: flex; gap: 4px; flex-wrap: wrap; margin: 10px 0; }
+.pipeline-step { flex: 1; min-width: 80px; text-align: center; padding: 8px 4px; background: #0a0a1a; border-radius: 4px; font-size: 11px; border: 1px solid #1a3a5c; }
+.pipeline-step.active { border-color: #00ff88; background: #0a1a0a; color: #00ff88; }
+.pipeline-step .arrow { color: #576574; font-size: 16px; }
+.error { color: #ff6b6b; font-size: 12px; margin-top: 5px; }
+.code { background: #0a0a1a; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; color: #c8d6e5; border: 1px solid #1a3a5c; }
+.ring-container { position: relative; width: 280px; height: 280px; margin: 10px auto; }
+.ring-svg { width: 100%; height: 100%; }
+.slot-marker { fill: #00ff88; }
+.slot-marker.active { fill: #ff6b6b; }
+.slot-label { font-size: 9px; fill: #576574; text-anchor: middle; }
+.authority-diagram { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+.authority-box { text-align: center; padding: 10px; background: #0a0a1a; border-radius: 4px; border: 1px solid #1a3a5c; }
+.authority-box .name { font-size: 14px; font-weight: bold; }
+.authority-box .role { font-size: 10px; color: #576574; }
+.authority-box.omi { border-color: #54a0ff; } .authority-box.omi .name { color: #54a0ff; }
+.authority-box.tetra { border-color: #ffd700; } .authority-box.tetra .name { color: #ffd700; }
+.authority-box.meta { border-color: #ff6b6b; } .authority-box.meta .name { color: #ff6b6b; }
+.authority-box.imo { border-color: #576574; } .authority-box.imo .name { color: #576574; }
+.ring-center { background: #0a0a1a; border-color: #00ff88; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.ring-center .name { color: #00ff88; }
+.fano-plane { width: 100%; max-width: 300px; margin: 10px auto; display: block; }
+.example-list { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.example-tag { padding: 4px 10px; background: #0a0a1a; border: 1px solid #1a3a5c; border-radius: 12px; font-size: 11px; cursor: pointer; color: #54a0ff; }
+.example-tag:hover { border-color: #54a0ff; background: #0a1a3a; }
+.example-tag.active { border-color: #00ff88; color: #00ff88; background: #0a1a0a; }
+.formula { font-family: 'Courier New', monospace; font-size: 12px; color: #c8d6e5; background: #0a0a1a; padding: 8px; border-radius: 4px; margin: 5px 0; overflow-x: auto; }
+kbd { background: #1a3a5c; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+.tabs { display: flex; gap: 2px; margin-bottom: 10px; }
+.tab { padding: 6px 14px; background: #0a0a1a; border: 1px solid #1a3a5c; border-bottom: none; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 12px; color: #576574; }
+.tab.active { background: #141428; color: #00ff88; border-color: #00ff88; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+input[type="range"] { width: 100%; accent-color: #00ff88; }
+#ring-debug { font-size: 11px; color: #576574; margin-top: 5px; }
+@media (max-width: 700px) { .result-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Omi-Ring</h1>
+<p style="font-size: 13px; color: #576574; margin-top: 5px;">A relation carries its own address. Every relation has exactly one slot — determined by the relation's own structure.</p>
+
+<div class="panel">
+  <div class="panel-title">Enter a Relation</div>
+  <div class="row">
+    <div class="col" style="flex: 2;">
+      <input type="text" id="relation-input" value="(A . B)" placeholder="e.g. (A . B) or omi-0000-0000-0000-0000-0000-0000-0036-0072/128">
+      <div class="help">Enter an OMI address or dot notation <kbd>(CAR . CDR)</kbd></div>
+    </div>
+    <div class="col" style="flex: 0 0 auto;">
+      <button id="compute-btn">Compute Slot</button>
+    </div>
+  </div>
+  <div class="example-list" id="examples">
+    <span class="example-tag">(A . B)</span>
+    <span class="example-tag">(HELLO . WORLD)</span>
+    <span class="example-tag">(NULL . NULL)</span>
+    <span class="example-tag" title="omi-0000-0000-0000-0000-0000-0000-0036-0072/128">address test</span>
+    <span class="example-tag" title="omi-0500-03bf-000c-2b05-2f05-0002-039f-05ff/128">address sample</span>
+  </div>
+  <div id="error-msg" class="error" style="display:none;"></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 280px; gap: 15px;">
+<div>
+
+<div class="panel" id="result-panel" style="display:none;">
+  <div class="panel-title">Ring Position</div>
+  <div class="result-grid" id="result-grid"></div>
+  <div style="margin-top: 10px;">
+    <div class="panel-title">Pipeline</div>
+    <div class="pipeline" id="pipeline-display"></div>
+  </div>
+  <div style="margin-top: 10px;">
+    <div class="panel-title">Computation</div>
+    <div id="computation-detail" class="formula"></div>
+  </div>
+</div>
+
+<div class="panel" id="shape-panel" style="display:none;">
+  <div class="panel-title">Fano Plane & Archimedean Solid</div>
+  <div class="row">
+    <div class="col">
+      <canvas id="fano-canvas" width="280" height="280" style="width:100%;max-width:280px;background:#0a0a1a;border:1px solid #1a3a5c;border-radius:4px;"></canvas>
+    </div>
+    <div class="col">
+      <canvas id="shape-canvas" width="280" height="280" style="width:100%;max-width:280px;background:#0a0a1a;border:1px solid #1a3a5c;border-radius:4px;"></canvas>
+    </div>
+  </div>
+</div>
+
+</div>
+<div>
+
+<div class="panel" style="text-align:center;">
+  <div class="panel-title">The Ring (5040 slots)</div>
+  <div class="ring-container">
+    <canvas id="ring-canvas" width="280" height="280" style="width:100%;height:100%;"></canvas>
+  </div>
+  <div id="slot-info" style="font-size:11px;color:#576574;margin-top:5px;"></div>
+</div>
+
+<div class="panel" style="text-align:center;">
+  <div class="panel-title">Four Authorities</div>
+  <div style="display:grid;grid-template-columns:60px 1fr 60px;gap:4px;align-items:center;margin:10px 0;">
+    <div></div>
+    <div class="authority-box meta" style="border-color:#ff6b6b;">
+      <div class="name" style="color:#ff6b6b;">Metatron</div>
+      <div class="role">Projection Authority</div>
+    </div>
+    <div></div>
+    <div class="authority-box omi" style="border-color:#54a0ff;">
+      <div class="name" style="color:#54a0ff;">OMI</div>
+      <div class="role">Citation</div>
+    </div>
+    <div class="ring-center" style="border:2px solid #00ff88;border-radius:50%;padding:10px;background:#0a1a0a;">
+      <div class="name">Ring</div>
+    </div>
+    <div class="authority-box imo" style="border-color:#576574;">
+      <div class="name">IMO</div>
+      <div class="role">Carrier</div>
+    </div>
+    <div></div>
+    <div class="authority-box tetra" style="border-color:#ffd700;">
+      <div class="name" style="color:#ffd700;">Tetragrammatron</div>
+      <div class="role">Validation Authority</div>
+    </div>
+    <div></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="panel">
+  <div class="panel-title">How It Works</div>
+  <div style="font-size:12px;color:#c8d6e5;">
+    <p><strong>The Omi-Ring</strong> has 5040 slots. Every relation belongs to exactly one slot — determined by the relation's own structure, not by a hash, not by an authority.</p>
+    <p style="margin-top:8px;">The slot is computed in three layers:</p>
+    <ul style="margin:8px 0 0 20px;list-style-type:square;">
+      <li><span class="highlight-green">fano7</span> — which Fano line (0-6), from structural incidence</li>
+      <li><span class="highlight-blue">role3</span> — which chirality role (0-2), from diagonal phase</li>
+      <li><span class="highlight-yellow">local240</span> — fine position (0-239), from quadratic form</li>
+    </ul>
+    <p style="margin-top:8px;">7 × 3 × 240 = 5040. No hash. No lookup. The structure IS the address.</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ===== CORE ALGORITHM (from tetragrammatron.c / omi.c) =====
+
+function u16(x) { return x & 0xFFFF; }
+
+function rotl16(x, n) {
+  n = n & 15;
+  if (n === 0) return x;
+  return u16((x << n) | (x >>> (16 - n)));
+}
+
+function rotr16(x, n) {
+  n = n & 15;
+  if (n === 0) return x;
+  return u16((x >>> n) | (x << (16 - n)));
+}
+
+function delta16(x, c) {
+  return u16(rotl16(x, 1) ^ rotl16(x, 3) ^ rotr16(x, 2) ^ c);
+}
+
+function fnv1a32(s) {
+  let h = 0x811c9dc5 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h;
+}
+
+function parseHex(s) {
+  let v = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    let d;
+    if (c >= 48 && c <= 57) d = c - 48;
+    else if (c >= 97 && c <= 102) d = c - 97 + 10;
+    else if (c >= 65 && c <= 70) d = c - 65 + 10;
+    else return NaN;
+    v = (v << 4) | d;
+  }
+  return v;
+}
+
+function parseRelation(input) {
+  input = input.trim();
+
+  // Try omi-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx address format
+  const omiMatch = input.match(/^omi-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})(?:\/(\d+))?/);
+  if (omiMatch) {
+    const frame = [];
+    for (let i = 1; i <= 8; i++) {
+      const v = parseInt(omiMatch[i], 16);
+      if (isNaN(v)) return null;
+      frame.push(v);
+    }
+    const prefix = omiMatch[9] ? parseInt(omiMatch[9], 10) : 0;
+    return { frame, prefix, path_count: prefix ? 1 : 0, has_cons_closure: 0, has_payload_mask: 0, display: input, isAddress: true };
+  }
+
+  // Try dot notation (A . B)
+  // Handle (A . B), ( A . B ), (A.B), etc.
+  const dotMatch = input.match(/^\s*\(\s*(\S+?)\s*\.\s*(\S+?)\s*\)\s*$/);
+  if (dotMatch) {
+    const car = dotMatch[1];
+    const cdr = dotMatch[2];
+    // Build a frame from the ASCII/string values
+    // frame[0..5] = 0, frame[6] = fnv(CAR) & 0xFFFF, frame[7] = fnv(CDR) & 0xFFFF
+    const carHash = fnv1a32(car);
+    const cdrHash = fnv1a32(cdr);
+    const frame = [0, 0, 0, 0, 0, 0, carHash & 0xFFFF, cdrHash & 0xFFFF];
+    const displayAddr = `omi-0000-0000-0000-0000-0000-0000-${(frame[6] >>> 8).toString(16).padStart(2,'0')}${(frame[6] & 0xFF).toString(16).padStart(2,'0')}-${(frame[7] >>> 8).toString(16).padStart(2,'0')}${(frame[7] & 0xFF).toString(16).padStart(2,'0')}`;
+    return { frame, prefix: 0, path_count: 0, has_cons_closure: 0, has_payload_mask: 0, display: input, canonAddr: displayAddr, dot: { car, cdr } };
+  }
+
+  // Try just (A B) as a pair
+  const pairMatch = input.match(/^\s*\(\s*(\S+)\s+(\S+)\s*\)\s*$/);
+  if (pairMatch) {
+    const car = pairMatch[1];
+    const cdr = pairMatch[2];
+    const carHash = fnv1a32(car);
+    const cdrHash = fnv1a32(cdr);
+    const frame = [0, 0, 0, 0, 0, 0, carHash & 0xFFFF, cdrHash & 0xFFFF];
+    return { frame, prefix: 0, path_count: 0, has_cons_closure: 0, has_payload_mask: 0, display: input, canonAddr: null, dot: { car, cdr } };
+  }
+
+  return null;
+}
+
+function computeSlot5040(parsed) {
+  const frame = parsed.frame;
+  const prefix = parsed.prefix;
+  const path_count = parsed.path_count;
+  const has_cons_closure = parsed.has_cons_closure;
+  const has_payload_mask = parsed.has_payload_mask;
+
+  // Step 1: relation_fold (XOR all frame words + prefix + flags)
+  let fold = 0;
+  for (let i = 0; i < 8; i++) fold = u16(fold ^ frame[i]);
+  fold = u16(fold ^ prefix);
+  // payload, mask, car36, cdr64 are all 0 for simple relations
+  // flags: has_frame=1, has_prefix=1 if prefix > 0 else 0, has_payload_mask, has_cons_closure
+  const has_frame = 1;
+  const has_prefix = prefix > 0 ? 1 : 0;
+  fold = u16(fold ^ (has_frame << 0) ^ (has_prefix << 1));
+  fold = u16(fold ^ (has_payload_mask << 2) ^ (has_cons_closure << 3));
+
+  // Step 2: c = frame[6] ^ frame[7] ^ prefix
+  const c = u16(frame[6] ^ frame[7] ^ prefix);
+
+  // Step 3: r = delta16(fold, c)
+  const r = delta16(fold, c);
+
+  // Step 4: fano7 = (frame[6] ^ prefix ^ path_count) % 7
+  const fano7 = (frame[6] ^ prefix ^ path_count) % 7;
+
+  // Step 5: role3 = (frame[7] ^ has_cons_closure) % 3
+  const role3 = (frame[7] ^ has_cons_closure) % 3;
+
+  // Step 6: local240 = r % 240
+  const local240 = r % 240;
+
+  // Step 7: slot5040 = fano7 * 720 + role3 * 240 + local240
+  const slot5040 = fano7 * 720 + role3 * 240 + local240;
+
+  return { fold, c, r, fano7, role3, local240, slot5040, has_prefix };
+}
+
+// ===== FANO PLANE =====
+
+const FANO_LINES = [
+  [0,1,2], [0,3,4], [0,5,6],
+  [1,3,5], [1,4,6], [2,3,6], [2,4,5]
+];
+
+const FANO_POINT_NAMES = [
+  "α", "β", "γ", "δ", "ε", "ζ", "η"
+];
+
+const FANO_POINT_COORDS = [
+  [0.5, 0.08],  // α - top
+  [0.15, 0.38],  // β - lower left
+  [0.85, 0.38],  // γ - lower right
+  [0.08, 0.75],  // δ - bottom left
+  [0.5, 0.55],   // ε - center
+  [0.35, 0.88],  // ζ - bottom
+  [0.65, 0.88],  // η - bottom right
+];
+
+const FANO_LINE_NAMES = [
+  "L0: α-β-γ", "L1: α-δ-ε", "L2: α-ζ-η",
+  "L3: β-δ-ζ", "L4: β-ε-η", "L5: γ-δ-η", "L6: γ-ε-ζ"
+];
+
+// ===== ARCHIMEDEAN SOLIDS =====
+
+const SHAPE_DB = [
+  // fano7=0 (base 0)
+  { name: "Tetrahedron", vertices: 4, faces: 4, symbol: "{3,3}" },
+  { name: "Stellated Tetrahedron", vertices: 4, faces: 4, symbol: "{3,3}*"},
+  { name: "Octahedron", vertices: 6, faces: 8, symbol: "{3,4}" },
+  // fano7=1 (base 3)
+  { name: "Octahedron", vertices: 6, faces: 8, symbol: "{3,4}" },
+  { name: "Truncated Octahedron", vertices: 24, faces: 14, symbol: "{4,6}" },
+  { name: "Tetrakis Hexahedron", vertices: 14, faces: 24, symbol: "{4,6}*" },
+  // fano7=2 (base 6)
+  { name: "Cube", vertices: 8, faces: 6, symbol: "{4,3}" },
+  { name: "Truncated Cube", vertices: 24, faces: 14, symbol: "{3,8}" },
+  { name: "Triakis Octahedron", vertices: 14, faces: 24, symbol: "{3,8}*" },
+  // fano7=3 (base 9)
+  { name: "Cuboctahedron", vertices: 12, faces: 14, symbol: "{3,4}" },
+  { name: "Cuboctahedron", vertices: 12, faces: 14, symbol: "{3,4}" },
+  { name: "Rhombic Dodecahedron", vertices: 14, faces: 12, symbol: "{3,5}" },
+  // fano7=4 (base 12)
+  { name: "Icosahedron", vertices: 12, faces: 20, symbol: "{3,5}" },
+  { name: "Truncated Icosahedron", vertices: 60, faces: 32, symbol: "{5,6}" },
+  { name: "Pentakis Dodecahedron", vertices: 32, faces: 60, symbol: "{5,6}*" },
+  // fano7=5 (base 15)
+  { name: "Dodecahedron", vertices: 20, faces: 12, symbol: "{5,3}" },
+  { name: "Truncated Dodecahedron", vertices: 60, faces: 32, symbol: "{3,10}" },
+  { name: "Triakis Icosahedron", vertices: 32, faces: 60, symbol: "{3,10}*" },
+  // fano7=6 (base 18)
+  { name: "Icosidodecahedron", vertices: 30, faces: 32, symbol: "{3,5}" },
+  { name: "Truncated Icosidodecahedron", vertices: 120, faces: 62, symbol: "{4,6}" },
+  { name: "Disdyakis Triacontahedron", vertices: 62, faces: 120, symbol: "{4,6}*" },
+];
+
+const CONFIG_MATRIX = [0, 3, 6, 9, 12, 15, 18];
+
+function solidLookup(fano7, role3) {
+  const base = CONFIG_MATRIX[((fano7 % 7) + 7) % 7];
+  const idx = base + ((role3 % 3 + 3) % 3);
+  return idx < SHAPE_DB.length ? SHAPE_DB[idx] : SHAPE_DB[0];
+}
+
+// ===== CHIRALITY =====
+
+const CHIRAL_D_PLUS = [0, 5, 0xA, 0xF];
+const CHIRAL_D_MINUS = [3, 6, 9, 0xC];
+
+function chiralityOf(val) {
+  const nibbles = [];
+  for (let i = 0; i < 4; i++) nibbles.push((val >> (i * 4)) & 0xF);
+  let dplusSum = 0, dminusSum = 0;
+  for (const n of nibbles) {
+    if (CHIRAL_D_PLUS.includes(n)) dplusSum += n;
+    if (CHIRAL_D_MINUS.includes(n)) dminusSum += n;
+  }
+  if (dplusSum >= 30) return "D+";
+  if (dminusSum >= 30) return "D-";
+  return "mixed";
+}
+
+// ===== DRAW FANO PLANE =====
+
+function drawFano(canvas, activeLine) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw circle
+  ctx.strokeStyle = '#1a3a5c';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(W/2, H/2, W/2 - 20, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Draw lines
+  const pts = FANO_POINT_COORDS;
+  for (let li = 0; li < FANO_LINES.length; li++) {
+    const line = FANO_LINES[li];
+    const isActive = (li === activeLine);
+    ctx.strokeStyle = isActive ? '#00ff88' : '#1a3a5c';
+    ctx.lineWidth = isActive ? 3 : 1;
+    // Draw the line as two connected edges (Fano is projective, lines are curved in this embedding)
+    // Use straight lines for simplicity
+    for (let j = 0; j < 3; j++) {
+      const p1 = pts[line[j]];
+      const p2 = pts[line[(j+1)%3]];
+      ctx.beginPath();
+      ctx.moveTo(p1[0]*W, p1[1]*H);
+      ctx.lineTo(p2[0]*W, p2[1]*H);
+      ctx.stroke();
+    }
+  }
+
+  // Draw points
+  for (let pi = 0; pi < pts.length; pi++) {
+    const isOnActive = activeLine >= 0 && FANO_LINES[activeLine].includes(pi);
+    ctx.beginPath();
+    ctx.arc(pts[pi][0]*W, pts[pi][1]*H, isOnActive ? 8 : 5, 0, Math.PI * 2);
+    ctx.fillStyle = isOnActive ? '#00ff88' : '#1a3a5c';
+    ctx.fill();
+    if (isOnActive) {
+      ctx.strokeStyle = '#00ff88';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    // Label
+    ctx.fillStyle = isOnActive ? '#00ff88' : '#576574';
+    ctx.font = '12px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(FANO_POINT_NAMES[pi], pts[pi][0]*W, pts[pi][1]*H - (isOnActive ? 12 : 8));
+  }
+
+  // Title
+  ctx.fillStyle = '#576574';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText('Fano Plane', W/2, H - 5);
+  if (activeLine >= 0) {
+    ctx.fillStyle = '#00ff88';
+    ctx.fillText(FANO_LINE_NAMES[activeLine], W/2, H - 18);
+  }
+}
+
+// ===== DRAW POLYHEDRON =====
+
+function drawShape(canvas, shape) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.fillStyle = '#576574';
+  ctx.font = '12px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(shape.name, W/2, H/2 - 20);
+  ctx.fillStyle = '#1a3a5c';
+  ctx.font = '10px monospace';
+  ctx.fillText('Schläfli ' + shape.symbol, W/2, H/2 + 5);
+  ctx.fillStyle = '#576574';
+  ctx.font = '10px monospace';
+  ctx.fillText(shape.vertices + 'V / ' + shape.faces + 'F', W/2, H/2 + 25);
+}
+
+// ===== DRAW RING =====
+
+function drawRing(canvas, slot, highlightSlot) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2, R = Math.min(W,H)/2 - 20;
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw ring track
+  ctx.strokeStyle = '#1a3a5c';
+  ctx.lineWidth = 12;
+  ctx.beginPath();
+  ctx.arc(cx, cy, R, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Draw subdivision marks
+  for (let i = 0; i < 49; i += 7) {
+    const angle = (i / 49) * Math.PI * 2 - Math.PI/2;
+    ctx.strokeStyle = '#0f3460';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + (R - 8) * Math.cos(angle), cy + (R - 8) * Math.sin(angle));
+    ctx.lineTo(cx + (R + 8) * Math.cos(angle), cy + (R + 8) * Math.sin(angle));
+    ctx.stroke();
+  }
+
+  // Draw slot marker if valid
+  if (slot >= 0 && slot < 5040) {
+    const angle = (slot / 5040) * Math.PI * 2 - Math.PI/2;
+    // Glow
+    ctx.shadowColor = '#ff6b6b';
+    ctx.shadowBlur = 15;
+    ctx.fillStyle = '#ff6b6b';
+    ctx.beginPath();
+    ctx.arc(cx + R * Math.cos(angle), cy + R * Math.sin(angle), 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Label
+    ctx.fillStyle = '#ff6b6b';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    const labelR = R + 16;
+    ctx.fillText('slot ' + slot, cx + labelR * Math.cos(angle), cy + labelR * Math.sin(angle));
+
+    // Center info
+    ctx.fillStyle = '#576574';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('5040 slots', cx, cy - 8);
+    ctx.fillStyle = '#1a3a5c';
+    ctx.fillText('7 × 3 × 240', cx, cy + 10);
+  }
+
+  ctx.fillStyle = '#576574';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText('S0          S1          S2          S3          S4          S5          S6', cx, H - 5);
+}
+
+// ===== UI LOGIC =====
+
+const relationInput = document.getElementById('relation-input');
+const computeBtn = document.getElementById('compute-btn');
+const errorMsg = document.getElementById('error-msg');
+const resultPanel = document.getElementById('result-panel');
+const shapePanel = document.getElementById('shape-panel');
+const resultGrid = document.getElementById('result-grid');
+const pipelineDisplay = document.getElementById('pipeline-display');
+const computationDetail = document.getElementById('computation-detail');
+const ringCanvas = document.getElementById('ring-canvas');
+const fanoCanvas = document.getElementById('fano-canvas');
+const shapeCanvas = document.getElementById('shape-canvas');
+const slotInfo = document.getElementById('slot-info');
+
+const examples = document.querySelectorAll('.example-tag');
+
+examples.forEach(el => {
+  el.addEventListener('click', () => {
+    const text = el.getAttribute('title') || el.textContent;
+    relationInput.value = text;
+    compute();
+    examples.forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+  });
+});
+
+function modPos(n, m) { return ((n % m) + m) % m; }
+
+function compute() {
+  const input = relationInput.value.trim();
+  if (!input) {
+    errorMsg.style.display = 'block';
+    errorMsg.textContent = 'Please enter a relation.';
+    resultPanel.style.display = 'none';
+    shapePanel.style.display = 'none';
+    return;
+  }
+
+  const parsed = parseRelation(input);
+  if (!parsed) {
+    errorMsg.style.display = 'block';
+    errorMsg.textContent = 'Could not parse input. Try (A . B) or omi-xxxx-xxxx-...-xxxx/prefix';
+    resultPanel.style.display = 'none';
+    shapePanel.style.display = 'none';
+    return;
+  }
+
+  errorMsg.style.display = 'none';
+
+  const result = computeSlot5040(parsed);
+  const shape = solidLookup(result.fano7, result.role3);
+  const chir = chiralityOf(result.r);
+
+  // Display canonical address for dot notation
+  let displayAddr = parsed.display;
+  if (parsed.canonAddr) displayAddr += ' → ' + parsed.canonAddr;
+
+  // Result grid
+  resultGrid.innerHTML = `
+    <div class="result-item" style="border-left-color:#00ff88;">
+      <div class="label">Slot</div>
+      <div class="value">${result.slot5040}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#00ff88;">
+      <div class="label">Address</div>
+      <div class="value" style="font-size:11px;word-break:break-all;">${displayAddr}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#54a0ff;">
+      <div class="label">fano7 (Fano line)</div>
+      <div class="value">${result.fano7} — ${FANO_LINE_NAMES[result.fano7]}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#ffd700;">
+      <div class="label">role3 (Chirality role)</div>
+      <div class="value">${result.role3} — ${shape.name}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#ff6b6b;">
+      <div class="label">local240 (Fine position)</div>
+      <div class="value">${result.local240} / 239</div>
+    </div>
+    <div class="result-item" style="border-left-color:#ff6b6b;">
+      <div class="label">Chirality</div>
+      <div class="value">${chir}</div>
+    </div>
+  `;
+
+  // Pipeline display
+  const pipelineSteps = [
+    { name: 'Parse', desc: 'frame[8]' },
+    { name: 'Fold', desc: 'XOR → ' + result.fold },
+    { name: 'Δ16', desc: 'delta16 → ' + result.r },
+    { name: 'Fano', desc: 'line ' + result.fano7 },
+    { name: 'Role', desc: 'role ' + result.role3 },
+    { name: 'Local', desc: 'pos ' + result.local240 },
+    { name: 'Slot', desc: '' + result.slot5040 },
+  ];
+  pipelineDisplay.innerHTML = pipelineSteps.map((s, i) =>
+    `<div class="pipeline-step active"><strong>${s.name}</strong><br>${s.desc}</div>`
+  ).join('');
+
+  // Computation detail
+  const frameHex = parsed.frame.map(f => '0x' + f.toString(16).toUpperCase().padStart(4, '0')).join(', ');
+  const rBin = result.r.toString(2).padStart(16, '0');
+  computationDetail.innerHTML = `\
+<span class="highlight-blue">frame</span> = [${frameHex}]
+<span class="highlight-blue">fold</span> = XOR(frame) ^ prefix ^ flags
+     = ${result.fold} (0x${result.fold.toString(16).toUpperCase().padStart(4, '0')})
+
+<span class="highlight-yellow">c</span> = frame[6] ^ frame[7] ^ prefix = ${result.c} (0x${result.c.toString(16).toUpperCase().padStart(4, '0')})
+<span class="highlight-red">r</span> = delta16(fold, c) = rotl16(fold,1) ^ rotl16(fold,3) ^ rotr16(fold,2) ^ c
+  = ${result.r} (0x${result.r.toString(16).toUpperCase().padStart(4, '0')})
+  = ${rBin.substring(0,8)} ${rBin.substring(8,16)} (binary)
+
+<span class="highlight-green">fano7</span> = (frame[6] ^ prefix ^ path_count) % 7 = ${result.fano7}
+<span class="highlight-green">role3</span> = (frame[7] ^ has_cons_closure) % 3 = ${result.role3}
+<span class="highlight-green">local240</span> = r % 240 = ${result.local240}
+
+<span style="color:#00ff88;font-weight:bold;">slot5040</span> = fano7 × 720 + role3 × 240 + local240
+  = ${result.fano7} × 720 + ${result.role3} × 240 + ${result.local240}
+  = <span style="color:#00ff88;font-weight:bold;">${result.slot5040}</span>`;
+
+  // Ring
+  drawRing(ringCanvas, result.slot5040);
+  slotInfo.textContent = `Fano line ${result.fano7} · Role ${result.role3} · Local ${result.local240} → Slot ${result.slot5040}`;
+
+  // Fano plane
+  drawFano(fanoCanvas, result.fano7);
+
+  // Shape
+  drawShape(shapeCanvas, shape);
+
+  // Show panels
+  resultPanel.style.display = 'block';
+  shapePanel.style.display = 'block';
+}
+
+// Initial draw
+drawRing(ringCanvas, -1);
+drawFano(fanoCanvas, -1);
+drawShape(shapeCanvas, { name: "—", vertices: 0, faces: 0, symbol: "—" });
+
+computeBtn.addEventListener('click', compute);
+relationInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') compute(); });
+
+// Auto-run default
+setTimeout(compute, 100);
+
+// Responsive ring redraw
+window.addEventListener('resize', () => {
+  const resultGrid = document.getElementById('result-grid');
+  if (resultGrid && resultGrid.children.length > 1) compute();
+});
+</script>
+</body>
+</html>
