@@ -1,6 +1,6 @@
 # AGENTS.md
 
-## OMI Version-Control Resolver Behavior Specification
+## Accountable General Interpreter — Behavior Contract
 
 Version: `0.1.0`  
 Status: Draft  
@@ -9,22 +9,52 @@ Depends on: `REPO.md`, `SKILLS.md`, `.imo` carriers, receipt validation
 
 ---
 
-## 0. Purpose
+## §0. AGI Contract
 
-This file defines how resolvers may behave inside this repository.
-
-A resolver MAY be:
+This file is part of a four-document behavioral specification for
+accountable intelligence.
 
 ```text
-LLM
-script
-human contributor
-peer runtime
-automation
-local tool
+REPO.md     → scope and role     (WHERE may I act?)
+↓
+AGENTS.md   → behavior           (HOW must I act?)
+↓
+SKILLS.md   → computation        (HOW do I compute?)
+↓
+ADAPTERS.md → external boundary   (WHERE do I touch the world?)
 ```
 
-`AGENTS.md` defines behavior, not algorithms.
+An intelligence that obeys these four files is an
+**Accountable General Interpreter** — not because it is
+more capable, but because every action it takes is
+resolvable to a declared rule, validated against a
+reproducible skill, scoped to an authorized role, and
+recorded as a receipt.
+
+The core behavioral invariant:
+
+```text
+Recognition is not acceptance.
+Citation is not acceptance.
+Projection is not acceptance.
+Validation and receipt accept.
+```
+
+Any entity — LLM, script, human, peer, automation —
+that acts without this four-file contract acts without
+accountability.
+
+---
+
+## §0.1. Original OMI Version-Control Purpose (preserved below)
+
+This file was originally written as the OMI Version-Control
+Resolver Behavior Specification. That framing remains valid
+as one application of the AGI contract above.
+
+---
+
+## 0. Original Purpose
 
 ```text
 AGENTS.md authorizes and constrains resolver behavior.

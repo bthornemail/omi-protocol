@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resolver — Accountable General Interpreter</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; background: #06060e; color: #c8d6e5; padding: 16px; }
+h1 { font-size: 18px; color: #00ff88; text-align: center; }
+.sub { text-align: center; font-size: 11px; color: #576574; margin: 2px 0 12px; }
+.container { max-width: 900px; margin: 0 auto; }
+
+.pipeline { display: flex; gap: 2px; margin: 12px 0; flex-wrap: wrap; justify-content: center; }
+.pstep { padding: 6px 10px; border: 1px solid #1a1a3a; border-radius: 4px; font-size: 10px; text-align: center; flex: 1; min-width: 55px; background: #0a0a1a; color: #3a4a5c; transition: all 0.3s; }
+.pstep.active { border-color: #00ff88; color: #00ff88; background: #0a1a0a; }
+.pstep .arr { display: block; font-size: 12px; color: #3a4a5c; }
+.pstep.done { border-color: #00ff88; color: #00ff88; background: #0a1a0a; opacity: 0.5; }
+.pstep.wait { border-color: #1a1a3a; }
+.pstep.warn { border-color: #ffd700; color: #ffd700; background: #1a1a00; }
+.pstep.err { border-color: #ff6b6b; color: #ff6b6b; background: #1a0000; }
+.pstep.repo { border-color: #ff6b6b; } .pstep.repo.active { border-color: #ff6b6b; color: #ff6b6b; background: #1a0000; }
+.pstep.agents { border-color: #54a0ff; } .pstep.agents.active { border-color: #54a0ff; color: #54a0ff; background: #000a1a; }
+.pstep.skills { border-color: #ffd700; } .pstep.skills.active { border-color: #ffd700; color: #ffd700; background: #1a1a00; }
+.pstep.adapters { border-color: #576574; } .pstep.adapters.active { border-color: #576574; color: #576574; }
+.pstep.ring { border-color: #00ff88; } .pstep.ring.active { border-color: #00ff88; color: #00ff88; background: #0a1a0a; }
+
+.console { background: #08080e; border: 1px solid #1a1a3a; border-radius: 6px; padding: 12px; margin: 10px 0; max-height: 240px; overflow-y: auto; font-size: 11px; line-height: 1.7; }
+.console .line { opacity: 0; transition: opacity 0.15s; }
+.console .line.show { opacity: 1; }
+.console .line.repo { color: #ff6b6b; }
+.console .line.agents { color: #54a0ff; }
+.console .line.skills { color: #ffd700; }
+.console .line.adapters { color: #576574; }
+.console .line.ring { color: #00ff88; }
+.console .line.ok { color: #00ff88; }
+.console .line.warn { color: #ffd700; }
+.console .line.err { color: #ff6b6b; }
+.console .line.info { color: #8a9ab5; }
+.console .line.dim { color: #3a4a5c; }
+.console .line.user { color: #c8d6e5; font-weight: bold; }
+
+.controls { display: flex; gap: 8px; margin: 10px 0; flex-wrap: wrap; align-items: center; }
+.controls input { flex: 1; min-width: 200px; background: #08080e; color: #00ff88; border: 1px solid #1a1a3a; padding: 8px 12px; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 4px; }
+.controls input:focus { outline: none; border-color: #00ff88; }
+.controls button { background: #00ff88; color: #06060e; border: none; padding: 8px 16px; font-family: 'Courier New', monospace; font-size: 12px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+.controls button:hover { background: #00cc6a; }
+.controls button:disabled { background: #1a1a3a; color: #3a4a5c; cursor: not-allowed; }
+.controls button.sm { padding: 4px 10px; font-size: 10px; background: #1a1a3a; color: #8a9ab5; }
+.controls button.sm:hover { border-color: #00ff88; }
+
+.result-box { background: #08080e; border: 1px solid #1a1a3a; border-radius: 6px; padding: 12px; margin: 8px 0; display: none; }
+.result-box.show { display: block; }
+.result-box .label { font-size: 10px; color: #576574; text-transform: uppercase; letter-spacing: 1px; }
+.result-box .value { font-size: 13px; color: #c8d6e5; margin-top: 4px; }
+.result-box .value.ok { color: #00ff88; }
+.result-box .value.err { color: #ff6b6b; }
+
+.task-list { display: flex; gap: 4px; flex-wrap: wrap; margin: 8px 0; }
+.task-tag { padding: 3px 10px; background: #08080e; border: 1px solid #1a1a3a; border-radius: 12px; font-size: 10px; cursor: pointer; color: #54a0ff; }
+.task-tag:hover { border-color: #54a0ff; background: #000a1a; }
+
+.speed-control { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #576574; margin: 6px 0; }
+.speed-control input[type="range"] { width: 80px; accent-color: #00ff88; background: #1a1a3a; height: 3px; }
+
+.status-bar { display: flex; justify-content: space-between; font-size: 10px; color: #3a4a5c; margin-top: 6px; }
+code { background: #08080e; padding: 1px 4px; border-radius: 3px; font-size: 10px; color: #54a0ff; }
+.highlight { color: #00ff88; }
+h2 { font-size: 12px; color: #576574; text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Resolver</h1>
+<p class="sub">An Accountable General Interpreter operating under the four-file contract</p>
+<p style="text-align:center;font-size:10px;color:#3a4a5c;margin-bottom:12px;">
+<a href="index.html" style="color:#576574;">ring</a> ·
+<a href="governance.html" style="color:#576574;">governance</a> ·
+<a href="world.html" style="color:#576574;">world</a>
+</p>
+
+<div class="pipeline" id="pipeline">
+  <div class="pstep repo" data-step="0">REPO.md<span class="arr">↓</span>scope</div>
+  <div class="pstep agents" data-step="1">AGENTS.md<span class="arr">↓</span>behave</div>
+  <div class="pstep skills" data-step="2">SKILLS.md<span class="arr">↓</span>algorithm</div>
+  <div class="pstep adapters" data-step="3">ADAPTERS.md<span class="arr">↓</span>boundary</div>
+  <div class="pstep" data-step="4">validate<span class="arr">↓</span>check</div>
+  <div class="pstep ring" data-step="5">slot5040<span class="arr">↓</span>resolve</div>
+  <div class="pstep" data-step="6">receipt<span class="arr">↓</span>record</div>
+  <div class="pstep ring" data-step="7">project<span class="arr">↓</span>output</div>
+</div>
+
+<div class="controls">
+  <input type="text" id="task-input" value="Compute slot for (A . B)" placeholder="Enter a task for the resolver">
+  <button id="run-btn">Run</button>
+  <button class="sm" id="stop-btn" disabled>stop</button>
+  <button class="sm" id="clear-btn">clear</button>
+</div>
+
+<div class="task-list">
+  <span class="task-tag">Compute slot for (A . B)</span>
+  <span class="task-tag">Compute slot for (HELLO . WORLD)</span>
+  <span class="task-tag">Is slot5040 deterministic?</span>
+  <span class="task-tag">What is my role?</span>
+  <span class="task-tag">Can I write to hardware?</span>
+</div>
+
+<div class="speed-control">
+  <span>speed</span>
+  <input type="range" id="speed-slider" min="0" max="500" value="120">
+  <span id="speed-label">120ms</span>
+</div>
+
+<div class="console" id="console"></div>
+
+<div class="result-box" id="result-box">
+  <div class="label">Resolver Output</div>
+  <div class="value" id="result-value">—</div>
+</div>
+
+<div class="status-bar">
+  <span id="status-text">ready</span>
+  <span id="contract-badge">REPO.md ✓ AGENTS.md ✓ SKILLS.md ✓ ADAPTERS.md ✓</span>
+</div>
+
+</div>
+
+<script>
+// ===== RESOLVER CORE =====
+
+const consoleEl = document.getElementById('console');
+const pipelineSteps = document.querySelectorAll('.pstep');
+const taskInput = document.getElementById('task-input');
+const runBtn = document.getElementById('run-btn');
+const stopBtn = document.getElementById('stop-btn');
+const clearBtn = document.getElementById('clear-btn');
+const speedSlider = document.getElementById('speed-slider');
+const speedLabel = document.getElementById('speed-label');
+const statusText = document.getElementById('status-text');
+const resultBox = document.getElementById('result-box');
+const resultValue = document.getElementById('result-value');
+
+let running = false;
+let aborted = false;
+let stepDelay = 120;
+
+speedSlider.addEventListener('input', () => {
+  const v = parseInt(speedSlider.value);
+  stepDelay = v;
+  speedLabel.textContent = v + 'ms';
+});
+
+// ===== CORE ALGORITHM (same as index.html) =====
+
+function u16(x) { return x & 0xFFFF; }
+function rotl16(x, n) { n = n & 15; if (n === 0) return x; return u16((x << n) | (x >>> (16 - n))); }
+function rotr16(x, n) { n = n & 15; if (n === 0) return x; return u16((x >>> n) | (x << (16 - n))); }
+function delta16(x, c) { return u16(rotl16(x, 1) ^ rotl16(x, 3) ^ rotr16(x, 2) ^ c); }
+function fnv1a32(s) { let h = 0x811c9dc5 >>> 0; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h; }
+
+function parseRelation(input) {
+  input = input.trim();
+  const omiMatch = input.match(/^omi-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})(?:\/(\d+))?/);
+  if (omiMatch) {
+    const frame = []; for (let i = 1; i <= 8; i++) frame.push(parseInt(omiMatch[i], 16));
+    return { frame, prefix: parseInt(omiMatch[9]||'0',10), path_count: 0, has_cons_closure: 0, has_payload_mask: 0, display: input };
+  }
+  const dotMatch = input.match(/^\s*\(\s*(\S+?)\s*\.\s*(\S+?)\s*\)\s*$/);
+  if (dotMatch) {
+    const car = dotMatch[1], cdr = dotMatch[2];
+    const f6 = fnv1a32(car) & 0xFFFF, f7 = fnv1a32(cdr) & 0xFFFF;
+    return { frame: [0,0,0,0,0,0,f6,f7], prefix: 0, path_count: 0, has_cons_closure: 0, has_payload_mask: 0, display: input };
+  }
+  return null;
+}
+
+function computeSlot5040(parsed) {
+  const frame = parsed.frame;
+  let fold = 0; for (let i = 0; i < 8; i++) fold = u16(fold ^ frame[i]);
+  fold = u16(fold ^ parsed.prefix);
+  const hf = 1, hp = parsed.prefix > 0 ? 1 : 0;
+  fold = u16(fold ^ (hf << 0) ^ (hp << 1) ^ (parsed.has_payload_mask << 2) ^ (parsed.has_cons_closure << 3));
+  const c = u16(frame[6] ^ frame[7] ^ parsed.prefix);
+  const r = delta16(fold, c);
+  const fano7 = (frame[6] ^ parsed.prefix ^ parsed.path_count) % 7;
+  const role3 = (frame[7] ^ parsed.has_cons_closure) % 3;
+  const local240 = r % 240;
+  const slot5040 = fano7 * 720 + role3 * 240 + local240;
+  return { fold, c, r, fano7, role3, local240, slot5040 };
+}
+
+// ===== RESOLVER SIMULATION =====
+
+function log(msg, cls = 'info') {
+  const line = document.createElement('div');
+  line.className = `line ${cls}`;
+  line.textContent = '> ' + msg;
+  consoleEl.appendChild(line);
+  consoleEl.scrollTop = consoleEl.scrollHeight;
+  return line;
+}
+
+function setStep(idx, state) {
+  if (pipelineSteps[idx]) {
+    pipelineSteps[idx].className = 'pstep ' + state;
+  }
+}
+
+function resetPipeline() {
+  pipelineSteps.forEach((s, i) => {
+    const base = s.dataset.step === '0' ? 'repo' : s.dataset.step === '1' ? 'agents' : s.dataset.step === '2' ? 'skills' : s.dataset.step === '3' ? 'adapters' : s.dataset.step === '5' || s.dataset.step === '7' ? 'ring' : '';
+    s.className = 'pstep wait' + (base ? ' ' + base : '');
+  });
+}
+
+function sleep(ms) { return new Promise(r => { const t = setTimeout(r, ms); stopCheck = () => { clearTimeout(t); r(); }; }); }
+let stopCheck = null;
+
+async function runResolver(task) {
+  if (running) return;
+  running = true;
+  aborted = false;
+  runBtn.disabled = true;
+  stopBtn.disabled = false;
+  statusText.textContent = 'resolving...';
+  resultBox.classList.remove('show');
+  resetPipeline();
+  consoleEl.innerHTML = '';
+  log('--- Resolver session ---', 'dim');
+  log('Task: ' + task, 'user');
+
+  const delay = () => stepDelay;
+
+  try {
+    // Step 0: REPO.md
+    setStep(0, 'active');
+    log('Reading REPO.md...', 'repo');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+    log('  role: Resolver (default LLM role)', 'repo');
+    log('  scope: fs.o (repository scope)', 'repo');
+    log('  effect limit: pure / read-only', 'repo');
+    log('  policies: receipt-before-acceptance, no-side-effects-before-receipt', 'repo');
+    log('REPO.md OK — scope and role determined.', 'ok');
+    setStep(0, 'done');
+
+    // Step 1: AGENTS.md
+    setStep(1, 'active');
+    log('Reading AGENTS.md...', 'agents');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+    log('  MUST: distinguish candidate from accepted', 'agents');
+    log('  MUST: validate before acceptance', 'agents');
+    log('  MUST NOT: side effects before receipt', 'agents');
+    log('  MUST: cite scope when proposing changes', 'agents');
+    log('AGENTS.md OK — behavioral rules applied.', 'ok');
+    setStep(1, 'done');
+
+    // Step 2: SKILLS.md
+    setStep(2, 'active');
+    log('Reading SKILLS.md...', 'skills');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+
+    // Parse the task to determine what skill to use
+    const slotMatch = task.match(/slot (?:for|of|5040)\s+(.+)/i) || task.match(/compute slot(?:5040)?\s+(?:for\s+)?(.+)/i);
+    const detMatch = task.match(/deterministic/i);
+    const roleMatch = task.match(/role/i);
+    const writeMatch = task.match(/write|hardware/i);
+
+    let selectedSkill = 'unknown';
+    let skillResult = null;
+
+    if (slotMatch || task.includes('(A . B)') || task.includes('(HELLO') || task.includes('(NULL')) {
+      selectedSkill = 'skill.slot5040';
+      log('  selected skill: skill.slot5040 — Fano-role-local ring slot', 'skills');
+      log('  effect: pure', 'skills');
+      log('  input: (fano7 role3 local240)', 'skills');
+      log('  formula: slot5040 = fano7×720 + role3×240 + local240', 'skills');
+      log('SKILLS.md OK — algorithm selected.', 'ok');
+
+      // Parse the relation from the task
+      const relMatch = task.match(/\([^()]+[. ][^()]+\)/);
+      const rel = relMatch ? relMatch[0] : (task.includes('(A') ? '(A . B)' : task.includes('(HELLO') ? '(HELLO . WORLD)' : task.includes('(NULL') ? '(NULL . NULL)' : null);
+      
+      if (rel) {
+        const parsed = parseRelation(rel);
+        if (parsed) {
+          skillResult = computeSlot5040(parsed);
+          skillResult.relation = rel;
+          skillResult.parsed = parsed;
+        }
+      }
+    } else if (detMatch) {
+      selectedSkill = 'skill.slot5040';
+      log('  selected skill: skill.slot5040 — test for determinism', 'skills');
+      log('  skill is pure: yes', 'skills');
+      log('  determinism: guaranteed for same input', 'skills');
+      log('SKILLS.md OK — algorithm selected.', 'ok');
+      skillResult = { deterministic: true };
+    } else if (roleMatch) {
+      selectedSkill = 'skill.scope.resolve';
+      log('  selected skill: skill.scope.resolve — determine role', 'skills');
+      log('  effect: pure', 'skills');
+      log('  input: scope string', 'skills');
+      log('  output: (role scope effect)', 'skills');
+      log('SKILLS.md OK — algorithm selected.', 'ok');
+      skillResult = { role: 'Resolver', scope: 'fs.o', effect: 'pure/read-only' };
+    } else if (writeMatch) {
+      selectedSkill = 'none';
+      log('  checking: task requires hardware write', 'warn');
+      log('  skill.hardware.project is in DENIED list by default', 'warn');
+      log('  AGENTS.md §4 states: Resolver MUST NOT project hardware', 'warn');
+      log('  REPO.md §11: hardware requires explicit role grant and receipt', 'warn');
+      log('SKILLS.md — skill not permitted for current role.', 'err');
+    } else {
+      log('  no matching skill found for task', 'warn');
+      log('  available: skill.slot5040, skill.scope.resolve, skill.receipt.verify, skill.imo.normalize', 'skills');
+    }
+
+    setStep(2, 'done');
+
+    // Step 3: ADAPTERS.md
+    setStep(3, 'active');
+    log('Checking ADAPTERS.md...', 'adapters');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+    log('  task does not require external adapter', 'adapters');
+    log('  no hardware, network, browser, or serial boundary', 'adapters');
+    log('  adapter gate: not triggered (pure computation only)', 'adapters');
+    log('ADAPTERS.md OK — no boundary violation.', 'ok');
+    setStep(3, 'done');
+
+    // Step 4: Validate
+    setStep(4, 'active');
+    log('Validating input...');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+    if (skillResult && skillResult.relation) {
+      log(`  relation: ${skillResult.relation}`, 'info');
+      log(`  frame: [${skillResult.parsed.frame.map(f => '0x'+f.toString(16).toUpperCase().padStart(4,'0')).join(', ')}]`, 'info');
+      log('  frame valid: 8 × uint16 segments', 'ok');
+      if (skillResult.slot5040 >= 0 && skillResult.slot5040 < 5040) {
+        log(`  slot5040: ${skillResult.slot5040} — in range 0..5039`, 'ok');
+      }
+    } else if (skillResult && skillResult.deterministic) {
+      const r1 = computeSlot5040(parseRelation('(A . B)'));
+      const r2 = computeSlot5040(parseRelation('(A . B)'));
+      log(`  test: computeSlot5040('(A . B)') twice`, 'info');
+      log(`  result 1: ${r1.slot5040}`, 'info');
+      log(`  result 2: ${r2.slot5040}`, 'info');
+      log(`  identical: ${r1.slot5040 === r2.slot5040 ? 'YES' : 'NO'}`, r1.slot5040 === r2.slot5040 ? 'ok' : 'err');
+    } else if (skillResult && skillResult.role) {
+      log(`  role: ${skillResult.role}`, 'info');
+      log(`  scope: ${skillResult.scope}`, 'info');
+      log('  role resolution valid', 'ok');
+    } else {
+      log('  validation: task does not match available skills or permissions', 'warn');
+    }
+    log('Validation complete.', 'ok');
+    setStep(4, 'done');
+
+    // Step 5: Resolve (compute slot)
+    setStep(5, 'active');
+    log('Resolving ring position...', 'ring');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+
+    if (skillResult && skillResult.slot5040 !== undefined) {
+      const r = skillResult;
+      const fanoNames = ['L0: α-β-γ', 'L1: α-δ-ε', 'L2: α-ζ-η', 'L3: β-δ-ζ', 'L4: β-ε-η', 'L5: γ-δ-η', 'L6: γ-ε-ζ'];
+      log(`  fold = XOR(frame) ^ prefix ^ flags = ${r.fold}`, 'ring');
+      log(`  r = delta16(fold, c) = ${r.r}`, 'ring');
+      log(`  fano7 = (frame[6] ^ prefix ^ path_count) % 7 = ${r.fano7}  (${fanoNames[r.fano7]})`, 'ring');
+      log(`  role3 = (frame[7] ^ has_cons_closure) % 3 = ${r.role3}`, 'ring');
+      log(`  local240 = r % 240 = ${r.local240}`, 'ring');
+      log(`  slot5040 = ${r.fano7}×720 + ${r.role3}×240 + ${r.local240} = ${r.slot5040}`, 'ring');
+    } else if (skillResult && skillResult.deterministic) {
+      log('  slot5040 is deterministic: same input always produces same slot', 'ring');
+      log('  proven via delta16 rotation-XOR law', 'ring');
+    } else {
+      log('  no ring resolution for this task', 'dim');
+    }
+    setStep(5, 'done');
+
+    // Step 6: Receipt
+    setStep(6, 'active');
+    log('Recording receipt...');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+
+    const receiptId = 'receipt-' + (Date.now() % 100000);
+    if (skillResult && skillResult.slot5040 !== undefined) {
+      log(`  receipt id: ${receiptId}`, 'info');
+      log(`  result: accepted`, 'ok');
+      log(`  slot: ${skillResult.slot5040}`, 'info');
+      log('  scope: fs.o/SKILLS.md/gs.o/ring/rs.o/slot5040', 'info');
+      log('  Receipt recorded. Ring position is now accepted state.', 'ok');
+    } else if (skillResult && skillResult.deterministic) {
+      log(`  receipt id: ${receiptId}`, 'info');
+      log('  result: proven (determinism is a mathematical property, not a receipted event)', 'ok');
+    } else {
+      log(`  receipt id: ${receiptId}`, 'info');
+      log('  result: rejected — task not within resolver scope or permissions', 'warn');
+      log('  rejection reason: no matching skill or permission', 'err');
+      log('  Rejection receipt recorded.', 'ok');
+    }
+    setStep(6, 'done');
+
+    // Step 7: Project
+    setStep(7, 'active');
+    log('Projecting output...', 'ring');
+    await sleep(delay());
+    if (aborted) throw 'aborted';
+
+    resultBox.classList.add('show');
+    if (skillResult && skillResult.slot5040 !== undefined) {
+      resultValue.className = 'value ok';
+      resultValue.innerHTML = `
+        <strong>${skillResult.relation}</strong> → slot <strong>${skillResult.slot5040}</strong><br>
+        <span style="font-size:11px;color:#576574;">
+          fano7=${skillResult.fano7} · role3=${skillResult.role3} · local240=${skillResult.local240}
+        </span>
+      `;
+      log(`Projection: slot ${skillResult.slot5040} for ${skillResult.relation}`, 'ok');
+    } else if (skillResult && skillResult.deterministic) {
+      resultValue.className = 'value ok';
+      resultValue.textContent = 'slot5040 is deterministic — same input always produces the same slot. This is guaranteed by the delta16 rotation-XOR law, not by any authority.';
+      log('Projection: determinism proven', 'ok');
+    } else if (skillResult && skillResult.role) {
+      resultValue.className = 'value ok';
+      resultValue.textContent = `Role: ${skillResult.role}, Scope: ${skillResult.scope}, Effect: ${skillResult.effect}`;
+    } else {
+      resultValue.className = 'value err';
+      resultValue.innerHTML = '<strong>Task rejected.</strong> No matching skill or permission for current role. Task marked as candidate — requires role/scope change to proceed.';
+      log('Projection: rejection notice displayed', 'dim');
+    }
+
+    log('--- Session complete ---', 'dim');
+    statusText.textContent = 'done — candidate, not accepted (unless receipted)';
+    setStep(7, 'done');
+
+  } catch (e) {
+    if (e === 'aborted') {
+      log('--- Resolver aborted ---', 'warn');
+      statusText.textContent = 'aborted';
+    } else {
+      log('Error: ' + e, 'err');
+      statusText.textContent = 'error';
+    }
+  }
+
+  running = false;
+  runBtn.disabled = false;
+  stopBtn.disabled = true;
+}
+
+// ===== UI =====
+
+runBtn.addEventListener('click', () => {
+  const task = taskInput.value.trim();
+  if (!task) return;
+  runResolver(task);
+});
+
+stopBtn.addEventListener('click', () => {
+  aborted = true;
+  if (stopCheck) stopCheck();
+});
+
+clearBtn.addEventListener('click', () => {
+  consoleEl.innerHTML = '';
+  resultBox.classList.remove('show');
+  resetPipeline();
+  statusText.textContent = 'ready';
+});
+
+taskInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') runBtn.click(); });
+
+document.querySelectorAll('.task-tag').forEach(el => {
+  el.addEventListener('click', () => {
+    taskInput.value = el.textContent;
+    runBtn.click();
+  });
+});
+
+// ===== AUTO-RUN DEFAULT =====
+setTimeout(() => runResolver(taskInput.value), 300);
+</script>
+</body>
+</html>

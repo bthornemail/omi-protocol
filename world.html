@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omi World — Pseudo-Persistent Object Space</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; background: #0a0a14; color: #c8d6e5; overflow: hidden; height: 100vh; }
+#app { display: grid; grid-template-columns: 1fr 340px; height: 100vh; }
+#scene-container { position: relative; background: #06060e; overflow: hidden; }
+#scene-container canvas { display: block; }
+#scene-label { position: absolute; bottom: 12px; left: 12px; font-size: 10px; color: #2a3a5c; letter-spacing: 1px; pointer-events: none; }
+#controls { overflow-y: auto; padding: 14px; border-left: 1px solid #12122a; background: #0a0a18; display: flex; flex-direction: column; gap: 10px; }
+h1 { font-size: 15px; color: #00ff88; letter-spacing: 0.5px; }
+h2 { font-size: 11px; color: #576574; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; border-bottom: 1px solid #12122a; padding-bottom: 4px; }
+.panel { background: #0e0e20; border: 1px solid #1a1a3a; border-radius: 6px; padding: 10px; }
+.row { display: flex; gap: 6px; }
+.col { flex: 1; }
+input { width: 100%; background: #06060e; color: #00ff88; border: 1px solid #1a1a3a; padding: 6px 10px; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 4px; }
+input:focus { outline: none; border-color: #00ff88; }
+button { background: #00ff88; color: #0a0a14; border: none; padding: 6px 14px; font-family: 'Courier New', monospace; font-size: 12px; cursor: pointer; border-radius: 4px; font-weight: bold; white-space: nowrap; }
+button:hover { background: #00cc6a; }
+button.sm { padding: 4px 10px; font-size: 10px; }
+.help { font-size: 10px; color: #3a4a5c; margin-top: 3px; }
+.example-list { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
+.example-tag { padding: 2px 8px; background: #06060e; border: 1px solid #1a1a3a; border-radius: 8px; font-size: 10px; cursor: pointer; color: #54a0ff; }
+.example-tag:hover { border-color: #54a0ff; background: #0a1a3a; }
+.error { color: #ff6b6b; font-size: 11px; }
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.result-item { padding: 4px 8px; border-radius: 3px; border-left: 2px solid #1a3a5c; }
+.result-item .lbl { font-size: 9px; color: #576574; text-transform: uppercase; }
+.result-item .val { font-size: 14px; color: #00ff88; font-weight: bold; }
+.result-item .val.dim { color: #576574; font-size: 11px; }
+#object-list { display: flex; flex-direction: column; gap: 3px; max-height: 120px; overflow-y: auto; }
+.object-entry { display: flex; gap: 6px; align-items: center; padding: 3px 6px; background: #06060e; border: 1px solid #1a1a3a; border-radius: 3px; cursor: pointer; font-size: 10px; }
+.object-entry:hover { border-color: #54a0ff; }
+.object-entry.selected { border-color: #00ff88; }
+.object-entry .color-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.object-entry .slot-num { color: #576574; min-width: 30px; }
+.object-entry .rel-name { color: #c8d6e5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.object-entry .del-btn { margin-left: auto; cursor: pointer; color: #576574; font-size: 12px; }
+.object-entry .del-btn:hover { color: #ff6b6b; }
+#gnomonic-canvas, #genaille-canvas { width: 100%; aspect-ratio: 1; background: #06060e; border: 1px solid #1a1a3a; border-radius: 4px; }
+#clear-btn { color: #576574; cursor: pointer; font-size: 10px; border: 1px solid #1a1a3a; background: #06060e; padding: 3px 8px; border-radius: 3px; }
+#clear-btn:hover { color: #ff6b6b; border-color: #ff6b6b; }
+#status-bar { display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #3a4a5c; }
+.selected-info { font-size: 10px; color: #576574; }
+.highlight-green { color: #00ff88; }
+.highlight-blue { color: #54a0ff; }
+.highlight-yellow { color: #ffd700; }
+@media (max-width: 700px) { #app { grid-template-columns: 1fr; } #controls { max-height: 50vh; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="scene-container">
+    <div id="scene-label">Omi World · click an object to inspect</div>
+    <div style="position: absolute; top: 8px; left: 8px; z-index: 100; font-size: 10px; color: #3a4a5c; background: rgba(6,6,14,0.8); padding: 3px 10px; border-radius: 4px;">
+      <a href="index.html" style="color: #576574;">ring</a> ·
+      <a href="governance.html" style="color: #576574;">governance</a> ·
+      <a href="resolver.html" style="color: #576574;">resolver</a>
+    </div>
+  </div>
+  <div id="controls">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <h1>Omi World</h1>
+      <span id="obj-count" style="font-size:10px;color:#3a4a5c;">0 objects</span>
+    </div>
+
+    <div class="panel">
+      <div class="row">
+        <div class="col">
+          <input type="text" id="relation-input" value="(A . B)" placeholder="(CAR . CDR)">
+          <div class="help">Enter a relation to place an object</div>
+        </div>
+        <button id="add-btn">Add</button>
+      </div>
+      <div class="example-list">
+        <span class="example-tag">(A . B)</span>
+        <span class="example-tag">(HELLO . WORLD)</span>
+        <span class="example-tag">(NULL . NULL)</span>
+        <span class="example-tag">(TREE . LEAF)</span>
+        <span class="example-tag">(FIRE . WATER)</span>
+        <span class="example-tag">(SUN . MOON)</span>
+      </div>
+      <div id="error-msg" class="error" style="display:none;"></div>
+    </div>
+
+    <div class="panel" id="slot-panel" style="display:none;">
+      <h2>Selected Object</h2>
+      <div class="result-grid" id="result-grid"></div>
+      <div id="selected-rel" class="selected-info" style="margin-top:4px;"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <div class="panel">
+        <h2>Gnomonic</h2>
+        <canvas id="gnomonic-canvas" width="140" height="140"></canvas>
+      </div>
+      <div class="panel">
+        <h2>Grid</h2>
+        <canvas id="genaille-canvas" width="140" height="140"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <h2 style="margin:0;border:none;padding:0;">Objects</h2>
+        <span id="clear-btn">clear all</span>
+      </div>
+      <div id="object-list"></div>
+    </div>
+
+    <div id="status-bar">
+      <span>drag to orbit · scroll to zoom</span>
+      <span id="slot-counts"></span>
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ===== CORE ALGORITHM =====
+
+function u16(x) { return x & 0xFFFF; }
+
+function rotl16(x, n) {
+  n = n & 15;
+  if (n === 0) return x;
+  return u16((x << n) | (x >>> (16 - n)));
+}
+
+function rotr16(x, n) {
+  n = n & 15;
+  if (n === 0) return x;
+  return u16((x >>> n) | (x << (16 - n)));
+}
+
+function delta16(x, c) {
+  return u16(rotl16(x, 1) ^ rotl16(x, 3) ^ rotr16(x, 2) ^ c);
+}
+
+function fnv1a32(s) {
+  let h = 0x811c9dc5 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h;
+}
+
+function parseRelation(input) {
+  input = input.trim();
+  const omiMatch = input.match(/^omi-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})-([0-9a-fA-F]{4})(?:\/(\d+))?/);
+  if (omiMatch) {
+    const frame = [];
+    for (let i = 1; i <= 8; i++) frame.push(parseInt(omiMatch[i], 16));
+    const prefix = omiMatch[9] ? parseInt(omiMatch[9], 10) : 0;
+    return { frame, prefix, path_count: prefix ? 1 : 0, has_cons_closure: 0, has_payload_mask: 0, display: input };
+  }
+  const dotMatch = input.match(/^\s*\(\s*(\S+?)\s*\.\s*(\S+?)\s*\)\s*$/);
+  if (dotMatch) {
+    const car = dotMatch[1], cdr = dotMatch[2];
+    const carHash = fnv1a32(car), cdrHash = fnv1a32(cdr);
+    const frame = [0, 0, 0, 0, 0, 0, carHash & 0xFFFF, cdrHash & 0xFFFF];
+    const addr = `omi-0000-0000-0000-0000-0000-0000-${(frame[6]>>>8).toString(16).padStart(2,'0')}${(frame[6]&0xFF).toString(16).padStart(2,'0')}-${(frame[7]>>>8).toString(16).padStart(2,'0')}${(frame[7]&0xFF).toString(16).padStart(2,'0')}`;
+    return { frame, prefix: 0, path_count: 0, has_cons_closure: 0, has_payload_mask: 0, display: input, canonAddr: addr, dot: { car, cdr } };
+  }
+  return null;
+}
+
+function computeSlot5040(parsed) {
+  const frame = parsed.frame;
+  const prefix = parsed.prefix;
+  let fold = 0;
+  for (let i = 0; i < 8; i++) fold = u16(fold ^ frame[i]);
+  fold = u16(fold ^ prefix);
+  const has_frame = 1, has_prefix = prefix > 0 ? 1 : 0;
+  fold = u16(fold ^ (has_frame << 0) ^ (has_prefix << 1));
+  fold = u16(fold ^ (parsed.has_payload_mask << 2) ^ (parsed.has_cons_closure << 3));
+  const c = u16(frame[6] ^ frame[7] ^ prefix);
+  const r = delta16(fold, c);
+  const fano7 = (frame[6] ^ prefix ^ parsed.path_count) % 7;
+  const role3 = (frame[7] ^ parsed.has_cons_closure) % 3;
+  const local240 = r % 240;
+  const slot5040 = fano7 * 720 + role3 * 240 + local240;
+  return { fold, c, r, fano7, role3, local240, slot5040, has_prefix };
+}
+
+// ===== SLOT-TO-SPHERE MAPPING =====
+
+function slotToSpherePos(slot5040, fano7, local240, radius) {
+  const lat = (fano7 / 6) * Math.PI - Math.PI / 2;
+  const lon = (local240 / 240) * Math.PI * 2;
+  return new THREE.Vector3(
+    radius * Math.cos(lat) * Math.cos(lon),
+    radius * Math.sin(lat),
+    radius * Math.cos(lat) * Math.sin(lon)
+  );
+}
+
+function slotToColor(fano7, role3, local240) {
+  const hue = ((fano7 / 7) * 360 + role3 * 20 + local240 * 0.5) % 360;
+  const sat = 60 + role3 * 15;
+  const lit = 40 + fano7 * 4;
+  return new THREE.Color(`hsl(${hue}, ${sat}%, ${lit}%)`);
+}
+
+function slotToGenaille(fano7, role3, local240) {
+  const lane = fano7;
+  const band = Math.min(9, Math.floor(local240 / 24));
+  return { lane, band };
+}
+
+// ===== THREE.JS SCENE =====
+
+const container = document.getElementById('scene-container');
+const W = container.clientWidth;
+const H = container.clientHeight;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x06060e);
+
+const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
+camera.position.set(8, 4, 8);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(W, H);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.8;
+controls.minDistance = 3;
+controls.maxDistance = 25;
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0x222244, 0.5);
+scene.add(ambientLight);
+const sunLight = new THREE.DirectionalLight(0xffeedd, 1.8);
+sunLight.position.set(5, 10, 5);
+scene.add(sunLight);
+const fillLight = new THREE.DirectionalLight(0x4488ff, 0.6);
+fillLight.position.set(-5, -2, -5);
+scene.add(fillLight);
+
+// The Ring: a transparent torus
+const ringGeo = new THREE.TorusGeometry(3.8, 0.02, 16, 64);
+const ringMat = new THREE.MeshBasicMaterial({ color: 0x1a3a5c, transparent: true, opacity: 0.3 });
+const ring = new THREE.Mesh(ringGeo, ringMat);
+ring.rotation.x = Math.PI / 2;
+scene.add(ring);
+
+// Atmosphere sphere (faint reference)
+const atmoGeo = new THREE.SphereGeometry(4.0, 24, 16);
+const atmoMat = new THREE.MeshBasicMaterial({ color: 0x0a0a2a, wireframe: true, transparent: true, opacity: 0.15 });
+const atmo = new THREE.Mesh(atmoGeo, atmoMat);
+scene.add(atmo);
+
+// Grid floor
+const gridHelper = new THREE.GridHelper(12, 12, 0x1a3a5c, 0x0a0a2a);
+gridHelper.position.y = -4.2;
+scene.add(gridHelper);
+
+// Fano reference points (7 small dots on the ring)
+const fanoDotMat = new THREE.MeshBasicMaterial({ color: 0x2a4a6c });
+for (let i = 0; i < 7; i++) {
+  const ang = (i / 7) * Math.PI * 2;
+  const dot = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), fanoDotMat);
+  dot.position.set(3.8 * Math.cos(ang), 0, 3.8 * Math.sin(ang));
+  scene.add(dot);
+}
+
+// Axis lines
+const axisMat = new THREE.LineBasicMaterial({ color: 0x1a1a3a, transparent: true, opacity: 0.3 });
+[-5, 5].forEach(x => {
+  const pts = [new THREE.Vector3(x, -4, -5), new THREE.Vector3(x, -4, 5)];
+  const g = new THREE.BufferGeometry().setFromPoints(pts);
+  scene.add(new THREE.Line(g, axisMat));
+});
+[-5, 5].forEach(z => {
+  const pts = [new THREE.Vector3(-5, -4, z), new THREE.Vector3(5, -4, z)];
+  const g = new THREE.BufferGeometry().setFromPoints(pts);
+  scene.add(new THREE.Line(g, axisMat));
+});
+
+// ===== OBJECT STORE =====
+
+const objects = new Map();
+let selectedId = null;
+const objectMeshes = new Map();
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+
+// ===== ADD OBJECT =====
+
+function addObject(relationStr) {
+  const parsed = parseRelation(relationStr);
+  if (!parsed) return null;
+  const result = computeSlot5040(parsed);
+  const key = result.slot5040;
+  if (objects.has(key)) return objects.get(key);
+  const obj = { parsed, result, key, relation: relationStr.trim() };
+  objects.set(key, obj);
+
+  const pos = slotToSpherePos(result.slot5040, result.fano7, result.local240, 3.8);
+  const color = slotToColor(result.fano7, result.role3, result.local240);
+  const size = 0.12 + result.role3 * 0.04;
+
+  const geo = new THREE.SphereGeometry(size, 12, 12);
+  const mat = new THREE.MeshStandardMaterial({
+    color, emissive: color, emissiveIntensity: 0.15,
+    metalness: 0.3, roughness: 0.4
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.copy(pos);
+  mesh.userData = { slotKey: key, fano7: result.fano7, role3: result.role3, local240: result.local240, relation: obj.relation };
+  scene.add(mesh);
+  objectMeshes.set(key, mesh);
+
+  // Connection line from origin
+  const linePts = [new THREE.Vector3(0, 0, 0), pos.clone()];
+  const lineGeo = new THREE.BufferGeometry().setFromPoints(linePts);
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x1a3a5c, transparent: true, opacity: 0.15 });
+  const line = new THREE.Line(lineGeo, lineMat);
+  scene.add(line);
+  obj._line = line;
+
+  // Ring highlight arc
+  const ang = (result.slot5040 / 5040) * Math.PI * 2;
+  const arcPts = [];
+  const arcSteps = 20;
+  for (let i = 0; i <= arcSteps; i++) {
+    const a = (i / arcSteps) * ang;
+    arcPts.push(new THREE.Vector3(3.8 * Math.cos(a), 0, 3.8 * Math.sin(a)));
+  }
+  const arcGeo = new THREE.BufferGeometry().setFromPoints(arcPts);
+  const arcMat = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.3 });
+  const arcLine = new THREE.Line(arcGeo, arcMat);
+  scene.add(arcLine);
+  obj._arc = arcLine;
+
+  updateUI();
+  return obj;
+}
+
+function removeObject(slotKey) {
+  const obj = objects.get(slotKey);
+  if (!obj) return;
+  if (obj._line) scene.remove(obj._line);
+  if (obj._arc) scene.remove(obj._arc);
+  const mesh = objectMeshes.get(slotKey);
+  if (mesh) { scene.remove(mesh); objectMeshes.delete(slotKey); }
+  objects.delete(slotKey);
+  if (selectedId === slotKey) { selectedId = null; hideSlotPanel(); }
+  updateUI();
+}
+
+function clearAll() {
+  for (const key of objects.keys()) removeObject(key);
+  selectedId = null;
+  hideSlotPanel();
+  updateUI();
+}
+
+// ===== SELECT OBJECT =====
+
+function selectObject(slotKey) {
+  selectedId = slotKey;
+  const obj = objects.get(slotKey);
+  if (!obj) return;
+  const result = obj.result;
+
+  // Highlight mesh
+  for (const [key, mesh] of objectMeshes) {
+    const s = key === slotKey ? 0.18 + result.role3 * 0.05 : 0.12 + (obj.result ? obj.result.role3 : 0) * 0.04;
+    mesh.scale.set(s / mesh.geometry.parameters.radius || 1, s / mesh.geometry.parameters.radius || 1, s / mesh.geometry.parameters.radius || 1);
+    mesh.material.emissiveIntensity = key === slotKey ? 0.6 : 0.15;
+  }
+
+  showSlotPanel(obj);
+  drawGnomonic(result, obj);
+  drawGenaille(result, obj);
+}
+
+function hideSlotPanel() {
+  document.getElementById('slot-panel').style.display = 'none';
+  const gCanvas = document.getElementById('gnomonic-canvas');
+  const gCtx = gCanvas.getContext('2d');
+  gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+  const genCanvas = document.getElementById('genaille-canvas');
+  const genCtx = genCanvas.getContext('2d');
+  genCtx.clearRect(0, 0, genCanvas.width, genCanvas.height);
+  for (const [key, mesh] of objectMeshes) {
+    const sz = 0.12 + (mesh.userData.role3 || 0) * 0.04;
+    mesh.scale.set(sz / mesh.geometry.parameters.radius || 1, sz / mesh.geometry.parameters.radius || 1, sz / mesh.geometry.parameters.radius || 1);
+    mesh.material.emissiveIntensity = 0.15;
+  }
+}
+
+// ===== UI PANELS =====
+
+function showSlotPanel(obj) {
+  const r = obj.result;
+  document.getElementById('slot-panel').style.display = 'block';
+  document.getElementById('selected-rel').textContent = obj.relation + (obj.parsed.canonAddr ? ' → ' + obj.parsed.canonAddr : '');
+  document.getElementById('result-grid').innerHTML = `
+    <div class="result-item" style="border-left-color:#00ff88;">
+      <div class="lbl">Slot</div>
+      <div class="val">${r.slot5040}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#54a0ff;">
+      <div class="lbl">Fano line</div>
+      <div class="val">${r.fano7}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#ffd700;">
+      <div class="lbl">Role</div>
+      <div class="val">${r.role3}</div>
+    </div>
+    <div class="result-item" style="border-left-color:#ff6b6b;">
+      <div class="lbl">Local 240</div>
+      <div class="val">${r.local240}</div>
+    </div>
+  `;
+}
+
+function updateUI() {
+  document.getElementById('obj-count').textContent = objects.size + ' object' + (objects.size !== 1 ? 's' : '');
+  const list = document.getElementById('object-list');
+  list.innerHTML = '';
+  const sorted = [...objects.entries()].sort((a, b) => a[0] - b[0]);
+  for (const [key, obj] of sorted) {
+    const r = obj.result;
+    const color = slotToColor(r.fano7, r.role3, r.local240);
+    const div = document.createElement('div');
+    div.className = 'object-entry' + (key === selectedId ? ' selected' : '');
+    div.innerHTML = `<span class="color-dot" style="background:#${color.getHexString()}"></span><span class="slot-num">${key}</span><span class="rel-name">${obj.relation}</span><span class="del-btn" data-key="${key}">×</span>`;
+    div.addEventListener('click', (e) => {
+      if (e.target.classList.contains('del-btn')) return;
+      selectObject(key);
+    });
+    div.querySelector('.del-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      removeObject(key);
+    });
+    list.appendChild(div);
+  }
+  const counts = {};
+  for (const [key, obj] of objects) {
+    const f = obj.result.fano7;
+    counts[f] = (counts[f] || 0) + 1;
+  }
+  document.getElementById('slot-counts').textContent = Object.entries(counts).sort().map(([f, c]) => `F${f}:${c}`).join(' ');
+}
+
+// ===== GNOMONIC PROJECTION =====
+
+function drawGnomonic(result, obj) {
+  const canvas = document.getElementById('gnomonic-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw all objects as small dots
+  ctx.fillStyle = '#1a3a5c';
+  for (const [key, o] of objects) {
+    const pos = slotToSpherePos(o.result.slot5040, o.result.fano7, o.result.local240, 3.8);
+    const gx = pos.x / (3.8 - pos.y) * 50 + W/2;
+    const gy = pos.z / (3.8 - pos.y) * 50 + H/2;
+    ctx.beginPath();
+    ctx.arc(gx, gy, 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Draw selected object
+  const pos = slotToSpherePos(result.slot5040, result.fano7, result.local240, 3.8);
+  const gx = pos.x / (3.8 - pos.y) * 50 + W/2;
+  const gy = pos.z / (3.8 - pos.y) * 50 + H/2;
+  const color = slotToColor(result.fano7, result.role3, result.local240);
+
+  // Line from center
+  ctx.strokeStyle = '#2a5a3c';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([2, 2]);
+  ctx.beginPath();
+  ctx.moveTo(W/2, H/2);
+  ctx.lineTo(gx, gy);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Selected marker
+  ctx.fillStyle = '#00ff88';
+  ctx.beginPath();
+  ctx.arc(gx, gy, 5, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = '#576574';
+  ctx.font = '8px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText(obj.relation, gx, gy - 10);
+
+  // Labels
+  ctx.fillStyle = '#2a3a5c';
+  ctx.font = '7px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('gnomonic projection', 2, H - 2);
+}
+
+// ===== GENAILLE GRID =====
+
+function drawGenaille(result, obj) {
+  const canvas = document.getElementById('genaille-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const { lane, band } = slotToGenaille(result.fano7, result.role3, result.local240);
+  const color = slotToColor(result.fano7, result.role3, result.local240);
+  const cols = 7, rows = 10;
+  const cw = W / cols, rh = H / rows;
+
+  for (let c = 0; c < cols; c++) {
+    for (let r = 0; r < rows; r++) {
+      const active = c === lane && r === band;
+      ctx.fillStyle = active ? '#1a3a2a' : (c % 2 === r % 2 ? '#0a0a18' : '#06060e');
+      ctx.fillRect(c * cw, r * rh, cw - 1, rh - 1);
+      if (active) {
+        ctx.strokeStyle = '#00ff88';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(c * cw, r * rh, cw - 1, rh - 1);
+        ctx.fillStyle = '#00ff88';
+        ctx.font = '10px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(obj.relation.replace(/[()]/g,''), c * cw + cw/2, r * rh + rh/2);
+      }
+    }
+  }
+
+  // Axis labels
+  ctx.fillStyle = '#2a3a5c';
+  ctx.font = '7px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText(`lane:${lane} band:${band}`, 2, H - 2);
+}
+
+// ===== RAYCASTER =====
+
+renderer.domElement.addEventListener('click', (event) => {
+  const rect = renderer.domElement.getBoundingClientRect();
+  pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  const meshes = [...objectMeshes.values()];
+  const intersects = raycaster.intersectObjects(meshes);
+  if (intersects.length > 0) {
+    const hit = intersects[0].object;
+    const key = hit.userData.slotKey;
+    if (key !== undefined && objects.has(key)) {
+      selectObject(key);
+    }
+  }
+});
+
+// ===== RESIZE =====
+
+function resizeScene() {
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  if (w === 0 || h === 0) return;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+
+window.addEventListener('resize', resizeScene);
+const resizeObserver = new ResizeObserver(resizeScene);
+resizeObserver.observe(container);
+
+// ===== ANIMATION LOOP =====
+
+let firstFrame = true;
+function animate() {
+  requestAnimationFrame(animate);
+  if (firstFrame) { resizeScene(); firstFrame = false; }
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// ===== INPUT HANDLING =====
+
+const input = document.getElementById('relation-input');
+const addBtn = document.getElementById('add-btn');
+const errorMsg = document.getElementById('error-msg');
+
+addBtn.addEventListener('click', () => {
+  const val = input.value.trim();
+  if (!val) { showError('Enter a relation'); return; }
+  const obj = addObject(val);
+  if (!obj) { showError('Could not parse. Try (A . B)'); return; }
+  errorMsg.style.display = 'none';
+  input.value = '';
+  selectObject(obj.key);
+});
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') addBtn.click();
+});
+
+document.querySelectorAll('.example-tag').forEach(el => {
+  el.addEventListener('click', () => {
+    input.value = el.textContent;
+    addBtn.click();
+  });
+});
+
+document.getElementById('clear-btn').addEventListener('click', clearAll);
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
+}
+
+// ===== SEED THE WORLD =====
+
+const seeds = ['(A . B)', '(HELLO . WORLD)', '(NULL . NULL)', '(TREE . LEAF)', '(FIRE . WATER)', '(SUN . MOON)'];
+seeds.forEach(s => addObject(s));
+if (objects.size > 0) {
+  const first = [...objects.keys()][0];
+  selectObject(first);
+}
+
+</script>
+</body>
+</html>

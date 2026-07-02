@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGI Governance — The Four-File Contract</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; background: #06060e; color: #c8d6e5; padding: 30px 20px; }
+h1 { color: #00ff88; font-size: 22px; text-align: center; }
+.subtitle { text-align: center; font-size: 12px; color: #576574; margin-top: 4px; }
+.container { max-width: 800px; margin: 20px auto; }
+svg { width: 100%; height: auto; display: block; }
+.panel { background: #0a0a1a; border: 1px solid #1a1a3a; border-radius: 8px; padding: 16px; margin: 12px 0; }
+.panel h2 { font-size: 13px; color: #00ff88; margin-bottom: 8px; border-bottom: 1px solid #1a1a3a; padding-bottom: 4px; }
+.panel p { font-size: 12px; line-height: 1.6; color: #c8d6e5; }
+code { background: #06060e; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #54a0ff; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 16px 0; font-size: 11px; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.invariant { text-align: center; font-size: 12px; color: #00ff88; margin: 20px 0; padding: 12px; border: 1px solid #1a3a2a; border-radius: 6px; background: #0a1a0a; line-height: 1.8; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card { background: #0a0a1a; border: 1px solid #1a1a3a; border-radius: 6px; padding: 12px; }
+.card h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.card p { font-size: 11px; color: #576574; }
+.card.repo { border-color: #ff6b6b; } .card.repo h3 { color: #ff6b6b; }
+.card.agents { border-color: #54a0ff; } .card.agents h3 { color: #54a0ff; }
+.card.skills { border-color: #ffd700; } .card.skills h3 { color: #ffd700; }
+.card.adapters { border-color: #576574; } .card.adapters h3 { color: #576574; }
+.card.ring { border-color: #00ff88; } .card.ring h3 { color: #00ff88; }
+.pipeline { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; margin: 16px 0; }
+.pipe-step { text-align: center; padding: 6px 10px; background: #0a0a1a; border: 1px solid #1a1a3a; border-radius: 4px; font-size: 10px; flex: 1; min-width: 60px; }
+.pipe-step .arrow { color: #3a4a5c; display: block; font-size: 14px; }
+.pipe-step.current { border-color: #00ff88; background: #0a1a0a; }
+.pipe-step.scope { border-color: #ff6b6b; }
+.pipe-step.behave { border-color: #54a0ff; }
+.pipe-step.compute { border-color: #ffd700; }
+.pipe-step.bound { border-color: #576574; }
+.pipe-step.validate { border-color: #00ff88; }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>Accountable General Interpreter</h1>
+<p class="subtitle">The four-file behavioral contract that binds intelligence to truth</p>
+
+<div class="container">
+
+<!-- SVG Diagram -->
+<svg viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow-down" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <path d="M0,0 L4,8 L8,0" fill="#3a4a5c"/>
+    </marker>
+    <marker id="arrow-down-g" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <path d="M0,0 L4,8 L8,0" fill="#00ff88"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="760" height="520" fill="#06060e" rx="8"/>
+
+  <!-- Title row -->
+  <text x="380" y="30" fill="#00ff88" font-size="13" font-family="monospace" text-anchor="middle" font-weight="bold">THE FOUR-FILE CONTRACT</text>
+
+  <!-- REPO.md box -->
+  <rect x="80" y="50" width="600" height="60" rx="6" fill="#0a0a1a" stroke="#ff6b6b" stroke-width="1.5"/>
+  <text x="100" y="70" fill="#ff6b6b" font-size="11" font-family="monospace" font-weight="bold">REPO.md</text>
+  <text x="100" y="86" fill="#576574" font-size="10" font-family="monospace">Scope and Role — WHERE may I act?</text>
+  <text x="100" y="100" fill="#3a4a5c" font-size="9" font-family="monospace">role · scope · permission · effect class · acceptance policy</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="110" x2="380" y2="140" stroke="#3a4a5c" stroke-width="1.5" marker-end="url(#arrow-down)"/>
+  <text x="395" y="128" fill="#3a4a5c" font-size="8" font-family="monospace">governs</text>
+
+  <!-- AGENTS.md box -->
+  <rect x="80" y="140" width="600" height="60" rx="6" fill="#0a0a1a" stroke="#54a0ff" stroke-width="1.5"/>
+  <text x="100" y="160" fill="#54a0ff" font-size="11" font-family="monospace" font-weight="bold">AGENTS.md</text>
+  <text x="100" y="176" fill="#576574" font-size="10" font-family="monospace">Behavior — HOW must I act?</text>
+  <text x="100" y="190" fill="#3a4a5c" font-size="9" font-family="monospace">candidate vs accepted · side-effect gate · citation · error handling</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="200" x2="380" y2="230" stroke="#3a4a5c" stroke-width="1.5" marker-end="url(#arrow-down)"/>
+  <text x="395" y="218" fill="#3a4a5c" font-size="8" font-family="monospace">controls</text>
+
+  <!-- SKILLS.md box -->
+  <rect x="80" y="230" width="600" height="60" rx="6" fill="#0a0a1a" stroke="#ffd700" stroke-width="1.5"/>
+  <text x="100" y="250" fill="#ffd700" font-size="11" font-family="monospace" font-weight="bold">SKILLS.md</text>
+  <text x="100" y="266" fill="#576574" font-size="10" font-family="monospace">Computation — HOW do I compute?</text>
+  <text x="100" y="280" fill="#3a4a5c" font-size="9" font-family="monospace">algorithm · input/output contract · effect class · test vectors</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="290" x2="380" y2="320" stroke="#3a4a5c" stroke-width="1.5" marker-end="url(#arrow-down)"/>
+  <text x="395" y="308" fill="#3a4a5c" font-size="8" font-family="monospace">bounds</text>
+
+  <!-- ADAPTERS.md box -->
+  <rect x="80" y="320" width="600" height="60" rx="6" fill="#0a0a1a" stroke="#576574" stroke-width="1.5"/>
+  <text x="100" y="340" fill="#576574" font-size="11" font-family="monospace" font-weight="bold">ADAPTERS.md</text>
+  <text x="100" y="356" fill="#576574" font-size="10" font-family="monospace">External Boundary — WHERE do I touch the world?</text>
+  <text x="100" y="370" fill="#3a4a5c" font-size="9" font-family="monospace">hardware · browser · serial · canvas · semantic · multimedia · security</text>
+
+  <!-- Arrow to Ring -->
+  <line x1="380" y1="380" x2="380" y2="420" stroke="#00ff88" stroke-width="2" marker-end="url(#arrow-down-g)"/>
+  <text x="395" y="403" fill="#00ff88" font-size="8" font-family="monospace">resolve →</text>
+
+  <!-- The Ring -->
+  <circle cx="380" cy="470" r="40" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+  <circle cx="380" cy="470" r="35" fill="none" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+  <text x="380" y="465" fill="#00ff88" font-size="9" font-family="monospace" text-anchor="middle">RING</text>
+  <text x="380" y="478" fill="#00ff88" font-size="9" font-family="monospace" text-anchor="middle">5040</text>
+  <text x="380" y="510" fill="#3a4a5c" font-size="8" font-family="monospace" text-anchor="middle">Deterministic Truth</text>
+
+  <!-- Right side: Pipeline labels -->
+  <text x="720" y="80" fill="#3a4a5c" font-size="8" font-family="monospace" text-anchor="end">boundary</text>
+  <text x="720" y="170" fill="#3a4a5c" font-size="8" font-family="monospace" text-anchor="end">behavior</text>
+  <text x="720" y="260" fill="#3a4a5c" font-size="8" font-family="monospace" text-anchor="end">algorithm</text>
+  <text x="720" y="350" fill="#3a4a5c" font-size="8" font-family="monospace" text-anchor="end">world</text>
+
+  <!-- Left side: Questions -->
+  <text x="70" y="80" fill="#ff6b6b" font-size="9" font-family="monospace" text-anchor="start" opacity="0.6">WHERE?</text>
+  <text x="70" y="170" fill="#54a0ff" font-size="9" font-family="monospace" text-anchor="start" opacity="0.6">HOW?</text>
+  <text x="70" y="260" fill="#ffd700" font-size="9" font-family="monospace" text-anchor="start" opacity="0.6">WITH WHAT?</text>
+  <text x="70" y="350" fill="#576574" font-size="9" font-family="monospace" text-anchor="start" opacity="0.6">WHERE OUTSIDE?</text>
+</svg>
+
+<!-- Core Invariant -->
+<div class="invariant">
+  Recognition is not acceptance.<br>
+  Citation is not acceptance.<br>
+  Projection is not acceptance.<br>
+  <strong style="color:#00ff88;">Validation and receipt accept.</strong>
+</div>
+
+<!-- Four Cards -->
+<div class="grid">
+  <div class="card repo">
+    <h3>REPO.md — Scope &amp; Role</h3>
+    <p>Defines <em>where</em> an intelligence may act. Every agent has a role (Observer, Reader, Resolver, Contributor, Validator, Maintainer, etc.) and a scope (which files, groups, records, units). No act outside scope is accountable.</p>
+  </div>
+  <div class="card agents">
+    <h3>AGENTS.md — Behavior</h3>
+    <p>Defines <em>how</em> an intelligence acts. Distinguish candidate from accepted. No side effects before receipt. Cite before claim. Validate before acceptance. Error handling: stop, identify, report, propose next step.</p>
+  </div>
+  <div class="card skills">
+    <h3>SKILLS.md — Computation</h3>
+    <p>Defines <em>how</em> computation is performed. Every algorithm declares input/output contracts, effect class, and test vectors. A skill does not authorize itself. A skill does not accept its own output.</p>
+  </div>
+  <div class="card adapters">
+    <h3>ADAPTERS.md — Boundary</h3>
+    <p>Defines <em>how</em> intelligence touches the external world. Adapters translate between accountable declarations and external runtimes without compromising accountability. The outside world is never automatically trusted.</p>
+  </div>
+</div>
+
+<!-- Pipeline -->
+<h2 style="color:#00ff88;font-size:13px;margin:20px 0 10px;text-align:center;">Resolver Pipeline</h2>
+<div class="pipeline">
+  <div class="pipe-step scope">
+    prompt
+    <span class="arrow">↓</span>
+    read REPO.md
+  </div>
+  <div class="pipe-step scope">determine scope &amp; role<span class="arrow">↓</span></div>
+  <div class="pipe-step behave">read AGENTS.md<span class="arrow">↓</span></div>
+  <div class="pipe-step behave">apply behavior rules<span class="arrow">↓</span></div>
+  <div class="pipe-step compute">read SKILLS.md<span class="arrow">↓</span></div>
+  <div class="pipe-step compute">select algorithm<span class="arrow">↓</span></div>
+  <div class="pipe-step bound">check ADAPTERS.md<span class="arrow">↓</span></div>
+  <div class="pipe-step bound">boundary check<span class="arrow">↓</span></div>
+  <div class="pipe-step validate">validate input<span class="arrow">↓</span></div>
+  <div class="pipe-step validate">record receipt<span class="arrow">↓</span></div>
+  <div class="pipe-step current">project</div>
+</div>
+
+<!-- Explanation -->
+<div class="panel">
+  <h2>What This Means</h2>
+  <p>
+    An <strong>Accountable General Interpreter</strong> is not a smarter AI.
+    It is any entity — LLM, script, human, peer, automation — that operates
+    under a four-file behavioral contract.
+  </p>
+  <p style="margin-top:8px;">
+    Each action is <strong>resolvable</strong> to a declared rule,
+    <strong>validated</strong> against a reproducible skill,
+    <strong>scoped</strong> to an authorized role, and
+    <strong>recorded</strong> as a receipt.
+  </p>
+  <p style="margin-top:8px;">
+    The Omi-Ring provides the deterministic addressing layer —
+    every relation has exactly one slot determined by the relation's own structure.
+    The four files provide the governance layer —
+    every agent has exactly one behavioral bound determined by its role and scope.
+  </p>
+</div>
+
+<div class="panel">
+  <h2>Files</h2>
+  <p>
+    <a href="REPO.md">REPO.md</a> · 
+    <a href="AGENTS.md">AGENTS.md</a> · 
+    <a href="SKILLS.md">SKILLS.md</a> · 
+    <a href="ADAPTERS.md">ADAPTERS.md</a>
+  </p>
+  <p style="margin-top:4px;">
+    <a href="index.html">Omi-Ring Demo</a> · 
+    <a href="world.html">Three.js World</a> · 
+    <a href="resolver.html">Resolver Demo</a>
+  </p>
+  <p style="margin-top:8px;font-size:10px;color:#3a4a5c;">
+    The word "AGI" stops meaning "artificial general intelligence" and starts meaning
+    "accountable general interpreter" — not a better brain, but a binding grammar
+    for what constitutes valid action.
+  </p>
+</div>
+
+</div>
+</body>
+</html>

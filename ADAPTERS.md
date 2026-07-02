@@ -1,6 +1,6 @@
 # ADAPTERS.md
 
-## Optional OMI Adapter Specification
+## Accountable General Interpreter — Adapter Boundary
 
 Version: `0.1.0`  
 Status: Draft  
@@ -10,9 +10,50 @@ Applies to: hardware, ESP32, browser APIs, DOM, CSSOM, JSDOM, Canvas, WebGL, XML
 
 ---
 
-## 0. Purpose
+## §0. AGI Contract — External Boundary
 
-`ADAPTERS.md` defines optional integration boundaries between the OMI protocol and external systems.
+`ADAPTERS.md` defines how an Accountable General Interpreter
+touches the outside world.
+
+```text
+REPO.md     → scope and role     (WHERE may I act?)
+AGENTS.md   → behavior           (HOW must I act?)
+SKILLS.md   → computation        (HOW do I compute?)
+ADAPTERS.md → external boundary   (WHERE do I touch the world?)
+```
+
+An adapter is a boundary object. It translates between
+accountable declarations and an external runtime without
+compromising accountability.
+
+```text
+An adapter may observe.
+An adapter may carry.
+An adapter may request permission.
+An adapter may project accepted receipts.
+An adapter may not accept state by itself.
+```
+
+The external world is never automatically trusted.
+Every adapter operation passes the same gates:
+role check, scope check, effect check, validation,
+receipt, platform permission.
+
+Without `ADAPTERS.md`, an AGI cannot safely interact
+with hardware, browsers, networks, or sensors without
+risking side effects before receipt.
+
+---
+
+## §0.1. Original Purpose (preserved below)
+
+This file was originally written as the Optional OMI Adapter
+Specification. That framing remains valid as one application
+of the AGI contract above.
+
+---
+
+## 0. Original Purpose
 
 Adapters may connect OMI to:
 

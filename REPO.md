@@ -1,6 +1,6 @@
 # REPO.md
 
-## OMI Request for Collaboration and Role/Repo Based Access Control
+## Accountable General Interpreter — Scope and Role Authority
 
 Version: `0.1.0`  
 Status: Draft  
@@ -18,9 +18,48 @@ dev-docs/archive/REPO.md Addendum - Emergent P2P and Multimedia Use Cases for OM
 
 ---
 
-## 0. Purpose
+## §0. AGI Contract — Scope and Role
 
-This file defines the repository-level collaboration authority for the OMI protocol specification.
+`REPO.md` defines the outermost boundary of the
+four-file Accountable General Interpreter specification.
+
+```text
+REPO.md     → scope and role     (WHERE may I act?)
+↓
+AGENTS.md   → behavior           (HOW must I act?)
+↓
+SKILLS.md   → computation        (HOW do I compute?)
+↓
+ADAPTERS.md → external boundary   (WHERE do I touch the world?)
+```
+
+No intelligence may act outside its declared role and scope.
+`REPO.md` answers:
+
+```text
+who may act
+what domain they may act in
+what actions are permitted
+what actions are forbidden
+what effects are allowed
+```
+
+Without `REPO.md`, an agent does not know its jurisdiction.
+An agent acting outside scope is not accountable —
+it is ungoverned.
+
+---
+
+## §0.1. Original Purpose (preserved below)
+
+This file was originally written as the OMI Request for
+Collaboration and Role/Repo Based Access Control. That
+framing remains valid as one application of the AGI
+contract above.
+
+---
+
+## 0. Original Purpose
 
 `REPO.md` answers:
 

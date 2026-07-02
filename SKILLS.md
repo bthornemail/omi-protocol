@@ -1,6 +1,6 @@
 # SKILLS.md
 
-## OMI Version-Control Algorithm Registry
+## Accountable General Interpreter — Algorithm Registry
 
 Version: `0.1.0`  
 Status: Draft  
@@ -9,13 +9,49 @@ Depends on: `REPO.md`, `AGENTS.md`, receipt validation
 
 ---
 
-## 0. Purpose
+## §0. AGI Contract — Computation
 
-This file defines reproducible algorithms for OMI version control.
+`SKILLS.md` defines how computation is performed within the
+four-file Accountable General Interpreter specification.
 
-`SKILLS.md` defines computation.
+```text
+REPO.md     → scope and role     (WHERE may I act?)
+AGENTS.md   → behavior           (HOW must I act?)
+SKILLS.md   → computation        (HOW do I compute?)
+ADAPTERS.md → external boundary   (WHERE do I touch the world?)
+```
 
-`SKILLS.md` does not authorize behavior.
+A skill is a reproducible, verifiable, testable algorithm.
+An Accountable General Interpreter does not "know" facts —
+it invokes skills. The result of a skill is a candidate
+until validated and recorded as a receipt.
+
+```text
+A skill computes.
+A skill does not authorize itself.
+A skill does not accept its own output.
+```
+
+Every skill in this file:
+- declares an effect class (pure, read-only, local-write, etc.)
+- declares an input and output contract
+- provides test vectors
+- is independently reproducible
+
+Any computation that cannot be declared as a skill with
+test vectors is outside the AGI contract.
+
+---
+
+## §0.1. Original Purpose (preserved below)
+
+This file was originally written as the OMI Version-Control
+Algorithm Registry. That framing remains valid as one
+application of the AGI contract above.
+
+---
+
+## 0. Original Purpose
 
 ```text
 AGENTS.md authorizes which skills a resolver may invoke.
