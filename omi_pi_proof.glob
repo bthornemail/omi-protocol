@@ -1,4 +1,4 @@
-DIGEST cd2e9d02e6158f0a86737dda45cf2a55
+DIGEST cc963abd9bb4c3636ce506f1c2b6ae8d
 Fomi_pi_proof
 R289:299 Coq.Reals.Reals <> <> lib
 R326:338 Coq.NArith.NArith <> <> lib
@@ -5527,1627 +5527,1820 @@ R66416:66417 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' n
 R66419:66419 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
 R66418:66418 omi_pi_proof <> y:408 var
 R66430:66444 omi_pi_proof <> unordered_pairs:406 def
-def 66470:66498 <> derived_cell600_axis_vertices
-R66502:66505 Coq.Init.Datatypes <> list ind
-R66507:66518 omi_pi_proof <> H4VertexSlot ind
-R66525:66527 Coq.Lists.List <> map def
-R66567:66586 omi_pi_proof <> derived_signed_axes4 def
-R66535:66535 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66540:66541 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66543:66543 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-binder 66542:66542 <> s:409
-binder 66536:66539 <> axis:410
-binder 66535:66543 <> pat:411
-R66548:66557 omi_pi_proof <> H4AxisSlot constr
-R66559:66562 omi_pi_proof <> axis:410 var
-R66564:66564 omi_pi_proof <> s:409 var
-def 66601:66629 <> derived_cell600_half_vertices
-R66633:66636 Coq.Init.Datatypes <> list ind
-R66638:66649 omi_pi_proof <> H4VertexSlot ind
-R66656:66658 Coq.Lists.List <> map def
-R66702:66727 omi_pi_proof <> derived_tesseract_vertices def
-R66666:66666 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66668:66669 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66671:66672 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66674:66675 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66677:66677 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-binder 66676:66676 <> d:412
-binder 66673:66673 <> c:413
-binder 66670:66670 <> b:414
-binder 66667:66667 <> a:415
-binder 66666:66677 <> pat:416
-R66682:66691 omi_pi_proof <> H4HalfSlot constr
-R66693:66693 omi_pi_proof <> a:415 var
-R66695:66695 omi_pi_proof <> b:414 var
-R66697:66697 omi_pi_proof <> c:413 var
-R66699:66699 omi_pi_proof <> d:412 var
-def 66742:66772 <> derived_cell600_golden_vertices
-R66776:66779 Coq.Init.Datatypes <> list ind
-R66781:66792 omi_pi_proof <> H4VertexSlot ind
-R66799:66806 Coq.Lists.List <> flat_map def
-R66891:66908 omi_pi_proof <> even_permutations4 def
-binder 66817:66817 <> p:417
-R66828:66830 Coq.Lists.List <> map def
-R66873:66884 omi_pi_proof <> sign_triples def
-R66838:66838 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66840:66841 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66843:66844 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R66846:66846 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-binder 66845:66845 <> c:418
-binder 66842:66842 <> b:419
-binder 66839:66839 <> a:420
-binder 66838:66846 <> pat:421
-R66851:66862 omi_pi_proof <> H4GoldenSlot constr
-R66864:66864 omi_pi_proof <> p:417 var
-R66866:66866 omi_pi_proof <> a:420 var
-R66868:66868 omi_pi_proof <> b:419 var
-R66870:66870 omi_pi_proof <> c:418 var
-def 66923:66946 <> derived_cell600_vertices
-R66950:66953 Coq.Init.Datatypes <> list ind
-R66955:66966 omi_pi_proof <> H4VertexSlot ind
-R67002:67007 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
-R66973:67001 omi_pi_proof <> derived_cell600_axis_vertices def
-R67037:67042 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
-R67008:67036 omi_pi_proof <> derived_cell600_half_vertices def
-R67043:67073 omi_pi_proof <> derived_cell600_golden_vertices def
-def 67088:67115 <> derived_cell600_vertex_count
-R67119:67119 Coq.Numbers.BinNums <> N ind
-R67126:67131 omi_pi_proof <> countN def
-R67133:67156 omi_pi_proof <> derived_cell600_vertices def
-prf 67168:67202 <> derived_cell600_forces_120_vertices
-R67236:67238 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R67208:67235 omi_pi_proof <> derived_cell600_vertex_count def
-prf 67292:67322 <> derived_cell600_vertices_unique
-R67328:67332 Coq.Lists.List <> NoDup ind
-R67335:67337 Coq.Lists.List <> map def
-R67354:67377 omi_pi_proof <> derived_cell600_vertices def
-R67339:67352 omi_pi_proof <> h4_vertex_code def
-R67396:67408 omi_pi_proof <> uniqueN_NoDup thm
-R67396:67408 omi_pi_proof <> uniqueN_NoDup thm
-def 67457:67487 <> derived_cell600_geometric_edges
-R67491:67494 Coq.Init.Datatypes <> list ind
-R67509:67511 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R67497:67508 omi_pi_proof <> H4VertexSlot ind
-R67512:67523 omi_pi_proof <> H4VertexSlot ind
-R67531:67536 Coq.Lists.List <> filter def
-R67587:67601 omi_pi_proof <> unordered_pairs def
-R67603:67626 omi_pi_proof <> derived_cell600_vertices def
-R67548:67548 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67550:67551 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67553:67553 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-binder 67552:67552 <> v:422
-binder 67549:67549 <> u:423
-binder 67548:67553 <> pat:424
-R67558:67575 omi_pi_proof <> h4_geometric_edgeb def
-R67577:67577 omi_pi_proof <> u:423 var
-R67579:67579 omi_pi_proof <> v:422 var
-def 67642:67658 <> h4_edge_pair_code
-R67677:67679 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R67665:67676 omi_pi_proof <> H4VertexSlot ind
-R67680:67691 omi_pi_proof <> H4VertexSlot ind
-binder 67661:67661 <> e:425
-R67696:67696 Coq.Numbers.BinNums <> N ind
-R67709:67709 omi_pi_proof <> e:425 var
-R67720:67720 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67722:67723 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67725:67725 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67752:67754 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
-R67746:67748 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R67730:67743 omi_pi_proof <> h4_vertex_code def
-R67755:67768 omi_pi_proof <> h4_vertex_code def
-def 67791:67803 <> h4_vertex_eqb
-R67812:67823 omi_pi_proof <> H4VertexSlot ind
-binder 67806:67806 <> u:427
-binder 67808:67808 <> v:428
-R67828:67831 Coq.Init.Datatypes <> bool ind
-R67838:67842 Coq.NArith.BinNat N eqb def
-R67845:67858 omi_pi_proof <> h4_vertex_code def
-R67860:67860 omi_pi_proof <> u:427 var
-R67864:67877 omi_pi_proof <> h4_vertex_code def
-R67879:67879 omi_pi_proof <> v:428 var
-def 67895:67910 <> h4_edge_incident
-R67917:67928 omi_pi_proof <> H4VertexSlot ind
-binder 67913:67913 <> v:429
-R67948:67950 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R67936:67947 omi_pi_proof <> H4VertexSlot ind
-R67951:67962 omi_pi_proof <> H4VertexSlot ind
-binder 67932:67932 <> e:430
-R67967:67970 Coq.Init.Datatypes <> bool ind
-R67983:67983 omi_pi_proof <> e:430 var
-R67994:67994 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R67997:67998 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R68001:68001 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R68024:68027 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
-R68006:68018 omi_pi_proof <> h4_vertex_eqb def
-R68020:68020 omi_pi_proof <> v:429 var
-R68028:68040 omi_pi_proof <> h4_vertex_eqb def
-R68042:68042 omi_pi_proof <> v:429 var
-def 68066:68084 <> h4_geometric_degree
-R68091:68102 omi_pi_proof <> H4VertexSlot ind
-binder 68087:68087 <> v:432
-R68107:68109 Coq.Init.Datatypes <> nat ind
-R68116:68121 Coq.Init.Datatypes <> length def
-R68124:68129 Coq.Lists.List <> filter def
-R68152:68182 omi_pi_proof <> derived_cell600_geometric_edges def
-R68132:68147 omi_pi_proof <> h4_edge_incident def
-R68149:68149 omi_pi_proof <> v:432 var
-def 68198:68235 <> derived_cell600_geometric_degree_audit
-R68239:68242 Coq.Init.Datatypes <> bool ind
-R68249:68255 Coq.Lists.List <> forallb def
-R68311:68334 omi_pi_proof <> derived_cell600_vertices def
-binder 68266:68266 <> v:433
-R68271:68277 Coq.Arith.PeanoNat Nat eqb def
-R68280:68298 omi_pi_proof <> h4_geometric_degree def
-R68300:68300 omi_pi_proof <> v:433 var
-def 68349:68393 <> derived_cell600_geometric_edge_endpoint_audit
-R68397:68400 Coq.Init.Datatypes <> bool ind
-R68407:68413 Coq.Lists.List <> forallb def
-R68465:68495 omi_pi_proof <> derived_cell600_geometric_edges def
-R68425:68425 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R68427:68428 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R68430:68430 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-binder 68429:68429 <> v:434
-binder 68426:68426 <> u:435
-binder 68425:68430 <> pat:436
-R68435:68438 Coq.Init.Datatypes <> negb def
-R68441:68453 omi_pi_proof <> h4_vertex_eqb def
-R68455:68455 omi_pi_proof <> u:435 var
-R68457:68457 omi_pi_proof <> v:434 var
-prf 68507:68542 <> derived_cell600_geometric_edge_count
-R68586:68588 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R68548:68553 omi_pi_proof <> countN def
-R68555:68585 omi_pi_proof <> derived_cell600_geometric_edges def
-prf 68642:68679 <> derived_cell600_geometric_edges_unique
-R68685:68689 Coq.Lists.List <> NoDup ind
-R68692:68694 Coq.Lists.List <> map def
-R68714:68744 omi_pi_proof <> derived_cell600_geometric_edges def
-R68696:68712 omi_pi_proof <> h4_edge_pair_code def
-R68763:68775 omi_pi_proof <> uniqueN_NoDup thm
-R68763:68775 omi_pi_proof <> uniqueN_NoDup thm
-prf 68821:68864 <> derived_cell600_geometric_degree_audit_holds
-R68908:68910 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R68870:68907 omi_pi_proof <> derived_cell600_geometric_degree_audit def
-R68911:68914 Coq.Init.Datatypes <> true constr
-prf 68963:69013 <> derived_cell600_geometric_edge_endpoint_audit_holds
-R69064:69066 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R69019:69063 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit def
-R69067:69070 Coq.Init.Datatypes <> true constr
-ind 69121:69139 <> IcoVertexFigureSlot
-constr 69153:69155 <> IV0
-constr 69159:69161 <> IV1
-constr 69165:69167 <> IV2
-constr 69171:69173 <> IV3
-constr 69177:69179 <> IV4
-constr 69183:69185 <> IV5
-constr 69189:69191 <> IV6
-constr 69195:69197 <> IV7
-constr 69201:69203 <> IV8
-constr 69207:69209 <> IV9
-constr 69213:69216 <> IV10
-constr 69220:69223 <> IV11
-scheme 69121:69139 <> IcoVertexFigureSlot_rect
-scheme 69121:69139 <> IcoVertexFigureSlot_ind
-scheme 69121:69139 <> IcoVertexFigureSlot_rec
-scheme 69121:69139 <> IcoVertexFigureSlot_sind
-def 69238:69273 <> derived_icosa_vertex_figure_vertices
-R69277:69280 Coq.Init.Datatypes <> list ind
-R69282:69300 omi_pi_proof <> IcoVertexFigureSlot ind
-R69307:69307 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69311:69312 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69316:69317 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69321:69322 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69326:69327 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69331:69332 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69336:69340 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69344:69345 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69349:69350 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69354:69355 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69359:69360 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69365:69366 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69371:69371 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69308:69310 omi_pi_proof <> IV0 constr
-R69313:69315 omi_pi_proof <> IV1 constr
-R69318:69320 omi_pi_proof <> IV2 constr
-R69323:69325 omi_pi_proof <> IV3 constr
-R69328:69330 omi_pi_proof <> IV4 constr
-R69333:69335 omi_pi_proof <> IV5 constr
-R69341:69343 omi_pi_proof <> IV6 constr
-R69346:69348 omi_pi_proof <> IV7 constr
-R69351:69353 omi_pi_proof <> IV8 constr
-R69356:69358 omi_pi_proof <> IV9 constr
-R69361:69364 omi_pi_proof <> IV10 constr
-R69367:69370 omi_pi_proof <> IV11 constr
-ind 69385:69396 <> TriangleSlot
-constr 69408:69411 <> Tri0
-constr 69415:69418 <> Tri1
-constr 69422:69425 <> Tri2
-scheme 69385:69396 <> TriangleSlot_rect
-scheme 69385:69396 <> TriangleSlot_ind
-scheme 69385:69396 <> TriangleSlot_rec
-scheme 69385:69396 <> TriangleSlot_sind
-def 69440:69464 <> derived_triangle_vertices
-R69468:69471 Coq.Init.Datatypes <> list ind
-R69473:69484 omi_pi_proof <> TriangleSlot ind
-R69491:69491 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69496:69497 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69502:69503 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69508:69508 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
-R69492:69495 omi_pi_proof <> Tri0 constr
-R69498:69501 omi_pi_proof <> Tri1 constr
-R69504:69507 omi_pi_proof <> Tri2 constr
-def 69523:69548 <> derived_cell600_edge_count
-R69552:69552 Coq.Numbers.BinNums <> N ind
-R69559:69559 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69637:69640 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69588:69593 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R69560:69587 omi_pi_proof <> derived_cell600_vertex_count def
-R69594:69599 omi_pi_proof <> countN def
-R69601:69636 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
-R69641:69646 omi_pi_proof <> countN def
-R69648:69657 omi_pi_proof <> bit_values def
-def 69672:69697 <> derived_cell600_face_count
-R69701:69701 Coq.Numbers.BinNums <> N ind
-R69708:69708 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69767:69772 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69735:69737 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R69709:69734 omi_pi_proof <> derived_cell600_edge_count def
-R69738:69743 omi_pi_proof <> countN def
-R69745:69766 omi_pi_proof <> derived_cell5_vertices def
-R69773:69778 omi_pi_proof <> countN def
-R69780:69804 omi_pi_proof <> derived_triangle_vertices def
-def 69819:69844 <> derived_cell600_cell_count
-R69848:69848 Coq.Numbers.BinNums <> N ind
-R69855:69855 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69902:69907 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
-R69882:69884 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R69856:69881 omi_pi_proof <> derived_cell600_face_count def
-R69885:69890 omi_pi_proof <> countN def
-R69892:69901 omi_pi_proof <> bit_values def
-R69908:69933 omi_pi_proof <> derived_tetra_vertex_count def
-prf 69945:69966 <> derived_cell600_counts
-R70008:70013 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70000:70002 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R69972:69999 omi_pi_proof <> derived_cell600_vertex_count def
-R70048:70053 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70040:70042 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70014:70039 omi_pi_proof <> derived_cell600_edge_count def
-R70089:70094 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70080:70082 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70054:70079 omi_pi_proof <> derived_cell600_face_count def
-R70121:70123 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70095:70120 omi_pi_proof <> derived_cell600_cell_count def
-def 70194:70221 <> derived_cell120_vertex_count
-R70225:70225 Coq.Numbers.BinNums <> N ind
-R70232:70257 omi_pi_proof <> derived_cell600_cell_count def
-def 70272:70297 <> derived_cell120_edge_count
-R70301:70301 Coq.Numbers.BinNums <> N ind
-R70308:70333 omi_pi_proof <> derived_cell600_face_count def
-def 70348:70373 <> derived_cell120_face_count
-R70377:70377 Coq.Numbers.BinNums <> N ind
-R70384:70409 omi_pi_proof <> derived_cell600_edge_count def
-def 70424:70449 <> derived_cell120_cell_count
-R70453:70453 Coq.Numbers.BinNums <> N ind
-R70460:70487 omi_pi_proof <> derived_cell600_vertex_count def
-prf 70499:70520 <> derived_cell120_counts
-R70562:70567 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70554:70556 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70526:70553 omi_pi_proof <> derived_cell120_vertex_count def
-R70603:70608 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70594:70596 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70568:70593 omi_pi_proof <> derived_cell120_edge_count def
-R70643:70648 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R70635:70637 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70609:70634 omi_pi_proof <> derived_cell120_face_count def
-R70675:70677 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R70649:70674 omi_pi_proof <> derived_cell120_cell_count def
-def 70748:70768 <> derived_cell600_edges
-R70772:70775 Coq.Init.Datatypes <> list ind
-R70777:70779 Coq.Init.Datatypes <> nat ind
-R70786:70798 omi_pi_proof <> index_carrier def
-R70800:70825 omi_pi_proof <> derived_cell600_edge_count def
-def 70840:70860 <> derived_cell600_faces
-R70864:70867 Coq.Init.Datatypes <> list ind
-R70869:70871 Coq.Init.Datatypes <> nat ind
-R70878:70890 omi_pi_proof <> index_carrier def
-R70892:70917 omi_pi_proof <> derived_cell600_face_count def
-def 70932:70952 <> derived_cell600_cells
-R70956:70959 Coq.Init.Datatypes <> list ind
-R70961:70963 Coq.Init.Datatypes <> nat ind
-R70970:70982 omi_pi_proof <> index_carrier def
-R70984:71009 omi_pi_proof <> derived_cell600_cell_count def
-def 71024:71047 <> derived_cell120_vertices
-R71051:71054 Coq.Init.Datatypes <> list ind
-R71056:71058 Coq.Init.Datatypes <> nat ind
-R71065:71077 omi_pi_proof <> index_carrier def
-R71079:71106 omi_pi_proof <> derived_cell120_vertex_count def
-def 71121:71141 <> derived_cell120_edges
-R71145:71148 Coq.Init.Datatypes <> list ind
-R71150:71152 Coq.Init.Datatypes <> nat ind
-R71159:71171 omi_pi_proof <> index_carrier def
-R71173:71198 omi_pi_proof <> derived_cell120_edge_count def
-def 71213:71233 <> derived_cell120_faces
-R71237:71240 Coq.Init.Datatypes <> list ind
-R71242:71244 Coq.Init.Datatypes <> nat ind
-R71251:71263 omi_pi_proof <> index_carrier def
-R71265:71290 omi_pi_proof <> derived_cell120_face_count def
-def 71305:71325 <> derived_cell120_cells
-R71329:71332 Coq.Init.Datatypes <> list ind
-R71334:71336 Coq.Init.Datatypes <> nat ind
-R71343:71355 omi_pi_proof <> index_carrier def
-R71357:71382 omi_pi_proof <> derived_cell120_cell_count def
-prf 71394:71428 <> derived_cell600_rank_carrier_counts
-R71470:71475 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71462:71464 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71434:71439 omi_pi_proof <> countN def
-R71441:71461 omi_pi_proof <> derived_cell600_edges def
-R71513:71518 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71504:71506 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71476:71481 omi_pi_proof <> countN def
-R71483:71503 omi_pi_proof <> derived_cell600_faces def
-R71547:71549 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71519:71524 omi_pi_proof <> countN def
-R71526:71546 omi_pi_proof <> derived_cell600_cells def
-prf 71617:71651 <> derived_cell120_rank_carrier_counts
-R71696:71701 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71688:71690 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71657:71662 omi_pi_proof <> countN def
-R71664:71687 omi_pi_proof <> derived_cell120_vertices def
-R71739:71744 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71730:71732 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71702:71707 omi_pi_proof <> countN def
-R71709:71729 omi_pi_proof <> derived_cell120_edges def
-R71781:71786 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71773:71775 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71745:71750 omi_pi_proof <> countN def
-R71752:71772 omi_pi_proof <> derived_cell120_faces def
-R71815:71817 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R71787:71792 omi_pi_proof <> countN def
-R71794:71814 omi_pi_proof <> derived_cell120_cells def
-prf 71885:71920 <> derived_cell600_rank_carriers_unique
-R71953:71958 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71926:71930 Coq.Lists.List <> NoDup ind
-R71932:71952 omi_pi_proof <> derived_cell600_edges def
-R71986:71991 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R71959:71963 Coq.Lists.List <> NoDup ind
-R71965:71985 omi_pi_proof <> derived_cell600_faces def
-R71992:71996 Coq.Lists.List <> NoDup ind
-R71998:72018 omi_pi_proof <> derived_cell600_cells def
-R72050:72069 omi_pi_proof <> index_carrier_unique thm
-R72050:72069 omi_pi_proof <> index_carrier_unique thm
-R72050:72069 omi_pi_proof <> index_carrier_unique thm
-R72050:72069 omi_pi_proof <> index_carrier_unique thm
-prf 72086:72121 <> derived_cell120_rank_carriers_unique
-R72157:72162 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R72127:72131 Coq.Lists.List <> NoDup ind
-R72133:72156 omi_pi_proof <> derived_cell120_vertices def
-R72190:72195 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R72163:72167 Coq.Lists.List <> NoDup ind
-R72169:72189 omi_pi_proof <> derived_cell120_edges def
-R72223:72228 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R72196:72200 Coq.Lists.List <> NoDup ind
-R72202:72222 omi_pi_proof <> derived_cell120_faces def
-R72229:72233 Coq.Lists.List <> NoDup ind
-R72235:72255 omi_pi_proof <> derived_cell120_cells def
-R72287:72306 omi_pi_proof <> index_carrier_unique thm
-R72287:72306 omi_pi_proof <> index_carrier_unique thm
-R72287:72306 omi_pi_proof <> index_carrier_unique thm
-R72287:72306 omi_pi_proof <> index_carrier_unique thm
-R72287:72306 omi_pi_proof <> index_carrier_unique thm
-def 72326:72358 <> derived_cell600_vertex_edge_slots
-R72364:72367 Coq.Init.Datatypes <> list ind
-R72382:72384 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R72370:72381 omi_pi_proof <> H4VertexSlot ind
-R72385:72403 omi_pi_proof <> IcoVertexFigureSlot ind
-R72411:72422 omi_pi_proof <> product_list def
-R72449:72484 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
-R72424:72447 omi_pi_proof <> derived_cell600_vertices def
-def 72499:72533 <> derived_cell600_edge_endpoint_slots
-R72537:72540 Coq.Init.Datatypes <> list ind
-R72546:72548 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R72543:72545 Coq.Init.Datatypes <> nat ind
-R72549:72552 Coq.Init.Datatypes <> bool ind
-R72560:72571 omi_pi_proof <> product_list def
-R72595:72604 omi_pi_proof <> bit_values def
-R72573:72593 omi_pi_proof <> derived_cell600_edges def
-def 72619:72649 <> derived_cell600_edge_face_slots
-R72655:72658 Coq.Init.Datatypes <> list ind
-R72664:72666 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R72661:72663 Coq.Init.Datatypes <> nat ind
-R72667:72684 omi_pi_proof <> DerivedCell5Vertex ind
-R72692:72703 omi_pi_proof <> product_list def
-R72727:72748 omi_pi_proof <> derived_cell5_vertices def
-R72705:72725 omi_pi_proof <> derived_cell600_edges def
-def 72763:72793 <> derived_cell600_face_edge_slots
-R72797:72800 Coq.Init.Datatypes <> list ind
-R72806:72808 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R72803:72805 Coq.Init.Datatypes <> nat ind
-R72809:72820 omi_pi_proof <> TriangleSlot ind
-R72828:72839 omi_pi_proof <> product_list def
-R72863:72887 omi_pi_proof <> derived_triangle_vertices def
-R72841:72861 omi_pi_proof <> derived_cell600_faces def
-def 72902:72932 <> derived_cell600_face_cell_slots
-R72936:72939 Coq.Init.Datatypes <> list ind
-R72945:72947 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R72942:72944 Coq.Init.Datatypes <> nat ind
-R72948:72951 Coq.Init.Datatypes <> bool ind
-R72959:72970 omi_pi_proof <> product_list def
-R72994:73003 omi_pi_proof <> bit_values def
-R72972:72992 omi_pi_proof <> derived_cell600_faces def
-def 73018:73048 <> derived_cell600_cell_face_slots
-R73054:73057 Coq.Init.Datatypes <> list ind
-R73063:73065 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R73060:73062 Coq.Init.Datatypes <> nat ind
-R73066:73083 omi_pi_proof <> DerivedTetraVertex ind
-R73091:73102 omi_pi_proof <> product_list def
-R73126:73147 omi_pi_proof <> derived_tetra_vertices def
-R73104:73124 omi_pi_proof <> derived_cell600_cells def
-prf 73159:73204 <> derived_cell600_explicit_incidence_slot_counts
-R73299:73304 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R73250:73256 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R73210:73215 omi_pi_proof <> countN def
-R73217:73249 omi_pi_proof <> derived_cell600_vertex_edge_slots def
-R73257:73262 omi_pi_proof <> countN def
-R73264:73298 omi_pi_proof <> derived_cell600_edge_endpoint_slots def
-R73388:73393 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R73343:73349 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R73305:73310 omi_pi_proof <> countN def
-R73312:73342 omi_pi_proof <> derived_cell600_edge_face_slots def
-R73350:73355 omi_pi_proof <> countN def
-R73357:73387 omi_pi_proof <> derived_cell600_face_edge_slots def
-R73432:73438 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R73394:73399 omi_pi_proof <> countN def
-R73401:73431 omi_pi_proof <> derived_cell600_face_cell_slots def
-R73439:73444 omi_pi_proof <> countN def
-R73446:73476 omi_pi_proof <> derived_cell600_cell_face_slots def
-def 73542:73574 <> derived_cell120_vertex_edge_slots
-R73580:73583 Coq.Init.Datatypes <> list ind
-R73589:73591 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R73586:73588 Coq.Init.Datatypes <> nat ind
-R73592:73609 omi_pi_proof <> DerivedTetraVertex ind
-R73617:73628 omi_pi_proof <> product_list def
-R73655:73676 omi_pi_proof <> derived_tetra_vertices def
-R73630:73653 omi_pi_proof <> derived_cell120_vertices def
-def 73691:73725 <> derived_cell120_edge_endpoint_slots
+def 66468:66484 <> unordered_triples
+binder 66487:66487 <> A:409
+R66503:66506 Coq.Init.Datatypes <> list ind
+R66508:66508 omi_pi_proof <> A:409 var
+binder 66498:66499 <> xs:410
+R66513:66516 Coq.Init.Datatypes <> list ind
+R66524:66526 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R66520:66522 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R66519:66519 omi_pi_proof <> A:409 var
+R66523:66523 omi_pi_proof <> A:409 var
+R66527:66527 omi_pi_proof <> A:409 var
+R66541:66542 omi_pi_proof <> xs:410 var
+R66553:66554 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R66559:66560 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R66567:66570 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R66674:66677 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R66579:66581 Coq.Lists.List <> map def
+R66653:66667 omi_pi_proof <> unordered_pairs def
+binder 66588:66589 <> yz:413
+R66600:66601 omi_pi_proof <> yz:413 var
+R66608:66608 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66610:66611 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66613:66613 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66618:66618 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66620:66621 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66623:66624 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66626:66626 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66678:66694 omi_pi_proof <> unordered_triples:411 def
+def 66720:66748 <> derived_cell600_axis_vertices
+R66752:66755 Coq.Init.Datatypes <> list ind
+R66757:66768 omi_pi_proof <> H4VertexSlot ind
+R66775:66777 Coq.Lists.List <> map def
+R66817:66836 omi_pi_proof <> derived_signed_axes4 def
+R66785:66785 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66790:66791 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66793:66793 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 66792:66792 <> s:415
+binder 66786:66789 <> axis:416
+binder 66785:66793 <> pat:417
+R66798:66807 omi_pi_proof <> H4AxisSlot constr
+R66809:66812 omi_pi_proof <> axis:416 var
+R66814:66814 omi_pi_proof <> s:415 var
+def 66851:66879 <> derived_cell600_half_vertices
+R66883:66886 Coq.Init.Datatypes <> list ind
+R66888:66899 omi_pi_proof <> H4VertexSlot ind
+R66906:66908 Coq.Lists.List <> map def
+R66952:66977 omi_pi_proof <> derived_tesseract_vertices def
+R66916:66916 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66918:66919 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66921:66922 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66924:66925 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R66927:66927 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 66926:66926 <> d:418
+binder 66923:66923 <> c:419
+binder 66920:66920 <> b:420
+binder 66917:66917 <> a:421
+binder 66916:66927 <> pat:422
+R66932:66941 omi_pi_proof <> H4HalfSlot constr
+R66943:66943 omi_pi_proof <> a:421 var
+R66945:66945 omi_pi_proof <> b:420 var
+R66947:66947 omi_pi_proof <> c:419 var
+R66949:66949 omi_pi_proof <> d:418 var
+def 66992:67022 <> derived_cell600_golden_vertices
+R67026:67029 Coq.Init.Datatypes <> list ind
+R67031:67042 omi_pi_proof <> H4VertexSlot ind
+R67049:67056 Coq.Lists.List <> flat_map def
+R67141:67158 omi_pi_proof <> even_permutations4 def
+binder 67067:67067 <> p:423
+R67078:67080 Coq.Lists.List <> map def
+R67123:67134 omi_pi_proof <> sign_triples def
+R67088:67088 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67090:67091 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67093:67094 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67096:67096 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 67095:67095 <> c:424
+binder 67092:67092 <> b:425
+binder 67089:67089 <> a:426
+binder 67088:67096 <> pat:427
+R67101:67112 omi_pi_proof <> H4GoldenSlot constr
+R67114:67114 omi_pi_proof <> p:423 var
+R67116:67116 omi_pi_proof <> a:426 var
+R67118:67118 omi_pi_proof <> b:425 var
+R67120:67120 omi_pi_proof <> c:424 var
+def 67173:67196 <> derived_cell600_vertices
+R67200:67203 Coq.Init.Datatypes <> list ind
+R67205:67216 omi_pi_proof <> H4VertexSlot ind
+R67252:67257 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R67223:67251 omi_pi_proof <> derived_cell600_axis_vertices def
+R67287:67292 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R67258:67286 omi_pi_proof <> derived_cell600_half_vertices def
+R67293:67323 omi_pi_proof <> derived_cell600_golden_vertices def
+def 67338:67365 <> derived_cell600_vertex_count
+R67369:67369 Coq.Numbers.BinNums <> N ind
+R67376:67381 omi_pi_proof <> countN def
+R67383:67406 omi_pi_proof <> derived_cell600_vertices def
+prf 67418:67452 <> derived_cell600_forces_120_vertices
+R67486:67488 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R67458:67485 omi_pi_proof <> derived_cell600_vertex_count def
+prf 67542:67572 <> derived_cell600_vertices_unique
+R67578:67582 Coq.Lists.List <> NoDup ind
+R67585:67587 Coq.Lists.List <> map def
+R67604:67627 omi_pi_proof <> derived_cell600_vertices def
+R67589:67602 omi_pi_proof <> h4_vertex_code def
+R67646:67658 omi_pi_proof <> uniqueN_NoDup thm
+R67646:67658 omi_pi_proof <> uniqueN_NoDup thm
+def 67707:67737 <> derived_cell600_geometric_edges
+R67741:67744 Coq.Init.Datatypes <> list ind
+R67759:67761 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R67747:67758 omi_pi_proof <> H4VertexSlot ind
+R67762:67773 omi_pi_proof <> H4VertexSlot ind
+R67781:67786 Coq.Lists.List <> filter def
+R67837:67851 omi_pi_proof <> unordered_pairs def
+R67853:67876 omi_pi_proof <> derived_cell600_vertices def
+R67798:67798 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67800:67801 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67803:67803 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 67802:67802 <> v:428
+binder 67799:67799 <> u:429
+binder 67798:67803 <> pat:430
+R67808:67825 omi_pi_proof <> h4_geometric_edgeb def
+R67827:67827 omi_pi_proof <> u:429 var
+R67829:67829 omi_pi_proof <> v:428 var
+def 67892:67908 <> h4_edge_pair_code
+R67927:67929 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R67915:67926 omi_pi_proof <> H4VertexSlot ind
+R67930:67941 omi_pi_proof <> H4VertexSlot ind
+binder 67911:67911 <> e:431
+R67946:67946 Coq.Numbers.BinNums <> N ind
+R67959:67959 omi_pi_proof <> e:431 var
+R67970:67970 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67972:67973 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R67975:67975 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68002:68004 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R67996:67998 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R67980:67993 omi_pi_proof <> h4_vertex_code def
+R68005:68018 omi_pi_proof <> h4_vertex_code def
+def 68041:68053 <> h4_vertex_eqb
+R68062:68073 omi_pi_proof <> H4VertexSlot ind
+binder 68056:68056 <> u:433
+binder 68058:68058 <> v:434
+R68078:68081 Coq.Init.Datatypes <> bool ind
+R68088:68092 Coq.NArith.BinNat N eqb def
+R68095:68108 omi_pi_proof <> h4_vertex_code def
+R68110:68110 omi_pi_proof <> u:433 var
+R68114:68127 omi_pi_proof <> h4_vertex_code def
+R68129:68129 omi_pi_proof <> v:434 var
+def 68145:68160 <> h4_edge_incident
+R68167:68178 omi_pi_proof <> H4VertexSlot ind
+binder 68163:68163 <> v:435
+R68198:68200 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R68186:68197 omi_pi_proof <> H4VertexSlot ind
+R68201:68212 omi_pi_proof <> H4VertexSlot ind
+binder 68182:68182 <> e:436
+R68217:68220 Coq.Init.Datatypes <> bool ind
+R68233:68233 omi_pi_proof <> e:436 var
+R68244:68244 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68247:68248 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68251:68251 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68274:68277 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R68256:68268 omi_pi_proof <> h4_vertex_eqb def
+R68270:68270 omi_pi_proof <> v:435 var
+R68278:68290 omi_pi_proof <> h4_vertex_eqb def
+R68292:68292 omi_pi_proof <> v:435 var
+def 68316:68334 <> h4_geometric_degree
+R68341:68352 omi_pi_proof <> H4VertexSlot ind
+binder 68337:68337 <> v:438
+R68357:68359 Coq.Init.Datatypes <> nat ind
+R68366:68371 Coq.Init.Datatypes <> length def
+R68374:68379 Coq.Lists.List <> filter def
+R68402:68432 omi_pi_proof <> derived_cell600_geometric_edges def
+R68382:68397 omi_pi_proof <> h4_edge_incident def
+R68399:68399 omi_pi_proof <> v:438 var
+def 68448:68485 <> derived_cell600_geometric_degree_audit
+R68489:68492 Coq.Init.Datatypes <> bool ind
+R68499:68505 Coq.Lists.List <> forallb def
+R68561:68584 omi_pi_proof <> derived_cell600_vertices def
+binder 68516:68516 <> v:439
+R68521:68527 Coq.Arith.PeanoNat Nat eqb def
+R68530:68548 omi_pi_proof <> h4_geometric_degree def
+R68550:68550 omi_pi_proof <> v:439 var
+def 68599:68643 <> derived_cell600_geometric_edge_endpoint_audit
+R68647:68650 Coq.Init.Datatypes <> bool ind
+R68657:68663 Coq.Lists.List <> forallb def
+R68715:68745 omi_pi_proof <> derived_cell600_geometric_edges def
+R68675:68675 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68677:68678 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R68680:68680 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 68679:68679 <> v:440
+binder 68676:68676 <> u:441
+binder 68675:68680 <> pat:442
+R68685:68688 Coq.Init.Datatypes <> negb def
+R68691:68703 omi_pi_proof <> h4_vertex_eqb def
+R68705:68705 omi_pi_proof <> u:441 var
+R68707:68707 omi_pi_proof <> v:440 var
+prf 68757:68792 <> derived_cell600_geometric_edge_count
+R68836:68838 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R68798:68803 omi_pi_proof <> countN def
+R68805:68835 omi_pi_proof <> derived_cell600_geometric_edges def
+prf 68892:68929 <> derived_cell600_geometric_edges_unique
+R68935:68939 Coq.Lists.List <> NoDup ind
+R68942:68944 Coq.Lists.List <> map def
+R68964:68994 omi_pi_proof <> derived_cell600_geometric_edges def
+R68946:68962 omi_pi_proof <> h4_edge_pair_code def
+R69013:69025 omi_pi_proof <> uniqueN_NoDup thm
+R69013:69025 omi_pi_proof <> uniqueN_NoDup thm
+prf 69071:69114 <> derived_cell600_geometric_degree_audit_holds
+R69158:69160 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R69120:69157 omi_pi_proof <> derived_cell600_geometric_degree_audit def
+R69161:69164 Coq.Init.Datatypes <> true constr
+prf 69213:69263 <> derived_cell600_geometric_edge_endpoint_audit_holds
+R69314:69316 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R69269:69313 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit def
+R69317:69320 Coq.Init.Datatypes <> true constr
+def 69372:69393 <> h4_geometric_triangleb
+R69427:69429 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R69412:69414 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R69400:69411 omi_pi_proof <> H4VertexSlot ind
+R69415:69426 omi_pi_proof <> H4VertexSlot ind
+R69430:69441 omi_pi_proof <> H4VertexSlot ind
+binder 69396:69396 <> f:443
+R69446:69449 Coq.Init.Datatypes <> bool ind
+R69462:69462 omi_pi_proof <> f:443 var
+R69473:69473 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69475:69476 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69478:69479 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69481:69481 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69546:69555 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R69514:69523 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R69492:69509 omi_pi_proof <> h4_geometric_edgeb def
+R69524:69541 omi_pi_proof <> h4_geometric_edgeb def
+R69556:69573 omi_pi_proof <> h4_geometric_edgeb def
+def 69598:69615 <> h4_common_neighbor
+R69626:69637 omi_pi_proof <> H4VertexSlot ind
+binder 69618:69618 <> u:445
+binder 69620:69620 <> v:446
+binder 69622:69622 <> w:447
+R69642:69645 Coq.Init.Datatypes <> bool ind
+R69674:69677 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R69652:69669 omi_pi_proof <> h4_geometric_edgeb def
+R69671:69671 omi_pi_proof <> u:445 var
+R69673:69673 omi_pi_proof <> w:447 var
+R69678:69695 omi_pi_proof <> h4_geometric_edgeb def
+R69697:69697 omi_pi_proof <> v:446 var
+R69699:69699 omi_pi_proof <> w:447 var
+def 69714:69736 <> h4_face_canonical_third
+R69745:69756 omi_pi_proof <> H4VertexSlot ind
+binder 69739:69739 <> v:448
+binder 69741:69741 <> w:449
+R69761:69764 Coq.Init.Datatypes <> bool ind
+R69771:69775 Coq.NArith.BinNat N ltb def
+R69778:69791 omi_pi_proof <> h4_vertex_code def
+R69793:69793 omi_pi_proof <> v:448 var
+R69797:69810 omi_pi_proof <> h4_vertex_code def
+R69812:69812 omi_pi_proof <> w:449 var
+def 69828:69858 <> derived_cell600_faces_from_edge
+R69881:69883 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R69869:69880 omi_pi_proof <> H4VertexSlot ind
+R69884:69895 omi_pi_proof <> H4VertexSlot ind
+binder 69865:69865 <> e:450
+R69904:69907 Coq.Init.Datatypes <> list ind
+R69937:69939 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R69922:69924 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R69910:69921 omi_pi_proof <> H4VertexSlot ind
+R69925:69936 omi_pi_proof <> H4VertexSlot ind
+R69940:69951 omi_pi_proof <> H4VertexSlot ind
+R69965:69965 omi_pi_proof <> e:450 var
+R69976:69976 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69978:69979 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69981:69981 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R69992:69994 Coq.Lists.List <> map def
+R70026:70031 Coq.Lists.List <> filter def
+R70120:70143 omi_pi_proof <> derived_cell600_vertices def
+binder 70048:70048 <> w:452
+R70077:70080 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R70053:70070 omi_pi_proof <> h4_common_neighbor def
+R70076:70076 omi_pi_proof <> w:452 var
+R70081:70103 omi_pi_proof <> h4_face_canonical_third def
+R70107:70107 omi_pi_proof <> w:452 var
+binder 70001:70001 <> w:453
+R70006:70006 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70008:70009 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70011:70012 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70014:70014 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70013:70013 omi_pi_proof <> w:453 var
+def 70165:70195 <> derived_cell600_geometric_faces
+R70201:70204 Coq.Init.Datatypes <> list ind
+R70234:70236 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70219:70221 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70207:70218 omi_pi_proof <> H4VertexSlot ind
+R70222:70233 omi_pi_proof <> H4VertexSlot ind
+R70237:70248 omi_pi_proof <> H4VertexSlot ind
+R70256:70263 Coq.Lists.List <> flat_map def
+R70297:70327 omi_pi_proof <> derived_cell600_geometric_edges def
+R70265:70295 omi_pi_proof <> derived_cell600_faces_from_edge def
+def 70342:70353 <> h4_face_code
+R70387:70389 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70372:70374 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70360:70371 omi_pi_proof <> H4VertexSlot ind
+R70375:70386 omi_pi_proof <> H4VertexSlot ind
+R70390:70401 omi_pi_proof <> H4VertexSlot ind
+binder 70356:70356 <> f:454
+R70406:70406 Coq.Numbers.BinNums <> N ind
+R70419:70419 omi_pi_proof <> f:454 var
+R70430:70430 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70432:70433 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70435:70436 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70438:70438 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70492:70494 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R70467:70469 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R70459:70461 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R70443:70456 omi_pi_proof <> h4_vertex_code def
+R70486:70488 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R70470:70483 omi_pi_proof <> h4_vertex_code def
+R70495:70508 omi_pi_proof <> h4_vertex_code def
+def 70531:70551 <> h4_face_contains_edge
+R70574:70576 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70562:70573 omi_pi_proof <> H4VertexSlot ind
+R70577:70588 omi_pi_proof <> H4VertexSlot ind
+binder 70558:70558 <> e:456
+R70627:70629 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70612:70614 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70600:70611 omi_pi_proof <> H4VertexSlot ind
+R70615:70626 omi_pi_proof <> H4VertexSlot ind
+R70630:70641 omi_pi_proof <> H4VertexSlot ind
+binder 70596:70596 <> f:457
+R70646:70649 Coq.Init.Datatypes <> bool ind
+R70665:70665 omi_pi_proof <> f:457 var
+R70662:70662 omi_pi_proof <> e:456 var
+R70676:70676 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70678:70679 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70681:70681 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70684:70684 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70686:70687 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70689:70690 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70692:70692 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70704:70704 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R70764:70776 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R70836:70836 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R70743:70746 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R70722:70725 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R70705:70717 omi_pi_proof <> h4_vertex_eqb def
+R70726:70738 omi_pi_proof <> h4_vertex_eqb def
+R70747:70759 omi_pi_proof <> h4_vertex_eqb def
+R70815:70818 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R70794:70797 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R70777:70789 omi_pi_proof <> h4_vertex_eqb def
+R70798:70810 omi_pi_proof <> h4_vertex_eqb def
+R70819:70831 omi_pi_proof <> h4_vertex_eqb def
+def 70858:70896 <> h4_geometric_edge_common_neighbor_count
+R70919:70921 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R70907:70918 omi_pi_proof <> H4VertexSlot ind
+R70922:70933 omi_pi_proof <> H4VertexSlot ind
+binder 70903:70903 <> e:460
+R70938:70940 Coq.Init.Datatypes <> nat ind
+R70953:70953 omi_pi_proof <> e:460 var
+R70964:70964 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70966:70967 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70969:70969 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R70974:70979 Coq.Init.Datatypes <> length def
+R70982:70987 Coq.Lists.List <> filter def
+R71014:71037 omi_pi_proof <> derived_cell600_vertices def
+R70990:71007 omi_pi_proof <> h4_common_neighbor def
+def 71059:71099 <> derived_cell600_geometric_edge_face_audit
+R71103:71106 Coq.Init.Datatypes <> bool ind
+R71113:71119 Coq.Lists.List <> forallb def
+R71194:71224 omi_pi_proof <> derived_cell600_geometric_edges def
+binder 71130:71130 <> e:462
+R71135:71141 Coq.Arith.PeanoNat Nat eqb def
+R71144:71182 omi_pi_proof <> h4_geometric_edge_common_neighbor_count def
+R71184:71184 omi_pi_proof <> e:462 var
+def 71239:71283 <> derived_cell600_geometric_face_triangle_audit
+R71287:71290 Coq.Init.Datatypes <> bool ind
+R71297:71303 Coq.Lists.List <> forallb def
+R71328:71358 omi_pi_proof <> derived_cell600_geometric_faces def
+R71305:71326 omi_pi_proof <> h4_geometric_triangleb def
+prf 71370:71405 <> derived_cell600_geometric_face_count
+R71449:71451 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R71411:71416 omi_pi_proof <> countN def
+R71418:71448 omi_pi_proof <> derived_cell600_geometric_faces def
+prf 71506:71543 <> derived_cell600_geometric_faces_unique
+R71549:71553 Coq.Lists.List <> NoDup ind
+R71556:71558 Coq.Lists.List <> map def
+R71573:71603 omi_pi_proof <> derived_cell600_geometric_faces def
+R71560:71571 omi_pi_proof <> h4_face_code def
+R71622:71634 omi_pi_proof <> uniqueN_NoDup thm
+R71622:71634 omi_pi_proof <> uniqueN_NoDup thm
+prf 71680:71730 <> derived_cell600_geometric_face_triangle_audit_holds
+R71781:71783 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R71736:71780 omi_pi_proof <> derived_cell600_geometric_face_triangle_audit def
+R71784:71787 Coq.Init.Datatypes <> true constr
+prf 71836:71882 <> derived_cell600_geometric_edge_face_audit_holds
+R71929:71931 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R71888:71928 omi_pi_proof <> derived_cell600_geometric_edge_face_audit def
+R71932:71935 Coq.Init.Datatypes <> true constr
+ind 71986:72004 <> IcoVertexFigureSlot
+constr 72018:72020 <> IV0
+constr 72024:72026 <> IV1
+constr 72030:72032 <> IV2
+constr 72036:72038 <> IV3
+constr 72042:72044 <> IV4
+constr 72048:72050 <> IV5
+constr 72054:72056 <> IV6
+constr 72060:72062 <> IV7
+constr 72066:72068 <> IV8
+constr 72072:72074 <> IV9
+constr 72078:72081 <> IV10
+constr 72085:72088 <> IV11
+scheme 71986:72004 <> IcoVertexFigureSlot_rect
+scheme 71986:72004 <> IcoVertexFigureSlot_ind
+scheme 71986:72004 <> IcoVertexFigureSlot_rec
+scheme 71986:72004 <> IcoVertexFigureSlot_sind
+def 72103:72138 <> derived_icosa_vertex_figure_vertices
+R72142:72145 Coq.Init.Datatypes <> list ind
+R72147:72165 omi_pi_proof <> IcoVertexFigureSlot ind
+R72172:72172 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72176:72177 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72181:72182 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72186:72187 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72191:72192 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72196:72197 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72201:72205 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72209:72210 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72214:72215 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72219:72220 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72224:72225 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72230:72231 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72236:72236 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72173:72175 omi_pi_proof <> IV0 constr
+R72178:72180 omi_pi_proof <> IV1 constr
+R72183:72185 omi_pi_proof <> IV2 constr
+R72188:72190 omi_pi_proof <> IV3 constr
+R72193:72195 omi_pi_proof <> IV4 constr
+R72198:72200 omi_pi_proof <> IV5 constr
+R72206:72208 omi_pi_proof <> IV6 constr
+R72211:72213 omi_pi_proof <> IV7 constr
+R72216:72218 omi_pi_proof <> IV8 constr
+R72221:72223 omi_pi_proof <> IV9 constr
+R72226:72229 omi_pi_proof <> IV10 constr
+R72232:72235 omi_pi_proof <> IV11 constr
+ind 72250:72261 <> TriangleSlot
+constr 72273:72276 <> Tri0
+constr 72280:72283 <> Tri1
+constr 72287:72290 <> Tri2
+scheme 72250:72261 <> TriangleSlot_rect
+scheme 72250:72261 <> TriangleSlot_ind
+scheme 72250:72261 <> TriangleSlot_rec
+scheme 72250:72261 <> TriangleSlot_sind
+def 72305:72329 <> derived_triangle_vertices
+R72333:72336 Coq.Init.Datatypes <> list ind
+R72338:72349 omi_pi_proof <> TriangleSlot ind
+R72356:72356 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72361:72362 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72367:72368 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72373:72373 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R72357:72360 omi_pi_proof <> Tri0 constr
+R72363:72366 omi_pi_proof <> Tri1 constr
+R72369:72372 omi_pi_proof <> Tri2 constr
+def 72388:72413 <> derived_cell600_edge_count
+R72417:72417 Coq.Numbers.BinNums <> N ind
+R72424:72424 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72502:72505 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72453:72458 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R72425:72452 omi_pi_proof <> derived_cell600_vertex_count def
+R72459:72464 omi_pi_proof <> countN def
+R72466:72501 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
+R72506:72511 omi_pi_proof <> countN def
+R72513:72522 omi_pi_proof <> bit_values def
+def 72537:72562 <> derived_cell600_face_count
+R72566:72566 Coq.Numbers.BinNums <> N ind
+R72573:72573 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72632:72637 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72600:72602 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R72574:72599 omi_pi_proof <> derived_cell600_edge_count def
+R72603:72608 omi_pi_proof <> countN def
+R72610:72631 omi_pi_proof <> derived_cell5_vertices def
+R72638:72643 omi_pi_proof <> countN def
+R72645:72669 omi_pi_proof <> derived_triangle_vertices def
+def 72684:72709 <> derived_cell600_cell_count
+R72713:72713 Coq.Numbers.BinNums <> N ind
+R72720:72720 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72767:72772 Coq.NArith.BinNat <> ::N_scope:x_'/'_x not
+R72747:72749 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R72721:72746 omi_pi_proof <> derived_cell600_face_count def
+R72750:72755 omi_pi_proof <> countN def
+R72757:72766 omi_pi_proof <> bit_values def
+R72773:72798 omi_pi_proof <> derived_tetra_vertex_count def
+prf 72810:72831 <> derived_cell600_counts
+R72873:72878 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R72865:72867 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R72837:72864 omi_pi_proof <> derived_cell600_vertex_count def
+R72913:72918 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R72905:72907 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R72879:72904 omi_pi_proof <> derived_cell600_edge_count def
+R72954:72959 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R72945:72947 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R72919:72944 omi_pi_proof <> derived_cell600_face_count def
+R72986:72988 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R72960:72985 omi_pi_proof <> derived_cell600_cell_count def
+def 73059:73086 <> derived_cell120_vertex_count
+R73090:73090 Coq.Numbers.BinNums <> N ind
+R73097:73122 omi_pi_proof <> derived_cell600_cell_count def
+def 73137:73162 <> derived_cell120_edge_count
+R73166:73166 Coq.Numbers.BinNums <> N ind
+R73173:73198 omi_pi_proof <> derived_cell600_face_count def
+def 73213:73238 <> derived_cell120_face_count
+R73242:73242 Coq.Numbers.BinNums <> N ind
+R73249:73274 omi_pi_proof <> derived_cell600_edge_count def
+def 73289:73314 <> derived_cell120_cell_count
+R73318:73318 Coq.Numbers.BinNums <> N ind
+R73325:73352 omi_pi_proof <> derived_cell600_vertex_count def
+prf 73364:73385 <> derived_cell120_counts
+R73427:73432 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R73419:73421 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R73391:73418 omi_pi_proof <> derived_cell120_vertex_count def
+R73468:73473 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R73459:73461 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R73433:73458 omi_pi_proof <> derived_cell120_edge_count def
+R73508:73513 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R73500:73502 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R73474:73499 omi_pi_proof <> derived_cell120_face_count def
+R73540:73542 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R73514:73539 omi_pi_proof <> derived_cell120_cell_count def
+def 73613:73633 <> derived_cell600_edges
+R73637:73640 Coq.Init.Datatypes <> list ind
+R73642:73644 Coq.Init.Datatypes <> nat ind
+R73651:73663 omi_pi_proof <> index_carrier def
+R73665:73690 omi_pi_proof <> derived_cell600_edge_count def
+def 73705:73725 <> derived_cell600_faces
 R73729:73732 Coq.Init.Datatypes <> list ind
-R73738:73740 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R73735:73737 Coq.Init.Datatypes <> nat ind
-R73741:73744 Coq.Init.Datatypes <> bool ind
-R73752:73763 omi_pi_proof <> product_list def
-R73787:73796 omi_pi_proof <> bit_values def
-R73765:73785 omi_pi_proof <> derived_cell120_edges def
-def 73811:73841 <> derived_cell120_edge_face_slots
-R73845:73848 Coq.Init.Datatypes <> list ind
-R73854:73856 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R73851:73853 Coq.Init.Datatypes <> nat ind
-R73857:73868 omi_pi_proof <> TriangleSlot ind
-R73876:73887 omi_pi_proof <> product_list def
-R73911:73935 omi_pi_proof <> derived_triangle_vertices def
-R73889:73909 omi_pi_proof <> derived_cell120_edges def
-def 73950:73980 <> derived_cell120_face_edge_slots
-R73986:73989 Coq.Init.Datatypes <> list ind
-R73995:73997 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R73992:73994 Coq.Init.Datatypes <> nat ind
-R73998:74015 omi_pi_proof <> DerivedCell5Vertex ind
-R74023:74034 omi_pi_proof <> product_list def
-R74058:74079 omi_pi_proof <> derived_cell5_vertices def
-R74036:74056 omi_pi_proof <> derived_cell120_faces def
-def 74094:74124 <> derived_cell120_face_cell_slots
-R74128:74131 Coq.Init.Datatypes <> list ind
-R74137:74139 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R74134:74136 Coq.Init.Datatypes <> nat ind
-R74140:74143 Coq.Init.Datatypes <> bool ind
-R74151:74162 omi_pi_proof <> product_list def
-R74186:74195 omi_pi_proof <> bit_values def
-R74164:74184 omi_pi_proof <> derived_cell120_faces def
-def 74210:74240 <> derived_cell120_cell_face_slots
-R74246:74249 Coq.Init.Datatypes <> list ind
-R74255:74257 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
-R74252:74254 Coq.Init.Datatypes <> nat ind
-R74258:74276 omi_pi_proof <> IcoVertexFigureSlot ind
-R74284:74295 omi_pi_proof <> product_list def
-R74319:74354 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
-R74297:74317 omi_pi_proof <> derived_cell120_cells def
-prf 74366:74411 <> derived_cell120_explicit_incidence_slot_counts
-R74506:74511 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R74457:74463 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R74417:74422 omi_pi_proof <> countN def
-R74424:74456 omi_pi_proof <> derived_cell120_vertex_edge_slots def
-R74464:74469 omi_pi_proof <> countN def
-R74471:74505 omi_pi_proof <> derived_cell120_edge_endpoint_slots def
-R74595:74600 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R74550:74556 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R74512:74517 omi_pi_proof <> countN def
-R74519:74549 omi_pi_proof <> derived_cell120_edge_face_slots def
-R74557:74562 omi_pi_proof <> countN def
-R74564:74594 omi_pi_proof <> derived_cell120_face_edge_slots def
-R74639:74645 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R74601:74606 omi_pi_proof <> countN def
-R74608:74638 omi_pi_proof <> derived_cell120_face_cell_slots def
-R74646:74651 omi_pi_proof <> countN def
-R74653:74683 omi_pi_proof <> derived_cell120_cell_face_slots def
-def 74749:74758 <> nat_unique
-R74766:74769 Coq.Init.Datatypes <> list ind
-R74771:74773 Coq.Init.Datatypes <> nat ind
-binder 74761:74762 <> xs:441
-R74778:74781 Coq.Init.Datatypes <> bool ind
-R74788:74796 omi_pi_proof <> unique_by def
-R74806:74807 omi_pi_proof <> xs:441 var
-R74798:74804 Coq.Arith.PeanoNat Nat eqb def
-def 74822:74837 <> nat_list_bounded
-R74848:74848 Coq.Numbers.BinNums <> N ind
-binder 74840:74844 <> bound:442
-R74857:74860 Coq.Init.Datatypes <> list ind
-R74862:74864 Coq.Init.Datatypes <> nat ind
-binder 74852:74853 <> xs:443
-R74869:74872 Coq.Init.Datatypes <> bool ind
-R74879:74885 Coq.Lists.List <> forallb def
-R74925:74926 omi_pi_proof <> xs:443 var
-binder 74892:74892 <> x:444
-R74897:74903 Coq.Arith.PeanoNat Nat ltb def
-R74905:74905 omi_pi_proof <> x:444 var
-R74908:74915 Coq.NArith.BinNat N to_nat def
-R74917:74921 omi_pi_proof <> bound:442 var
-def 74941:74961 <> adjacency_schedule_ok
-R74978:74981 Coq.Init.Datatypes <> list ind
-R74983:74985 Coq.Init.Datatypes <> nat ind
-binder 74968:74974 <> carrier:445
-R74997:74999 Coq.Init.Datatypes <> nat ind
-binder 74989:74993 <> arity:446
-R75018:75018 Coq.Numbers.BinNums <> N ind
-binder 75003:75014 <> target_bound:447
-R75040:75043 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R75037:75039 Coq.Init.Datatypes <> nat ind
-R75044:75047 Coq.Init.Datatypes <> list ind
-R75049:75051 Coq.Init.Datatypes <> nat ind
-binder 75026:75033 <> schedule:448
-R75056:75059 Coq.Init.Datatypes <> bool ind
-R75066:75072 Coq.Lists.List <> forallb def
-R75220:75226 omi_pi_proof <> carrier:445 var
-binder 75083:75083 <> i:449
-R75162:75171 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R75129:75138 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R75094:75100 Coq.Arith.PeanoNat Nat eqb def
-R75103:75108 Coq.Init.Datatypes <> length def
-R75111:75118 omi_pi_proof <> schedule:448 var
-R75120:75120 omi_pi_proof <> i:449 var
-R75124:75128 omi_pi_proof <> arity:446 var
-R75139:75148 omi_pi_proof <> nat_unique def
-R75151:75158 omi_pi_proof <> schedule:448 var
-R75160:75160 omi_pi_proof <> i:449 var
-R75172:75187 omi_pi_proof <> nat_list_bounded def
-R75189:75200 omi_pi_proof <> target_bound:447 var
-R75203:75210 omi_pi_proof <> schedule:448 var
-R75212:75212 omi_pi_proof <> i:449 var
-def 75241:75264 <> cyclic_incidence_indices
-R75275:75275 Coq.Numbers.BinNums <> N ind
-binder 75267:75271 <> bound:450
-R75287:75289 Coq.Init.Datatypes <> nat ind
-binder 75279:75283 <> arity:451
-R75300:75302 Coq.Init.Datatypes <> nat ind
-binder 75293:75296 <> seed:452
-R75307:75310 Coq.Init.Datatypes <> list ind
-R75312:75314 Coq.Init.Datatypes <> nat ind
-R75321:75323 Coq.Lists.List <> map def
-R75392:75394 Coq.Lists.List <> seq def
-R75398:75402 omi_pi_proof <> arity:451 var
-binder 75330:75335 <> offset:453
-R75340:75349 Coq.Arith.PeanoNat Nat modulo def
-R75352:75358 Coq.Arith.PeanoNat Nat add def
-R75360:75363 omi_pi_proof <> seed:452 var
-R75365:75370 omi_pi_proof <> offset:453 var
-R75374:75381 Coq.NArith.BinNat N to_nat def
-R75383:75387 omi_pi_proof <> bound:450 var
-def 75418:75447 <> derived_cell600_edge_endpoints
-R75457:75459 Coq.Init.Datatypes <> nat ind
-binder 75450:75453 <> edge:454
-R75464:75467 Coq.Init.Datatypes <> list ind
-R75469:75471 Coq.Init.Datatypes <> nat ind
-R75478:75501 omi_pi_proof <> cyclic_incidence_indices def
-R75503:75530 omi_pi_proof <> derived_cell600_vertex_count def
-R75534:75537 omi_pi_proof <> edge:454 var
-def 75552:75577 <> derived_cell600_face_edges
-R75587:75589 Coq.Init.Datatypes <> nat ind
-binder 75580:75583 <> face:455
-R75594:75597 Coq.Init.Datatypes <> list ind
-R75599:75601 Coq.Init.Datatypes <> nat ind
-R75608:75631 omi_pi_proof <> cyclic_incidence_indices def
-R75633:75658 omi_pi_proof <> derived_cell600_edge_count def
-R75662:75665 omi_pi_proof <> face:455 var
-def 75680:75705 <> derived_cell600_cell_faces
-R75715:75717 Coq.Init.Datatypes <> nat ind
-binder 75708:75711 <> cell:456
-R75722:75725 Coq.Init.Datatypes <> list ind
-R75727:75729 Coq.Init.Datatypes <> nat ind
-R75736:75759 omi_pi_proof <> cyclic_incidence_indices def
-R75761:75786 omi_pi_proof <> derived_cell600_face_count def
-R75790:75793 omi_pi_proof <> cell:456 var
-def 75808:75837 <> derived_cell120_edge_endpoints
-R75847:75849 Coq.Init.Datatypes <> nat ind
-binder 75840:75843 <> edge:457
-R75854:75857 Coq.Init.Datatypes <> list ind
-R75859:75861 Coq.Init.Datatypes <> nat ind
-R75868:75891 omi_pi_proof <> cyclic_incidence_indices def
-R75893:75920 omi_pi_proof <> derived_cell120_vertex_count def
-R75924:75927 omi_pi_proof <> edge:457 var
-def 75942:75967 <> derived_cell120_face_edges
-R75977:75979 Coq.Init.Datatypes <> nat ind
-binder 75970:75973 <> face:458
-R75984:75987 Coq.Init.Datatypes <> list ind
-R75989:75991 Coq.Init.Datatypes <> nat ind
-R75998:76021 omi_pi_proof <> cyclic_incidence_indices def
-R76023:76048 omi_pi_proof <> derived_cell120_edge_count def
-R76052:76055 omi_pi_proof <> face:458 var
-def 76070:76095 <> derived_cell120_cell_faces
-R76105:76107 Coq.Init.Datatypes <> nat ind
-binder 76098:76101 <> cell:459
-R76112:76115 Coq.Init.Datatypes <> list ind
-R76117:76119 Coq.Init.Datatypes <> nat ind
-R76126:76149 omi_pi_proof <> cyclic_incidence_indices def
-R76151:76176 omi_pi_proof <> derived_cell120_face_count def
-R76180:76183 omi_pi_proof <> cell:459 var
-def 76198:76228 <> derived_cell600_adjacency_audit
-R76232:76235 Coq.Init.Datatypes <> bool ind
-R76460:76465 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R76351:76356 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R76242:76262 omi_pi_proof <> adjacency_schedule_ok def
-R76264:76284 omi_pi_proof <> derived_cell600_edges def
-R76292:76319 omi_pi_proof <> derived_cell600_vertex_count def
-R76321:76350 omi_pi_proof <> derived_cell600_edge_endpoints def
-R76357:76377 omi_pi_proof <> adjacency_schedule_ok def
-R76379:76399 omi_pi_proof <> derived_cell600_faces def
-R76407:76432 omi_pi_proof <> derived_cell600_edge_count def
-R76434:76459 omi_pi_proof <> derived_cell600_face_edges def
-R76466:76486 omi_pi_proof <> adjacency_schedule_ok def
-R76488:76508 omi_pi_proof <> derived_cell600_cells def
-R76516:76541 omi_pi_proof <> derived_cell600_face_count def
-R76543:76568 omi_pi_proof <> derived_cell600_cell_faces def
-def 76583:76613 <> derived_cell120_adjacency_audit
-R76617:76620 Coq.Init.Datatypes <> bool ind
-R76845:76850 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R76736:76741 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
-R76627:76647 omi_pi_proof <> adjacency_schedule_ok def
-R76649:76669 omi_pi_proof <> derived_cell120_edges def
-R76677:76704 omi_pi_proof <> derived_cell120_vertex_count def
-R76706:76735 omi_pi_proof <> derived_cell120_edge_endpoints def
-R76742:76762 omi_pi_proof <> adjacency_schedule_ok def
-R76764:76784 omi_pi_proof <> derived_cell120_faces def
-R76792:76817 omi_pi_proof <> derived_cell120_edge_count def
-R76819:76844 omi_pi_proof <> derived_cell120_face_edges def
-R76851:76871 omi_pi_proof <> adjacency_schedule_ok def
-R76873:76893 omi_pi_proof <> derived_cell120_cells def
-R76901:76926 omi_pi_proof <> derived_cell120_face_count def
-R76928:76953 omi_pi_proof <> derived_cell120_cell_faces def
-prf 76965:77001 <> derived_cell600_adjacency_audit_holds
-R77038:77040 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77007:77037 omi_pi_proof <> derived_cell600_adjacency_audit def
-R77041:77044 Coq.Init.Datatypes <> true constr
-prf 77093:77129 <> derived_cell120_adjacency_audit_holds
-R77166:77168 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77135:77165 omi_pi_proof <> derived_cell120_adjacency_audit def
-R77169:77172 Coq.Init.Datatypes <> true constr
-def 77224:77251 <> OMI_Derived_Adjacency_Audits
-R77303:77308 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R77296:77298 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77265:77295 omi_pi_proof <> derived_cell600_adjacency_audit def
-R77299:77302 Coq.Init.Datatypes <> true constr
-R77347:77352 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R77340:77342 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77309:77339 omi_pi_proof <> derived_cell120_adjacency_audit def
-R77343:77346 Coq.Init.Datatypes <> true constr
-R77399:77404 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R77391:77393 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77353:77358 omi_pi_proof <> countN def
-R77360:77390 omi_pi_proof <> derived_cell600_geometric_edges def
-R77450:77455 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R77443:77445 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77405:77442 omi_pi_proof <> derived_cell600_geometric_degree_audit def
-R77446:77449 Coq.Init.Datatypes <> true constr
-R77501:77503 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R77456:77500 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit def
-R77504:77507 Coq.Init.Datatypes <> true constr
-prf 77519:77551 <> omi_derived_adjacency_audits_hold
-R77557:77584 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
-R77613:77649 omi_pi_proof <> derived_cell600_adjacency_audit_holds thm
-R77613:77649 omi_pi_proof <> derived_cell600_adjacency_audit_holds thm
-R77675:77711 omi_pi_proof <> derived_cell120_adjacency_audit_holds thm
-R77675:77711 omi_pi_proof <> derived_cell120_adjacency_audit_holds thm
-R77741:77776 omi_pi_proof <> derived_cell600_geometric_edge_count thm
-R77741:77776 omi_pi_proof <> derived_cell600_geometric_edge_count thm
-R77811:77854 omi_pi_proof <> derived_cell600_geometric_degree_audit_holds thm
-R77811:77854 omi_pi_proof <> derived_cell600_geometric_degree_audit_holds thm
-R77874:77924 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit_holds thm
-R77874:77924 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit_holds thm
-def 77944:77976 <> derived_cell600_incidence_balance
-R78117:78122 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R78064:78070 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78018:78020 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R77990:78017 omi_pi_proof <> derived_cell600_vertex_count def
-R78021:78026 omi_pi_proof <> countN def
-R78028:78063 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
-R78097:78099 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78071:78096 omi_pi_proof <> derived_cell600_edge_count def
-R78100:78105 omi_pi_proof <> countN def
-R78107:78116 omi_pi_proof <> bit_values def
-R78249:78254 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R78181:78187 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78149:78151 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78123:78148 omi_pi_proof <> derived_cell600_edge_count def
-R78152:78157 omi_pi_proof <> countN def
-R78159:78180 omi_pi_proof <> derived_cell5_vertices def
-R78214:78216 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78188:78213 omi_pi_proof <> derived_cell600_face_count def
-R78217:78222 omi_pi_proof <> countN def
-R78224:78248 omi_pi_proof <> derived_triangle_vertices def
-R78301:78307 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78281:78283 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78255:78280 omi_pi_proof <> derived_cell600_face_count def
-R78284:78289 omi_pi_proof <> countN def
-R78291:78300 omi_pi_proof <> bit_values def
-R78334:78336 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78308:78333 omi_pi_proof <> derived_cell600_cell_count def
-R78337:78362 omi_pi_proof <> derived_tetra_vertex_count def
-prf 78374:78412 <> derived_cell600_incidence_balance_holds
-R78418:78450 omi_pi_proof <> derived_cell600_incidence_balance def
-def 78516:78548 <> derived_cell120_incidence_balance
-R78672:78677 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R78619:78625 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78590:78592 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78562:78589 omi_pi_proof <> derived_cell120_vertex_count def
-R78593:78618 omi_pi_proof <> derived_tetra_vertex_count def
-R78652:78654 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78626:78651 omi_pi_proof <> derived_cell120_edge_count def
-R78655:78660 omi_pi_proof <> countN def
-R78662:78671 omi_pi_proof <> bit_values def
-R78804:78809 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R78739:78745 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78704:78706 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78678:78703 omi_pi_proof <> derived_cell120_edge_count def
-R78707:78712 omi_pi_proof <> countN def
-R78714:78738 omi_pi_proof <> derived_triangle_vertices def
-R78772:78774 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78746:78771 omi_pi_proof <> derived_cell120_face_count def
-R78775:78780 omi_pi_proof <> countN def
-R78782:78803 omi_pi_proof <> derived_cell5_vertices def
-R78856:78862 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R78836:78838 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78810:78835 omi_pi_proof <> derived_cell120_face_count def
-R78839:78844 omi_pi_proof <> countN def
-R78846:78855 omi_pi_proof <> bit_values def
-R78889:78891 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R78863:78888 omi_pi_proof <> derived_cell120_cell_count def
-R78892:78897 omi_pi_proof <> countN def
-R78899:78934 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
-prf 78946:78984 <> derived_cell120_incidence_balance_holds
-R78990:79022 omi_pi_proof <> derived_cell120_incidence_balance def
-def 79088:79114 <> derived_cell120_dual_counts
-R79185:79190 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R79156:79158 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R79128:79155 omi_pi_proof <> derived_cell120_vertex_count def
-R79159:79184 omi_pi_proof <> derived_cell600_cell_count def
-R79246:79251 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R79217:79219 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R79191:79216 omi_pi_proof <> derived_cell120_edge_count def
-R79220:79245 omi_pi_proof <> derived_cell600_face_count def
-R79307:79312 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R79278:79280 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R79252:79277 omi_pi_proof <> derived_cell120_face_count def
-R79281:79306 omi_pi_proof <> derived_cell600_edge_count def
-R79339:79341 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R79313:79338 omi_pi_proof <> derived_cell120_cell_count def
-R79342:79369 omi_pi_proof <> derived_cell600_vertex_count def
-prf 79381:79413 <> derived_cell120_dual_counts_holds
-R79419:79445 omi_pi_proof <> derived_cell120_dual_counts def
-def 79499:79523 <> derived_fano_family_count
-R79527:79527 Coq.Numbers.BinNums <> N ind
-R79534:79539 omi_pi_proof <> countN def
-R79541:79551 omi_pi_proof <> fano_points def
-def 79566:79595 <> derived_fano_permutation_count
-R79599:79599 Coq.Numbers.BinNums <> N ind
-R79606:79613 Coq.NArith.BinNat N of_nat def
-R79616:79619 Coq.Arith.Factorial <> fact def
-R79622:79625 Coq.Init.Peano <> pred abbrev
-R79628:79633 Coq.Init.Datatypes <> length def
-R79635:79645 omi_pi_proof <> fano_points def
-def 79663:79687 <> derived_fano_global_count
-R79691:79691 Coq.Numbers.BinNums <> N ind
-R79723:79725 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R79698:79722 omi_pi_proof <> derived_fano_family_count def
-R79726:79755 omi_pi_proof <> derived_fano_permutation_count def
-prf 79767:79797 <> derived_fano_global_forces_5040
-R79828:79830 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R79803:79827 omi_pi_proof <> derived_fano_global_count def
-def 79888:79914 <> OMI_Derived_Carriers_Unique
-R79988:79993 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R79928:79932 Coq.Lists.List <> NoDup ind
-R79935:79937 Coq.Lists.List <> map def
-R79965:79986 omi_pi_proof <> derived_tetra_vertices def
-R79939:79963 omi_pi_proof <> derived_tetra_vertex_code def
-R80054:80059 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R79994:79998 Coq.Lists.List <> NoDup ind
-R80001:80003 Coq.Lists.List <> map def
-R80031:80052 omi_pi_proof <> derived_cell5_vertices def
-R80005:80029 omi_pi_proof <> derived_cell5_vertex_code def
-R80115:80120 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80060:80064 Coq.Lists.List <> NoDup ind
-R80067:80069 Coq.Lists.List <> map def
-R80095:80113 omi_pi_proof <> derived_cell5_edges def
-R80071:80093 omi_pi_proof <> derived_cell5_edge_code def
-R80176:80181 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80121:80125 Coq.Lists.List <> NoDup ind
-R80128:80130 Coq.Lists.List <> map def
-R80156:80174 omi_pi_proof <> derived_cell5_faces def
-R80132:80154 omi_pi_proof <> derived_cell5_face_code def
-R80237:80242 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80182:80186 Coq.Lists.List <> NoDup ind
-R80189:80191 Coq.Lists.List <> map def
-R80217:80235 omi_pi_proof <> derived_cell5_cells def
-R80193:80215 omi_pi_proof <> derived_cell5_cell_code def
-R80292:80297 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80243:80247 Coq.Lists.List <> NoDup ind
-R80250:80252 Coq.Lists.List <> map def
-R80265:80290 omi_pi_proof <> derived_tesseract_vertices def
-R80254:80263 omi_pi_proof <> bool4_code def
-R80345:80350 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80298:80302 Coq.Lists.List <> NoDup ind
-R80305:80307 Coq.Lists.List <> map def
-R80324:80343 omi_pi_proof <> derived_signed_axes4 def
-R80309:80322 omi_pi_proof <> axis_bool_code def
-R80405:80410 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80351:80355 Coq.Lists.List <> NoDup ind
-R80358:80360 Coq.Lists.List <> map def
-R80381:80403 omi_pi_proof <> derived_cell24_vertices def
-R80362:80379 omi_pi_proof <> cell24_vertex_code def
-R80462:80467 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80411:80415 Coq.Lists.List <> NoDup ind
-R80418:80420 Coq.Lists.List <> map def
-R80437:80460 omi_pi_proof <> derived_cell600_vertices def
-R80422:80435 omi_pi_proof <> h4_vertex_code def
-R80495:80500 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80468:80472 Coq.Lists.List <> NoDup ind
-R80474:80494 omi_pi_proof <> derived_cell600_edges def
-R80528:80533 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80501:80505 Coq.Lists.List <> NoDup ind
-R80507:80527 omi_pi_proof <> derived_cell600_faces def
-R80561:80566 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80534:80538 Coq.Lists.List <> NoDup ind
-R80540:80560 omi_pi_proof <> derived_cell600_cells def
-R80628:80633 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80567:80571 Coq.Lists.List <> NoDup ind
-R80574:80576 Coq.Lists.List <> map def
-R80596:80626 omi_pi_proof <> derived_cell600_geometric_edges def
-R80578:80594 omi_pi_proof <> h4_edge_pair_code def
-R80664:80669 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80634:80638 Coq.Lists.List <> NoDup ind
-R80640:80663 omi_pi_proof <> derived_cell120_vertices def
-R80697:80702 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80670:80674 Coq.Lists.List <> NoDup ind
-R80676:80696 omi_pi_proof <> derived_cell120_edges def
-R80730:80735 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R80703:80707 Coq.Lists.List <> NoDup ind
-R80709:80729 omi_pi_proof <> derived_cell120_faces def
-R80736:80740 Coq.Lists.List <> NoDup ind
-R80742:80762 omi_pi_proof <> derived_cell120_cells def
-prf 80774:80806 <> omi_derived_carriers_unique_holds
-R80812:80838 omi_pi_proof <> OMI_Derived_Carriers_Unique def
-R80857:80883 omi_pi_proof <> OMI_Derived_Carriers_Unique def
-R80897:80925 omi_pi_proof <> derived_cell5_carriers_unique thm
-R81007:81042 omi_pi_proof <> derived_cell600_rank_carriers_unique thm
-R81100:81135 omi_pi_proof <> derived_cell120_rank_carriers_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81654:81691 omi_pi_proof <> derived_cell600_geometric_edges_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81228:81256 omi_pi_proof <> derived_tetra_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81388:81420 omi_pi_proof <> derived_tesseract_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81437:81466 omi_pi_proof <> derived_cell16_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81483:81512 omi_pi_proof <> derived_cell24_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81529:81559 omi_pi_proof <> derived_cell600_vertices_unique thm
-R81654:81691 omi_pi_proof <> derived_cell600_geometric_edges_unique thm
-R81654:81691 omi_pi_proof <> derived_cell600_geometric_edges_unique thm
-def 81818:81847 <> OMI_Derived_Incidence_Balances
-R81894:81899 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R81861:81893 omi_pi_proof <> derived_cell600_incidence_balance def
-R81933:81938 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R81900:81932 omi_pi_proof <> derived_cell120_incidence_balance def
-R81966:81971 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R81939:81965 omi_pi_proof <> derived_cell120_dual_counts def
-R82061:82066 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82012:82018 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R81972:81977 omi_pi_proof <> countN def
-R81979:82011 omi_pi_proof <> derived_cell600_vertex_edge_slots def
-R82019:82024 omi_pi_proof <> countN def
-R82026:82060 omi_pi_proof <> derived_cell600_edge_endpoint_slots def
-R82150:82155 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82105:82111 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82067:82072 omi_pi_proof <> countN def
-R82074:82104 omi_pi_proof <> derived_cell600_edge_face_slots def
-R82112:82117 omi_pi_proof <> countN def
-R82119:82149 omi_pi_proof <> derived_cell600_face_edge_slots def
-R82239:82244 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82194:82200 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82156:82161 omi_pi_proof <> countN def
-R82163:82193 omi_pi_proof <> derived_cell600_face_cell_slots def
-R82201:82206 omi_pi_proof <> countN def
-R82208:82238 omi_pi_proof <> derived_cell600_cell_face_slots def
-R82291:82296 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82283:82285 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82245:82250 omi_pi_proof <> countN def
-R82252:82282 omi_pi_proof <> derived_cell600_geometric_edges def
-R82386:82391 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82337:82343 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82297:82302 omi_pi_proof <> countN def
-R82304:82336 omi_pi_proof <> derived_cell120_vertex_edge_slots def
-R82344:82349 omi_pi_proof <> countN def
-R82351:82385 omi_pi_proof <> derived_cell120_edge_endpoint_slots def
-R82475:82480 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R82430:82436 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82392:82397 omi_pi_proof <> countN def
-R82399:82429 omi_pi_proof <> derived_cell120_edge_face_slots def
-R82437:82442 omi_pi_proof <> countN def
-R82444:82474 omi_pi_proof <> derived_cell120_face_edge_slots def
-R82519:82525 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R82481:82486 omi_pi_proof <> countN def
-R82488:82518 omi_pi_proof <> derived_cell120_face_cell_slots def
-R82526:82531 omi_pi_proof <> countN def
-R82533:82563 omi_pi_proof <> derived_cell120_cell_face_slots def
-prf 82575:82609 <> omi_derived_incidence_balances_hold
-R82615:82644 omi_pi_proof <> OMI_Derived_Incidence_Balances def
-R82663:82692 omi_pi_proof <> OMI_Derived_Incidence_Balances def
-R82714:82752 omi_pi_proof <> derived_cell600_incidence_balance_holds thm
-R82714:82752 omi_pi_proof <> derived_cell600_incidence_balance_holds thm
-R82778:82816 omi_pi_proof <> derived_cell120_incidence_balance_holds thm
-R82778:82816 omi_pi_proof <> derived_cell120_incidence_balance_holds thm
-R82846:82878 omi_pi_proof <> derived_cell120_dual_counts_holds thm
-R82846:82878 omi_pi_proof <> derived_cell120_dual_counts_holds thm
-R82898:82943 omi_pi_proof <> derived_cell600_explicit_incidence_slot_counts thm
-R83001:83046 omi_pi_proof <> derived_cell120_explicit_incidence_slot_counts thm
-R83276:83311 omi_pi_proof <> derived_cell600_geometric_edge_count thm
-R83276:83311 omi_pi_proof <> derived_cell600_geometric_edge_count thm
-def 83516:83542 <> OMI_No_Stored_Constant_Core
-R83588:83593 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83582:83584 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83556:83581 omi_pi_proof <> derived_tetra_vertex_count def
-R83629:83634 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83623:83625 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83594:83599 omi_pi_proof <> countN def
-R83601:83622 omi_pi_proof <> derived_cell5_vertices def
-R83668:83673 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83661:83663 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83635:83640 omi_pi_proof <> countN def
-R83642:83660 omi_pi_proof <> derived_cell5_edges def
-R83707:83712 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83700:83702 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83674:83679 omi_pi_proof <> countN def
-R83681:83699 omi_pi_proof <> derived_cell5_faces def
-R83745:83750 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83739:83741 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83713:83718 omi_pi_proof <> countN def
-R83720:83738 omi_pi_proof <> derived_cell5_cells def
-R83788:83793 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83781:83783 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83751:83780 omi_pi_proof <> derived_tesseract_vertex_count def
-R83827:83832 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83821:83823 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83794:83820 omi_pi_proof <> derived_cell16_vertex_count def
-R83867:83872 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83860:83862 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83833:83859 omi_pi_proof <> derived_cell24_vertex_count def
-R83909:83914 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83901:83903 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83873:83900 omi_pi_proof <> derived_cell600_vertex_count def
-R83949:83954 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83941:83943 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83915:83940 omi_pi_proof <> derived_cell600_edge_count def
-R83990:83995 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R83981:83983 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83955:83980 omi_pi_proof <> derived_cell600_face_count def
-R84030:84035 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84022:84024 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R83996:84021 omi_pi_proof <> derived_cell600_cell_count def
+R73734:73736 Coq.Init.Datatypes <> nat ind
+R73743:73755 omi_pi_proof <> index_carrier def
+R73757:73782 omi_pi_proof <> derived_cell600_face_count def
+def 73797:73817 <> derived_cell600_cells
+R73821:73824 Coq.Init.Datatypes <> list ind
+R73826:73828 Coq.Init.Datatypes <> nat ind
+R73835:73847 omi_pi_proof <> index_carrier def
+R73849:73874 omi_pi_proof <> derived_cell600_cell_count def
+def 73889:73912 <> derived_cell120_vertices
+R73916:73919 Coq.Init.Datatypes <> list ind
+R73921:73923 Coq.Init.Datatypes <> nat ind
+R73930:73942 omi_pi_proof <> index_carrier def
+R73944:73971 omi_pi_proof <> derived_cell120_vertex_count def
+def 73986:74006 <> derived_cell120_edges
+R74010:74013 Coq.Init.Datatypes <> list ind
+R74015:74017 Coq.Init.Datatypes <> nat ind
+R74024:74036 omi_pi_proof <> index_carrier def
+R74038:74063 omi_pi_proof <> derived_cell120_edge_count def
+def 74078:74098 <> derived_cell120_faces
+R74102:74105 Coq.Init.Datatypes <> list ind
+R74107:74109 Coq.Init.Datatypes <> nat ind
+R74116:74128 omi_pi_proof <> index_carrier def
+R74130:74155 omi_pi_proof <> derived_cell120_face_count def
+def 74170:74190 <> derived_cell120_cells
+R74194:74197 Coq.Init.Datatypes <> list ind
+R74199:74201 Coq.Init.Datatypes <> nat ind
+R74208:74220 omi_pi_proof <> index_carrier def
+R74222:74247 omi_pi_proof <> derived_cell120_cell_count def
+prf 74259:74293 <> derived_cell600_rank_carrier_counts
+R74335:74340 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74327:74329 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74299:74304 omi_pi_proof <> countN def
+R74306:74326 omi_pi_proof <> derived_cell600_edges def
+R74378:74383 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74369:74371 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74341:74346 omi_pi_proof <> countN def
+R74348:74368 omi_pi_proof <> derived_cell600_faces def
+R74412:74414 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74384:74389 omi_pi_proof <> countN def
+R74391:74411 omi_pi_proof <> derived_cell600_cells def
+prf 74482:74516 <> derived_cell120_rank_carrier_counts
+R74561:74566 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74553:74555 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74522:74527 omi_pi_proof <> countN def
+R74529:74552 omi_pi_proof <> derived_cell120_vertices def
+R74604:74609 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74595:74597 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74567:74572 omi_pi_proof <> countN def
+R74574:74594 omi_pi_proof <> derived_cell120_edges def
+R74646:74651 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74638:74640 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74610:74615 omi_pi_proof <> countN def
+R74617:74637 omi_pi_proof <> derived_cell120_faces def
+R74680:74682 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R74652:74657 omi_pi_proof <> countN def
+R74659:74679 omi_pi_proof <> derived_cell120_cells def
+prf 74750:74785 <> derived_cell600_rank_carriers_unique
+R74818:74823 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74791:74795 Coq.Lists.List <> NoDup ind
+R74797:74817 omi_pi_proof <> derived_cell600_edges def
+R74851:74856 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74824:74828 Coq.Lists.List <> NoDup ind
+R74830:74850 omi_pi_proof <> derived_cell600_faces def
+R74857:74861 Coq.Lists.List <> NoDup ind
+R74863:74883 omi_pi_proof <> derived_cell600_cells def
+R74915:74934 omi_pi_proof <> index_carrier_unique thm
+R74915:74934 omi_pi_proof <> index_carrier_unique thm
+R74915:74934 omi_pi_proof <> index_carrier_unique thm
+R74915:74934 omi_pi_proof <> index_carrier_unique thm
+prf 74951:74986 <> derived_cell120_rank_carriers_unique
+R75022:75027 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R74992:74996 Coq.Lists.List <> NoDup ind
+R74998:75021 omi_pi_proof <> derived_cell120_vertices def
+R75055:75060 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R75028:75032 Coq.Lists.List <> NoDup ind
+R75034:75054 omi_pi_proof <> derived_cell120_edges def
+R75088:75093 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R75061:75065 Coq.Lists.List <> NoDup ind
+R75067:75087 omi_pi_proof <> derived_cell120_faces def
+R75094:75098 Coq.Lists.List <> NoDup ind
+R75100:75120 omi_pi_proof <> derived_cell120_cells def
+R75152:75171 omi_pi_proof <> index_carrier_unique thm
+R75152:75171 omi_pi_proof <> index_carrier_unique thm
+R75152:75171 omi_pi_proof <> index_carrier_unique thm
+R75152:75171 omi_pi_proof <> index_carrier_unique thm
+R75152:75171 omi_pi_proof <> index_carrier_unique thm
+def 75191:75223 <> derived_cell600_vertex_edge_slots
+R75229:75232 Coq.Init.Datatypes <> list ind
+R75247:75249 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75235:75246 omi_pi_proof <> H4VertexSlot ind
+R75250:75268 omi_pi_proof <> IcoVertexFigureSlot ind
+R75276:75287 omi_pi_proof <> product_list def
+R75314:75349 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
+R75289:75312 omi_pi_proof <> derived_cell600_vertices def
+def 75364:75398 <> derived_cell600_edge_endpoint_slots
+R75402:75405 Coq.Init.Datatypes <> list ind
+R75411:75413 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75408:75410 Coq.Init.Datatypes <> nat ind
+R75414:75417 Coq.Init.Datatypes <> bool ind
+R75425:75436 omi_pi_proof <> product_list def
+R75460:75469 omi_pi_proof <> bit_values def
+R75438:75458 omi_pi_proof <> derived_cell600_edges def
+def 75484:75514 <> derived_cell600_edge_face_slots
+R75520:75523 Coq.Init.Datatypes <> list ind
+R75529:75531 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75526:75528 Coq.Init.Datatypes <> nat ind
+R75532:75549 omi_pi_proof <> DerivedCell5Vertex ind
+R75557:75568 omi_pi_proof <> product_list def
+R75592:75613 omi_pi_proof <> derived_cell5_vertices def
+R75570:75590 omi_pi_proof <> derived_cell600_edges def
+def 75628:75658 <> derived_cell600_face_edge_slots
+R75662:75665 Coq.Init.Datatypes <> list ind
+R75671:75673 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75668:75670 Coq.Init.Datatypes <> nat ind
+R75674:75685 omi_pi_proof <> TriangleSlot ind
+R75693:75704 omi_pi_proof <> product_list def
+R75728:75752 omi_pi_proof <> derived_triangle_vertices def
+R75706:75726 omi_pi_proof <> derived_cell600_faces def
+def 75767:75797 <> derived_cell600_face_cell_slots
+R75801:75804 Coq.Init.Datatypes <> list ind
+R75810:75812 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75807:75809 Coq.Init.Datatypes <> nat ind
+R75813:75816 Coq.Init.Datatypes <> bool ind
+R75824:75835 omi_pi_proof <> product_list def
+R75859:75868 omi_pi_proof <> bit_values def
+R75837:75857 omi_pi_proof <> derived_cell600_faces def
+def 75883:75913 <> derived_cell600_cell_face_slots
+R75919:75922 Coq.Init.Datatypes <> list ind
+R75928:75930 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R75925:75927 Coq.Init.Datatypes <> nat ind
+R75931:75948 omi_pi_proof <> DerivedTetraVertex ind
+R75956:75967 omi_pi_proof <> product_list def
+R75991:76012 omi_pi_proof <> derived_tetra_vertices def
+R75969:75989 omi_pi_proof <> derived_cell600_cells def
+prf 76024:76069 <> derived_cell600_explicit_incidence_slot_counts
+R76164:76169 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R76115:76121 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R76075:76080 omi_pi_proof <> countN def
+R76082:76114 omi_pi_proof <> derived_cell600_vertex_edge_slots def
+R76122:76127 omi_pi_proof <> countN def
+R76129:76163 omi_pi_proof <> derived_cell600_edge_endpoint_slots def
+R76253:76258 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R76208:76214 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R76170:76175 omi_pi_proof <> countN def
+R76177:76207 omi_pi_proof <> derived_cell600_edge_face_slots def
+R76215:76220 omi_pi_proof <> countN def
+R76222:76252 omi_pi_proof <> derived_cell600_face_edge_slots def
+R76297:76303 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R76259:76264 omi_pi_proof <> countN def
+R76266:76296 omi_pi_proof <> derived_cell600_face_cell_slots def
+R76304:76309 omi_pi_proof <> countN def
+R76311:76341 omi_pi_proof <> derived_cell600_cell_face_slots def
+def 76407:76439 <> derived_cell120_vertex_edge_slots
+R76445:76448 Coq.Init.Datatypes <> list ind
+R76454:76456 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R76451:76453 Coq.Init.Datatypes <> nat ind
+R76457:76474 omi_pi_proof <> DerivedTetraVertex ind
+R76482:76493 omi_pi_proof <> product_list def
+R76520:76541 omi_pi_proof <> derived_tetra_vertices def
+R76495:76518 omi_pi_proof <> derived_cell120_vertices def
+def 76556:76590 <> derived_cell120_edge_endpoint_slots
+R76594:76597 Coq.Init.Datatypes <> list ind
+R76603:76605 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R76600:76602 Coq.Init.Datatypes <> nat ind
+R76606:76609 Coq.Init.Datatypes <> bool ind
+R76617:76628 omi_pi_proof <> product_list def
+R76652:76661 omi_pi_proof <> bit_values def
+R76630:76650 omi_pi_proof <> derived_cell120_edges def
+def 76676:76706 <> derived_cell120_edge_face_slots
+R76710:76713 Coq.Init.Datatypes <> list ind
+R76719:76721 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R76716:76718 Coq.Init.Datatypes <> nat ind
+R76722:76733 omi_pi_proof <> TriangleSlot ind
+R76741:76752 omi_pi_proof <> product_list def
+R76776:76800 omi_pi_proof <> derived_triangle_vertices def
+R76754:76774 omi_pi_proof <> derived_cell120_edges def
+def 76815:76845 <> derived_cell120_face_edge_slots
+R76851:76854 Coq.Init.Datatypes <> list ind
+R76860:76862 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R76857:76859 Coq.Init.Datatypes <> nat ind
+R76863:76880 omi_pi_proof <> DerivedCell5Vertex ind
+R76888:76899 omi_pi_proof <> product_list def
+R76923:76944 omi_pi_proof <> derived_cell5_vertices def
+R76901:76921 omi_pi_proof <> derived_cell120_faces def
+def 76959:76989 <> derived_cell120_face_cell_slots
+R76993:76996 Coq.Init.Datatypes <> list ind
+R77002:77004 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R76999:77001 Coq.Init.Datatypes <> nat ind
+R77005:77008 Coq.Init.Datatypes <> bool ind
+R77016:77027 omi_pi_proof <> product_list def
+R77051:77060 omi_pi_proof <> bit_values def
+R77029:77049 omi_pi_proof <> derived_cell120_faces def
+def 77075:77105 <> derived_cell120_cell_face_slots
+R77111:77114 Coq.Init.Datatypes <> list ind
+R77120:77122 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R77117:77119 Coq.Init.Datatypes <> nat ind
+R77123:77141 omi_pi_proof <> IcoVertexFigureSlot ind
+R77149:77160 omi_pi_proof <> product_list def
+R77184:77219 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
+R77162:77182 omi_pi_proof <> derived_cell120_cells def
+prf 77231:77276 <> derived_cell120_explicit_incidence_slot_counts
+R77371:77376 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R77322:77328 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R77282:77287 omi_pi_proof <> countN def
+R77289:77321 omi_pi_proof <> derived_cell120_vertex_edge_slots def
+R77329:77334 omi_pi_proof <> countN def
+R77336:77370 omi_pi_proof <> derived_cell120_edge_endpoint_slots def
+R77460:77465 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R77415:77421 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R77377:77382 omi_pi_proof <> countN def
+R77384:77414 omi_pi_proof <> derived_cell120_edge_face_slots def
+R77422:77427 omi_pi_proof <> countN def
+R77429:77459 omi_pi_proof <> derived_cell120_face_edge_slots def
+R77504:77510 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R77466:77471 omi_pi_proof <> countN def
+R77473:77503 omi_pi_proof <> derived_cell120_face_cell_slots def
+R77511:77516 omi_pi_proof <> countN def
+R77518:77548 omi_pi_proof <> derived_cell120_cell_face_slots def
+def 77614:77623 <> nat_unique
+R77631:77634 Coq.Init.Datatypes <> list ind
+R77636:77638 Coq.Init.Datatypes <> nat ind
+binder 77626:77627 <> xs:467
+R77643:77646 Coq.Init.Datatypes <> bool ind
+R77653:77661 omi_pi_proof <> unique_by def
+R77671:77672 omi_pi_proof <> xs:467 var
+R77663:77669 Coq.Arith.PeanoNat Nat eqb def
+def 77687:77702 <> nat_list_bounded
+R77713:77713 Coq.Numbers.BinNums <> N ind
+binder 77705:77709 <> bound:468
+R77722:77725 Coq.Init.Datatypes <> list ind
+R77727:77729 Coq.Init.Datatypes <> nat ind
+binder 77717:77718 <> xs:469
+R77734:77737 Coq.Init.Datatypes <> bool ind
+R77744:77750 Coq.Lists.List <> forallb def
+R77790:77791 omi_pi_proof <> xs:469 var
+binder 77757:77757 <> x:470
+R77762:77768 Coq.Arith.PeanoNat Nat ltb def
+R77770:77770 omi_pi_proof <> x:470 var
+R77773:77780 Coq.NArith.BinNat N to_nat def
+R77782:77786 omi_pi_proof <> bound:468 var
+def 77806:77826 <> adjacency_schedule_ok
+R77843:77846 Coq.Init.Datatypes <> list ind
+R77848:77850 Coq.Init.Datatypes <> nat ind
+binder 77833:77839 <> carrier:471
+R77862:77864 Coq.Init.Datatypes <> nat ind
+binder 77854:77858 <> arity:472
+R77883:77883 Coq.Numbers.BinNums <> N ind
+binder 77868:77879 <> target_bound:473
+R77905:77908 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R77902:77904 Coq.Init.Datatypes <> nat ind
+R77909:77912 Coq.Init.Datatypes <> list ind
+R77914:77916 Coq.Init.Datatypes <> nat ind
+binder 77891:77898 <> schedule:474
+R77921:77924 Coq.Init.Datatypes <> bool ind
+R77931:77937 Coq.Lists.List <> forallb def
+R78085:78091 omi_pi_proof <> carrier:471 var
+binder 77948:77948 <> i:475
+R78027:78036 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R77994:78003 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R77959:77965 Coq.Arith.PeanoNat Nat eqb def
+R77968:77973 Coq.Init.Datatypes <> length def
+R77976:77983 omi_pi_proof <> schedule:474 var
+R77985:77985 omi_pi_proof <> i:475 var
+R77989:77993 omi_pi_proof <> arity:472 var
+R78004:78013 omi_pi_proof <> nat_unique def
+R78016:78023 omi_pi_proof <> schedule:474 var
+R78025:78025 omi_pi_proof <> i:475 var
+R78037:78052 omi_pi_proof <> nat_list_bounded def
+R78054:78065 omi_pi_proof <> target_bound:473 var
+R78068:78075 omi_pi_proof <> schedule:474 var
+R78077:78077 omi_pi_proof <> i:475 var
+def 78106:78129 <> cyclic_incidence_indices
+R78140:78140 Coq.Numbers.BinNums <> N ind
+binder 78132:78136 <> bound:476
+R78152:78154 Coq.Init.Datatypes <> nat ind
+binder 78144:78148 <> arity:477
+R78165:78167 Coq.Init.Datatypes <> nat ind
+binder 78158:78161 <> seed:478
+R78172:78175 Coq.Init.Datatypes <> list ind
+R78177:78179 Coq.Init.Datatypes <> nat ind
+R78186:78188 Coq.Lists.List <> map def
+R78257:78259 Coq.Lists.List <> seq def
+R78263:78267 omi_pi_proof <> arity:477 var
+binder 78195:78200 <> offset:479
+R78205:78214 Coq.Arith.PeanoNat Nat modulo def
+R78217:78223 Coq.Arith.PeanoNat Nat add def
+R78225:78228 omi_pi_proof <> seed:478 var
+R78230:78235 omi_pi_proof <> offset:479 var
+R78239:78246 Coq.NArith.BinNat N to_nat def
+R78248:78252 omi_pi_proof <> bound:476 var
+def 78283:78312 <> derived_cell600_edge_endpoints
+R78322:78324 Coq.Init.Datatypes <> nat ind
+binder 78315:78318 <> edge:480
+R78329:78332 Coq.Init.Datatypes <> list ind
+R78334:78336 Coq.Init.Datatypes <> nat ind
+R78343:78366 omi_pi_proof <> cyclic_incidence_indices def
+R78368:78395 omi_pi_proof <> derived_cell600_vertex_count def
+R78399:78402 omi_pi_proof <> edge:480 var
+def 78417:78442 <> derived_cell600_face_edges
+R78452:78454 Coq.Init.Datatypes <> nat ind
+binder 78445:78448 <> face:481
+R78459:78462 Coq.Init.Datatypes <> list ind
+R78464:78466 Coq.Init.Datatypes <> nat ind
+R78473:78496 omi_pi_proof <> cyclic_incidence_indices def
+R78498:78523 omi_pi_proof <> derived_cell600_edge_count def
+R78527:78530 omi_pi_proof <> face:481 var
+def 78545:78570 <> derived_cell600_cell_faces
+R78580:78582 Coq.Init.Datatypes <> nat ind
+binder 78573:78576 <> cell:482
+R78587:78590 Coq.Init.Datatypes <> list ind
+R78592:78594 Coq.Init.Datatypes <> nat ind
+R78601:78624 omi_pi_proof <> cyclic_incidence_indices def
+R78626:78651 omi_pi_proof <> derived_cell600_face_count def
+R78655:78658 omi_pi_proof <> cell:482 var
+def 78673:78702 <> derived_cell120_edge_endpoints
+R78712:78714 Coq.Init.Datatypes <> nat ind
+binder 78705:78708 <> edge:483
+R78719:78722 Coq.Init.Datatypes <> list ind
+R78724:78726 Coq.Init.Datatypes <> nat ind
+R78733:78756 omi_pi_proof <> cyclic_incidence_indices def
+R78758:78785 omi_pi_proof <> derived_cell120_vertex_count def
+R78789:78792 omi_pi_proof <> edge:483 var
+def 78807:78832 <> derived_cell120_face_edges
+R78842:78844 Coq.Init.Datatypes <> nat ind
+binder 78835:78838 <> face:484
+R78849:78852 Coq.Init.Datatypes <> list ind
+R78854:78856 Coq.Init.Datatypes <> nat ind
+R78863:78886 omi_pi_proof <> cyclic_incidence_indices def
+R78888:78913 omi_pi_proof <> derived_cell120_edge_count def
+R78917:78920 omi_pi_proof <> face:484 var
+def 78935:78960 <> derived_cell120_cell_faces
+R78970:78972 Coq.Init.Datatypes <> nat ind
+binder 78963:78966 <> cell:485
+R78977:78980 Coq.Init.Datatypes <> list ind
+R78982:78984 Coq.Init.Datatypes <> nat ind
+R78991:79014 omi_pi_proof <> cyclic_incidence_indices def
+R79016:79041 omi_pi_proof <> derived_cell120_face_count def
+R79045:79048 omi_pi_proof <> cell:485 var
+def 79063:79093 <> derived_cell600_adjacency_audit
+R79097:79100 Coq.Init.Datatypes <> bool ind
+R79325:79330 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R79216:79221 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R79107:79127 omi_pi_proof <> adjacency_schedule_ok def
+R79129:79149 omi_pi_proof <> derived_cell600_edges def
+R79157:79184 omi_pi_proof <> derived_cell600_vertex_count def
+R79186:79215 omi_pi_proof <> derived_cell600_edge_endpoints def
+R79222:79242 omi_pi_proof <> adjacency_schedule_ok def
+R79244:79264 omi_pi_proof <> derived_cell600_faces def
+R79272:79297 omi_pi_proof <> derived_cell600_edge_count def
+R79299:79324 omi_pi_proof <> derived_cell600_face_edges def
+R79331:79351 omi_pi_proof <> adjacency_schedule_ok def
+R79353:79373 omi_pi_proof <> derived_cell600_cells def
+R79381:79406 omi_pi_proof <> derived_cell600_face_count def
+R79408:79433 omi_pi_proof <> derived_cell600_cell_faces def
+def 79448:79478 <> derived_cell120_adjacency_audit
+R79482:79485 Coq.Init.Datatypes <> bool ind
+R79710:79715 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R79601:79606 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R79492:79512 omi_pi_proof <> adjacency_schedule_ok def
+R79514:79534 omi_pi_proof <> derived_cell120_edges def
+R79542:79569 omi_pi_proof <> derived_cell120_vertex_count def
+R79571:79600 omi_pi_proof <> derived_cell120_edge_endpoints def
+R79607:79627 omi_pi_proof <> adjacency_schedule_ok def
+R79629:79649 omi_pi_proof <> derived_cell120_faces def
+R79657:79682 omi_pi_proof <> derived_cell120_edge_count def
+R79684:79709 omi_pi_proof <> derived_cell120_face_edges def
+R79716:79736 omi_pi_proof <> adjacency_schedule_ok def
+R79738:79758 omi_pi_proof <> derived_cell120_cells def
+R79766:79791 omi_pi_proof <> derived_cell120_face_count def
+R79793:79818 omi_pi_proof <> derived_cell120_cell_faces def
+prf 79830:79866 <> derived_cell600_adjacency_audit_holds
+R79903:79905 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R79872:79902 omi_pi_proof <> derived_cell600_adjacency_audit def
+R79906:79909 Coq.Init.Datatypes <> true constr
+prf 79958:79994 <> derived_cell120_adjacency_audit_holds
+R80031:80033 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80000:80030 omi_pi_proof <> derived_cell120_adjacency_audit def
+R80034:80037 Coq.Init.Datatypes <> true constr
+def 80089:80116 <> OMI_Derived_Adjacency_Audits
+R80168:80173 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80161:80163 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80130:80160 omi_pi_proof <> derived_cell600_adjacency_audit def
+R80164:80167 Coq.Init.Datatypes <> true constr
+R80212:80217 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80205:80207 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80174:80204 omi_pi_proof <> derived_cell120_adjacency_audit def
+R80208:80211 Coq.Init.Datatypes <> true constr
+R80264:80269 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80256:80258 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80218:80223 omi_pi_proof <> countN def
+R80225:80255 omi_pi_proof <> derived_cell600_geometric_edges def
+R80315:80320 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80308:80310 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80270:80307 omi_pi_proof <> derived_cell600_geometric_degree_audit def
+R80311:80314 Coq.Init.Datatypes <> true constr
+R80373:80378 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80366:80368 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80321:80365 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit def
+R80369:80372 Coq.Init.Datatypes <> true constr
+R80426:80431 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80417:80419 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80379:80384 omi_pi_proof <> countN def
+R80386:80416 omi_pi_proof <> derived_cell600_geometric_faces def
+R80484:80489 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R80477:80479 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80432:80476 omi_pi_proof <> derived_cell600_geometric_face_triangle_audit def
+R80480:80483 Coq.Init.Datatypes <> true constr
+R80531:80533 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R80490:80530 omi_pi_proof <> derived_cell600_geometric_edge_face_audit def
+R80534:80537 Coq.Init.Datatypes <> true constr
+prf 80549:80581 <> omi_derived_adjacency_audits_hold
+R80587:80614 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
+R80643:80679 omi_pi_proof <> derived_cell600_adjacency_audit_holds thm
+R80643:80679 omi_pi_proof <> derived_cell600_adjacency_audit_holds thm
+R80705:80741 omi_pi_proof <> derived_cell120_adjacency_audit_holds thm
+R80705:80741 omi_pi_proof <> derived_cell120_adjacency_audit_holds thm
+R80771:80806 omi_pi_proof <> derived_cell600_geometric_edge_count thm
+R80771:80806 omi_pi_proof <> derived_cell600_geometric_edge_count thm
+R80841:80884 omi_pi_proof <> derived_cell600_geometric_degree_audit_holds thm
+R80841:80884 omi_pi_proof <> derived_cell600_geometric_degree_audit_holds thm
+R80925:80975 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit_holds thm
+R80925:80975 omi_pi_proof <> derived_cell600_geometric_edge_endpoint_audit_holds thm
+R81022:81057 omi_pi_proof <> derived_cell600_geometric_face_count thm
+R81022:81057 omi_pi_proof <> derived_cell600_geometric_face_count thm
+R81111:81161 omi_pi_proof <> derived_cell600_geometric_face_triangle_audit_holds thm
+R81111:81161 omi_pi_proof <> derived_cell600_geometric_face_triangle_audit_holds thm
+R81191:81237 omi_pi_proof <> derived_cell600_geometric_edge_face_audit_holds thm
+R81191:81237 omi_pi_proof <> derived_cell600_geometric_edge_face_audit_holds thm
+def 81257:81289 <> derived_cell600_incidence_balance
+R81430:81435 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R81377:81383 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R81331:81333 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81303:81330 omi_pi_proof <> derived_cell600_vertex_count def
+R81334:81339 omi_pi_proof <> countN def
+R81341:81376 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
+R81410:81412 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81384:81409 omi_pi_proof <> derived_cell600_edge_count def
+R81413:81418 omi_pi_proof <> countN def
+R81420:81429 omi_pi_proof <> bit_values def
+R81562:81567 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R81494:81500 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R81462:81464 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81436:81461 omi_pi_proof <> derived_cell600_edge_count def
+R81465:81470 omi_pi_proof <> countN def
+R81472:81493 omi_pi_proof <> derived_cell5_vertices def
+R81527:81529 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81501:81526 omi_pi_proof <> derived_cell600_face_count def
+R81530:81535 omi_pi_proof <> countN def
+R81537:81561 omi_pi_proof <> derived_triangle_vertices def
+R81614:81620 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R81594:81596 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81568:81593 omi_pi_proof <> derived_cell600_face_count def
+R81597:81602 omi_pi_proof <> countN def
+R81604:81613 omi_pi_proof <> bit_values def
+R81647:81649 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81621:81646 omi_pi_proof <> derived_cell600_cell_count def
+R81650:81675 omi_pi_proof <> derived_tetra_vertex_count def
+prf 81687:81725 <> derived_cell600_incidence_balance_holds
+R81731:81763 omi_pi_proof <> derived_cell600_incidence_balance def
+def 81829:81861 <> derived_cell120_incidence_balance
+R81985:81990 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R81932:81938 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R81903:81905 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81875:81902 omi_pi_proof <> derived_cell120_vertex_count def
+R81906:81931 omi_pi_proof <> derived_tetra_vertex_count def
+R81965:81967 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81939:81964 omi_pi_proof <> derived_cell120_edge_count def
+R81968:81973 omi_pi_proof <> countN def
+R81975:81984 omi_pi_proof <> bit_values def
+R82117:82122 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R82052:82058 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82017:82019 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R81991:82016 omi_pi_proof <> derived_cell120_edge_count def
+R82020:82025 omi_pi_proof <> countN def
+R82027:82051 omi_pi_proof <> derived_triangle_vertices def
+R82085:82087 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R82059:82084 omi_pi_proof <> derived_cell120_face_count def
+R82088:82093 omi_pi_proof <> countN def
+R82095:82116 omi_pi_proof <> derived_cell5_vertices def
+R82169:82175 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82149:82151 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R82123:82148 omi_pi_proof <> derived_cell120_face_count def
+R82152:82157 omi_pi_proof <> countN def
+R82159:82168 omi_pi_proof <> bit_values def
+R82202:82204 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R82176:82201 omi_pi_proof <> derived_cell120_cell_count def
+R82205:82210 omi_pi_proof <> countN def
+R82212:82247 omi_pi_proof <> derived_icosa_vertex_figure_vertices def
+prf 82259:82297 <> derived_cell120_incidence_balance_holds
+R82303:82335 omi_pi_proof <> derived_cell120_incidence_balance def
+def 82401:82427 <> derived_cell120_dual_counts
+R82498:82503 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R82469:82471 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82441:82468 omi_pi_proof <> derived_cell120_vertex_count def
+R82472:82497 omi_pi_proof <> derived_cell600_cell_count def
+R82559:82564 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R82530:82532 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82504:82529 omi_pi_proof <> derived_cell120_edge_count def
+R82533:82558 omi_pi_proof <> derived_cell600_face_count def
+R82620:82625 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R82591:82593 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82565:82590 omi_pi_proof <> derived_cell120_face_count def
+R82594:82619 omi_pi_proof <> derived_cell600_edge_count def
+R82652:82654 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R82626:82651 omi_pi_proof <> derived_cell120_cell_count def
+R82655:82682 omi_pi_proof <> derived_cell600_vertex_count def
+prf 82694:82726 <> derived_cell120_dual_counts_holds
+R82732:82758 omi_pi_proof <> derived_cell120_dual_counts def
+def 82812:82836 <> derived_fano_family_count
+R82840:82840 Coq.Numbers.BinNums <> N ind
+R82847:82852 omi_pi_proof <> countN def
+R82854:82864 omi_pi_proof <> fano_points def
+def 82879:82908 <> derived_fano_permutation_count
+R82912:82912 Coq.Numbers.BinNums <> N ind
+R82919:82926 Coq.NArith.BinNat N of_nat def
+R82929:82932 Coq.Arith.Factorial <> fact def
+R82935:82938 Coq.Init.Peano <> pred abbrev
+R82941:82946 Coq.Init.Datatypes <> length def
+R82948:82958 omi_pi_proof <> fano_points def
+def 82976:83000 <> derived_fano_global_count
+R83004:83004 Coq.Numbers.BinNums <> N ind
+R83036:83038 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R83011:83035 omi_pi_proof <> derived_fano_family_count def
+R83039:83068 omi_pi_proof <> derived_fano_permutation_count def
+prf 83080:83110 <> derived_fano_global_forces_5040
+R83141:83143 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R83116:83140 omi_pi_proof <> derived_fano_global_count def
+def 83201:83227 <> OMI_Derived_Carriers_Unique
+R83301:83306 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83241:83245 Coq.Lists.List <> NoDup ind
+R83248:83250 Coq.Lists.List <> map def
+R83278:83299 omi_pi_proof <> derived_tetra_vertices def
+R83252:83276 omi_pi_proof <> derived_tetra_vertex_code def
+R83367:83372 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83307:83311 Coq.Lists.List <> NoDup ind
+R83314:83316 Coq.Lists.List <> map def
+R83344:83365 omi_pi_proof <> derived_cell5_vertices def
+R83318:83342 omi_pi_proof <> derived_cell5_vertex_code def
+R83428:83433 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83373:83377 Coq.Lists.List <> NoDup ind
+R83380:83382 Coq.Lists.List <> map def
+R83408:83426 omi_pi_proof <> derived_cell5_edges def
+R83384:83406 omi_pi_proof <> derived_cell5_edge_code def
+R83489:83494 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83434:83438 Coq.Lists.List <> NoDup ind
+R83441:83443 Coq.Lists.List <> map def
+R83469:83487 omi_pi_proof <> derived_cell5_faces def
+R83445:83467 omi_pi_proof <> derived_cell5_face_code def
+R83550:83555 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83495:83499 Coq.Lists.List <> NoDup ind
+R83502:83504 Coq.Lists.List <> map def
+R83530:83548 omi_pi_proof <> derived_cell5_cells def
+R83506:83528 omi_pi_proof <> derived_cell5_cell_code def
+R83605:83610 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83556:83560 Coq.Lists.List <> NoDup ind
+R83563:83565 Coq.Lists.List <> map def
+R83578:83603 omi_pi_proof <> derived_tesseract_vertices def
+R83567:83576 omi_pi_proof <> bool4_code def
+R83658:83663 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83611:83615 Coq.Lists.List <> NoDup ind
+R83618:83620 Coq.Lists.List <> map def
+R83637:83656 omi_pi_proof <> derived_signed_axes4 def
+R83622:83635 omi_pi_proof <> axis_bool_code def
+R83718:83723 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83664:83668 Coq.Lists.List <> NoDup ind
+R83671:83673 Coq.Lists.List <> map def
+R83694:83716 omi_pi_proof <> derived_cell24_vertices def
+R83675:83692 omi_pi_proof <> cell24_vertex_code def
+R83775:83780 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83724:83728 Coq.Lists.List <> NoDup ind
+R83731:83733 Coq.Lists.List <> map def
+R83750:83773 omi_pi_proof <> derived_cell600_vertices def
+R83735:83748 omi_pi_proof <> h4_vertex_code def
+R83808:83813 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83781:83785 Coq.Lists.List <> NoDup ind
+R83787:83807 omi_pi_proof <> derived_cell600_edges def
+R83841:83846 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83814:83818 Coq.Lists.List <> NoDup ind
+R83820:83840 omi_pi_proof <> derived_cell600_faces def
+R83874:83879 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83847:83851 Coq.Lists.List <> NoDup ind
+R83853:83873 omi_pi_proof <> derived_cell600_cells def
+R83941:83946 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83880:83884 Coq.Lists.List <> NoDup ind
+R83887:83889 Coq.Lists.List <> map def
+R83909:83939 omi_pi_proof <> derived_cell600_geometric_edges def
+R83891:83907 omi_pi_proof <> h4_edge_pair_code def
+R84003:84008 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R83947:83951 Coq.Lists.List <> NoDup ind
+R83954:83956 Coq.Lists.List <> map def
+R83971:84001 omi_pi_proof <> derived_cell600_geometric_faces def
+R83958:83969 omi_pi_proof <> h4_face_code def
+R84039:84044 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R84009:84013 Coq.Lists.List <> NoDup ind
+R84015:84038 omi_pi_proof <> derived_cell120_vertices def
 R84072:84077 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84064:84066 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84036:84063 omi_pi_proof <> derived_cell120_vertex_count def
-R84113:84118 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84104:84106 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84078:84103 omi_pi_proof <> derived_cell120_edge_count def
-R84153:84158 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84145:84147 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84119:84144 omi_pi_proof <> derived_cell120_face_count def
-R84193:84198 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84185:84187 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84159:84184 omi_pi_proof <> derived_cell120_cell_count def
-R84235:84240 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84227:84229 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84199:84204 omi_pi_proof <> countN def
-R84206:84226 omi_pi_proof <> derived_cell600_edges def
-R84278:84283 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84269:84271 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84241:84246 omi_pi_proof <> countN def
-R84248:84268 omi_pi_proof <> derived_cell600_faces def
-R84320:84325 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84312:84314 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84284:84289 omi_pi_proof <> countN def
-R84291:84311 omi_pi_proof <> derived_cell600_cells def
-R84365:84370 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84357:84359 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84326:84331 omi_pi_proof <> countN def
-R84333:84356 omi_pi_proof <> derived_cell120_vertices def
-R84408:84413 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84399:84401 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84371:84376 omi_pi_proof <> countN def
-R84378:84398 omi_pi_proof <> derived_cell120_edges def
-R84450:84455 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84442:84444 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84414:84419 omi_pi_proof <> countN def
-R84421:84441 omi_pi_proof <> derived_cell120_faces def
-R84492:84497 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84484:84486 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84456:84461 omi_pi_proof <> countN def
-R84463:84483 omi_pi_proof <> derived_cell120_cells def
-R84523:84525 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84498:84522 omi_pi_proof <> derived_fano_global_count def
-prf 84543:84575 <> omi_no_stored_constant_core_holds
-R84579:84605 omi_pi_proof <> OMI_No_Stored_Constant_Core def
-R84624:84650 omi_pi_proof <> OMI_No_Stored_Constant_Core def
-def 84941:84958 <> OMI_Master_Theorem
-R84972:84972 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85015:85021 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84973:84979 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-R84987:84988 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-R84986:84986 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
-binder 84980:84982 <> phi:460
-R85004:85007 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R84994:84996 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R84992:84992 Coq.Reals.Rfunctions <> ::R_scope:x_'^'_x not
-R84989:84991 omi_pi_proof <> phi:460 var
-R85000:85002 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
-R84997:84999 omi_pi_proof <> phi:460 var
-R85011:85013 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
-R85008:85010 omi_pi_proof <> phi:460 var
-R85022:85022 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85311:85317 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85116:85122 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85023:85027 Coq.Reals.Rseries <> Un_cv def
-R85111:85113 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
-R85105:85110 omi_pi_proof <> OMI_PI def
-R85038:85040 Coq.Init.Datatypes <> nat ind
-binder 85034:85034 <> n:461
-R85045:85052 Coq.Reals.Rfunctions <> sum_f_R0 def
-R85054:85090 omi_pi_proof <> omi_pi_term_from_diagonal_accumulator def
-R85092:85092 omi_pi_proof <> n:461 var
-R85306:85308 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85124:85127 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
-R85305:85305 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
-R85128:85136 Coq.Init.Specif <> proj1_sig def
-R85149:85153 Coq.Init.Specif <> exist constr
-R85282:85303 omi_pi_proof <> diagonal_acc_series_cv thm
-R85276:85278 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
-R85270:85275 Coq.Reals.AltSeries <> Alt_PI def
-R85164:85164 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
-binder 85160:85160 <> l:462
-R85169:85173 Coq.Reals.Rseries <> Un_cv def
-R85254:85254 omi_pi_proof <> l:462 var
-R85184:85186 Coq.Init.Datatypes <> nat ind
-binder 85180:85180 <> n:463
-R85204:85211 Coq.Reals.Rfunctions <> sum_f_R0 def
-R85213:85249 omi_pi_proof <> omi_pi_term_from_diagonal_accumulator def
-R85251:85251 omi_pi_proof <> n:463 var
-R85309:85310 Coq.Reals.Rtrigo1 <> PI def
-R85318:85318 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85385:85391 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85332:85332 Coq.Numbers.BinNums <> N ind
-binder 85326:85326 <> x:464
-binder 85328:85328 <> y:465
-R85342:85344 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85335:85337 omi_pi_proof <> bqf def
-R85339:85339 omi_pi_proof <> x:464 var
-R85341:85341 omi_pi_proof <> y:465 var
-R85347:85350 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85381:85381 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85373:85375 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
-R85361:85363 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
-R85357:85359 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85353:85355 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85356:85356 omi_pi_proof <> x:464 var
-R85360:85360 omi_pi_proof <> x:464 var
-R85369:85371 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85365:85367 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85368:85368 omi_pi_proof <> x:464 var
-R85372:85372 omi_pi_proof <> y:465 var
-R85377:85379 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85376:85376 omi_pi_proof <> y:465 var
-R85380:85380 omi_pi_proof <> y:465 var
-R85408:85413 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85392:85407 omi_pi_proof <> valid_fano_plane def
-R85460:85465 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85436:85438 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85432:85434 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85415:85425 omi_pi_proof <> c5_vertices proj
-R85427:85431 omi_pi_proof <> cell5 def
-R85453:85455 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85439:85446 omi_pi_proof <> c5_edges proj
-R85448:85452 omi_pi_proof <> cell5 def
-R85516:85521 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85490:85492 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85486:85488 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85467:85478 omi_pi_proof <> c24_vertices proj
-R85480:85485 omi_pi_proof <> cell24 def
-R85509:85511 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85493:85501 omi_pi_proof <> c24_edges proj
-R85503:85508 omi_pi_proof <> cell24 def
-R85577:85582 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85549:85551 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85544:85546 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85523:85535 omi_pi_proof <> c600_vertices proj
-R85537:85543 omi_pi_proof <> cell600 def
-R85570:85572 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85552:85561 omi_pi_proof <> c600_edges proj
-R85563:85569 omi_pi_proof <> cell600 def
-R85637:85642 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85609:85611 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85605:85607 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85584:85596 omi_pi_proof <> c120_vertices proj
-R85598:85604 omi_pi_proof <> cell120 def
-R85630:85632 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85612:85621 omi_pi_proof <> c120_edges proj
-R85623:85629 omi_pi_proof <> cell120 def
-R85689:85694 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85665:85667 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85644:85656 omi_pi_proof <> c600_vertices proj
-R85658:85664 omi_pi_proof <> cell600 def
-R85668:85677 omi_pi_proof <> c120_cells proj
-R85679:85685 omi_pi_proof <> cell120 def
-R85741:85746 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85717:85719 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85713:85715 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85696:85706 omi_pi_proof <> c8_vertices proj
-R85708:85712 omi_pi_proof <> cell8 def
-R85734:85736 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85720:85727 omi_pi_proof <> c8_edges proj
-R85729:85733 omi_pi_proof <> cell8 def
-R85797:85802 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85771:85773 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85767:85769 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85748:85759 omi_pi_proof <> c16_vertices proj
-R85761:85766 omi_pi_proof <> cell16 def
-R85790:85792 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85774:85782 omi_pi_proof <> c16_edges proj
-R85784:85789 omi_pi_proof <> cell16 def
-R85830:85835 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85822:85824 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85803:85821 omi_pi_proof <> local240_resolution def
-R85888:85893 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85857:85859 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85836:85856 omi_pi_proof <> global5040_resolution def
-R85862:85864 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R85865:85884 omi_pi_proof <> global720_resolution def
-R85910:85915 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85900:85902 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85894:85897 Coq.Arith.Factorial <> fact def
-R85916:85916 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86038:86044 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85954:85960 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85948:85950 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85917:85927 omi_pi_proof <> tt_vertices proj
-R85929:85947 omi_pi_proof <> triakis_tetrahedron def
-R85996:86002 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R85989:85991 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R85961:85968 omi_pi_proof <> tt_edges proj
-R85970:85988 omi_pi_proof <> triakis_tetrahedron def
-R86031:86033 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R86003:86010 omi_pi_proof <> tt_faces proj
-R86012:86030 omi_pi_proof <> triakis_tetrahedron def
-R86091:86096 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86045:86066 omi_pi_proof <> finite_incidence_exact proj
-R86068:86090 omi_pi_proof <> omi_projection_boundary def
-R86142:86147 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86097:86117 omi_pi_proof <> no_stored_pi_constant proj
-R86119:86141 omi_pi_proof <> omi_projection_boundary def
-R86188:86193 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86148:86163 omi_pi_proof <> no_hash_identity proj
-R86165:86187 omi_pi_proof <> omi_projection_boundary def
-R86217:86222 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86194:86216 omi_pi_proof <> relation_encoding_audit def
-R86250:86255 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86223:86249 omi_pi_proof <> OMI_No_Stored_Constant_Core def
-R86283:86288 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86256:86282 omi_pi_proof <> OMI_Derived_Carriers_Unique def
-R86319:86324 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R86289:86318 omi_pi_proof <> OMI_Derived_Incidence_Balances def
-R86325:86352 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
-prf 86364:86387 <> omi_master_theorem_holds
-R86391:86408 omi_pi_proof <> OMI_Master_Theorem def
-R86427:86444 omi_pi_proof <> OMI_Master_Theorem def
-R86467:86473 omi_pi_proof <> OMI_PHI def
-R86490:86516 omi_pi_proof <> OMI_PHI_satisfies_quadratic thm
-R86526:86537 omi_pi_proof <> OMI_PHI_gt_1 thm
-R86467:86473 omi_pi_proof <> OMI_PHI def
-R86490:86516 omi_pi_proof <> OMI_PHI_satisfies_quadratic thm
-R86526:86537 omi_pi_proof <> OMI_PHI_gt_1 thm
-R86579:86633 omi_pi_proof <> omi_pi_diagonal_accumulator_projection_series_converges thm
-R86579:86633 omi_pi_proof <> omi_pi_diagonal_accumulator_projection_series_converges thm
-R86650:86691 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
-R86650:86691 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
-R86719:86731 omi_pi_proof <> bqf_decompose thm
-R86719:86731 omi_pi_proof <> bqf_decompose thm
-R86759:86774 omi_pi_proof <> fano_plane_valid thm
-R86759:86774 omi_pi_proof <> fano_plane_valid thm
-R86803:86807 Coq.Init.Logic <> proj1 thm
-R86809:86831 omi_pi_proof <> cell5_incidence_balance thm
-R86803:86807 Coq.Init.Logic <> proj1 thm
-R86809:86831 omi_pi_proof <> cell5_incidence_balance thm
-R86861:86865 Coq.Init.Logic <> proj1 thm
-R86867:86890 omi_pi_proof <> cell24_incidence_balance thm
-R86861:86865 Coq.Init.Logic <> proj1 thm
-R86867:86890 omi_pi_proof <> cell24_incidence_balance thm
-R86920:86924 Coq.Init.Logic <> proj1 thm
-R86926:86950 omi_pi_proof <> cell600_incidence_balance thm
-R86920:86924 Coq.Init.Logic <> proj1 thm
-R86926:86950 omi_pi_proof <> cell600_incidence_balance thm
-R86980:86984 Coq.Init.Logic <> proj1 thm
-R86986:87010 omi_pi_proof <> cell120_incidence_balance thm
-R86980:86984 Coq.Init.Logic <> proj1 thm
-R86986:87010 omi_pi_proof <> cell120_incidence_balance thm
-R87040:87044 Coq.Init.Logic <> proj1 thm
-R87046:87065 omi_pi_proof <> cell120_dual_cell600 thm
-R87040:87044 Coq.Init.Logic <> proj1 thm
-R87046:87065 omi_pi_proof <> cell120_dual_cell600 thm
-R87095:87099 Coq.Init.Logic <> proj1 thm
-R87101:87123 omi_pi_proof <> cell8_incidence_balance thm
-R87095:87099 Coq.Init.Logic <> proj1 thm
-R87101:87123 omi_pi_proof <> cell8_incidence_balance thm
-R87153:87157 Coq.Init.Logic <> proj1 thm
-R87159:87182 omi_pi_proof <> cell16_incidence_balance thm
-R87153:87157 Coq.Init.Logic <> proj1 thm
-R87159:87182 omi_pi_proof <> cell16_incidence_balance thm
-R87211:87236 omi_pi_proof <> local240_is_two_5factorial thm
-R87211:87236 omi_pi_proof <> local240_is_two_5factorial thm
-R87264:87288 omi_pi_proof <> global5040_is_7_times_720 thm
-R87264:87288 omi_pi_proof <> global5040_is_7_times_720 thm
-R87316:87335 omi_pi_proof <> six_factorial_is_720 thm
-R87316:87335 omi_pi_proof <> six_factorial_is_720 thm
-R87363:87391 omi_pi_proof <> triakis_tetrahedron_incidence thm
-R87363:87391 omi_pi_proof <> triakis_tetrahedron_incidence thm
-R87431:87431 Coq.Init.Logic <> I constr
-R87431:87431 Coq.Init.Logic <> I constr
-R87471:87471 Coq.Init.Logic <> I constr
-R87471:87471 Coq.Init.Logic <> I constr
-R87511:87511 Coq.Init.Logic <> I constr
-R87511:87511 Coq.Init.Logic <> I constr
-R87539:87567 omi_pi_proof <> relation_encoding_audit_holds thm
-R87539:87567 omi_pi_proof <> relation_encoding_audit_holds thm
-R87595:87627 omi_pi_proof <> omi_no_stored_constant_core_holds thm
-R87595:87627 omi_pi_proof <> omi_no_stored_constant_core_holds thm
-R87655:87687 omi_pi_proof <> omi_derived_carriers_unique_holds thm
-R87655:87687 omi_pi_proof <> omi_derived_carriers_unique_holds thm
-R87715:87749 omi_pi_proof <> omi_derived_incidence_balances_hold thm
-R87715:87749 omi_pi_proof <> omi_derived_incidence_balances_hold thm
-R87764:87796 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
-R87764:87796 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
-def 87816:87837 <> OMI_Chat_Provable_Core
-R87869:87874 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R87851:87868 omi_pi_proof <> OMI_Master_Theorem def
-R87894:87899 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R87890:87892 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R87881:87883 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
-R87875:87878 Coq.Reals.R_sqrt <> sqrt def
-R87884:87887 Coq.Reals.R_sqrt <> sqrt def
-R87924:87929 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R87915:87917 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R87911:87913 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
-R87901:87903 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
-R87904:87910 omi_pi_proof <> OMI_PHI def
-R87918:87921 Coq.Reals.R_sqrt <> sqrt def
-R87967:87972 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R87962:87964 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R87930:87961 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR def
-R87965:87966 Coq.Reals.Rtrigo1 <> PI def
-R87987:87992 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R87974:87976 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
-R87983:87985 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
-R87977:87982 omi_pi_proof <> OMI_PI def
-R87977:87982 omi_pi_proof <> OMI_PI def
-R87993:87993 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88140:88146 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88040:88046 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88016:88018 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88012:88014 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R87995:88005 omi_pi_proof <> c5_vertices proj
-R88007:88011 omi_pi_proof <> cell5 def
-R88033:88035 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88019:88026 omi_pi_proof <> c5_edges proj
-R88028:88032 omi_pi_proof <> cell5 def
-R88090:88096 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88066:88068 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88062:88064 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88048:88055 omi_pi_proof <> c5_edges proj
-R88057:88061 omi_pi_proof <> cell5 def
-R88083:88085 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88069:88076 omi_pi_proof <> c5_faces proj
-R88078:88082 omi_pi_proof <> cell5 def
-R88116:88118 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88112:88114 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88098:88105 omi_pi_proof <> c5_faces proj
-R88107:88111 omi_pi_proof <> cell5 def
-R88133:88135 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88119:88126 omi_pi_proof <> c5_cells proj
-R88128:88132 omi_pi_proof <> cell5 def
-R88147:88147 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88306:88312 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88198:88204 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88172:88174 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88168:88170 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88149:88160 omi_pi_proof <> c24_vertices proj
-R88162:88167 omi_pi_proof <> cell24 def
-R88191:88193 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88175:88183 omi_pi_proof <> c24_edges proj
-R88185:88190 omi_pi_proof <> cell24 def
-R88252:88258 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88226:88228 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88222:88224 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88206:88214 omi_pi_proof <> c24_edges proj
-R88216:88221 omi_pi_proof <> cell24 def
-R88245:88247 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88229:88237 omi_pi_proof <> c24_faces proj
-R88239:88244 omi_pi_proof <> cell24 def
-R88280:88282 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88276:88278 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88260:88268 omi_pi_proof <> c24_faces proj
-R88270:88275 omi_pi_proof <> cell24 def
-R88299:88301 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88283:88291 omi_pi_proof <> c24_cells proj
-R88293:88298 omi_pi_proof <> cell24 def
-R88313:88313 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88485:88491 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88369:88375 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88341:88343 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88336:88338 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88315:88327 omi_pi_proof <> c600_vertices proj
-R88329:88335 omi_pi_proof <> cell600 def
-R88362:88364 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88344:88353 omi_pi_proof <> c600_edges proj
-R88355:88361 omi_pi_proof <> cell600 def
-R88427:88433 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88399:88401 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88395:88397 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88377:88386 omi_pi_proof <> c600_edges proj
-R88388:88394 omi_pi_proof <> cell600 def
-R88420:88422 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88402:88411 omi_pi_proof <> c600_faces proj
-R88413:88419 omi_pi_proof <> cell600 def
-R88457:88459 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88453:88455 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88435:88444 omi_pi_proof <> c600_faces proj
-R88446:88452 omi_pi_proof <> cell600 def
-R88478:88480 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88460:88469 omi_pi_proof <> c600_cells proj
-R88471:88477 omi_pi_proof <> cell600 def
-R88492:88492 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88664:88670 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88547:88553 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88519:88521 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88515:88517 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88494:88506 omi_pi_proof <> c120_vertices proj
-R88508:88514 omi_pi_proof <> cell120 def
-R88540:88542 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88522:88531 omi_pi_proof <> c120_edges proj
-R88533:88539 omi_pi_proof <> cell120 def
-R88605:88611 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88577:88579 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88573:88575 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88555:88564 omi_pi_proof <> c120_edges proj
-R88566:88572 omi_pi_proof <> cell120 def
-R88598:88600 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88580:88589 omi_pi_proof <> c120_faces proj
-R88591:88597 omi_pi_proof <> cell120 def
-R88635:88637 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88631:88633 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88613:88622 omi_pi_proof <> c120_faces proj
-R88624:88630 omi_pi_proof <> cell120 def
-R88656:88658 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88638:88647 omi_pi_proof <> c120_cells proj
-R88649:88655 omi_pi_proof <> cell120 def
-R88671:88671 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88771:88777 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88718:88724 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88694:88696 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88673:88685 omi_pi_proof <> c600_vertices proj
-R88687:88693 omi_pi_proof <> cell600 def
-R88697:88706 omi_pi_proof <> c120_cells proj
-R88708:88714 omi_pi_proof <> cell120 def
-R88747:88749 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88726:88738 omi_pi_proof <> c120_vertices proj
-R88740:88746 omi_pi_proof <> cell120 def
-R88750:88759 omi_pi_proof <> c600_cells proj
-R88761:88767 omi_pi_proof <> cell600 def
-R88778:88778 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88925:88931 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88825:88831 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88801:88803 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88797:88799 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88780:88790 omi_pi_proof <> c8_vertices proj
-R88792:88796 omi_pi_proof <> cell8 def
-R88818:88820 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88804:88811 omi_pi_proof <> c8_edges proj
-R88813:88817 omi_pi_proof <> cell8 def
-R88875:88881 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88851:88853 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88847:88849 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88833:88840 omi_pi_proof <> c8_edges proj
-R88842:88846 omi_pi_proof <> cell8 def
-R88868:88870 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88854:88861 omi_pi_proof <> c8_faces proj
-R88863:88867 omi_pi_proof <> cell8 def
-R88901:88903 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88897:88899 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88883:88890 omi_pi_proof <> c8_faces proj
-R88892:88896 omi_pi_proof <> cell8 def
-R88918:88920 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88904:88911 omi_pi_proof <> c8_cells proj
-R88913:88917 omi_pi_proof <> cell8 def
-R88932:88932 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89091:89097 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88983:88989 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R88957:88959 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R88953:88955 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88934:88945 omi_pi_proof <> c16_vertices proj
-R88947:88952 omi_pi_proof <> cell16 def
-R88976:88978 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88960:88968 omi_pi_proof <> c16_edges proj
-R88970:88975 omi_pi_proof <> cell16 def
-R89037:89043 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89011:89013 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89007:89009 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R88991:88999 omi_pi_proof <> c16_edges proj
-R89001:89006 omi_pi_proof <> cell16 def
-R89030:89032 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R89014:89022 omi_pi_proof <> c16_faces proj
-R89024:89029 omi_pi_proof <> cell16 def
-R89065:89067 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89061:89063 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R89045:89053 omi_pi_proof <> c16_faces proj
-R89055:89060 omi_pi_proof <> cell16 def
-R89084:89086 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
-R89068:89076 omi_pi_proof <> c16_cells proj
-R89078:89083 omi_pi_proof <> cell16 def
-R89098:89098 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89186:89192 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89139:89145 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89117:89119 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89100:89110 omi_pi_proof <> c8_vertices proj
-R89112:89116 omi_pi_proof <> cell8 def
-R89120:89128 omi_pi_proof <> c16_cells proj
-R89130:89135 omi_pi_proof <> cell16 def
-R89166:89168 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89147:89158 omi_pi_proof <> c16_vertices proj
-R89160:89165 omi_pi_proof <> cell16 def
-R89169:89176 omi_pi_proof <> c8_cells proj
-R89178:89182 omi_pi_proof <> cell8 def
-R89193:89193 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89396:89402 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89227:89233 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89220:89222 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89195:89208 omi_pi_proof <> tetra_vertices proj
-R89210:89219 omi_pi_proof <> tetra_unit def
-R89259:89265 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89252:89254 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89235:89245 omi_pi_proof <> c5_vertices proj
-R89247:89251 omi_pi_proof <> cell5 def
-R89294:89300 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89286:89288 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89267:89278 omi_pi_proof <> c24_vertices proj
-R89280:89285 omi_pi_proof <> cell24 def
-R89333:89339 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R89302:89312 omi_pi_proof <> tt_vertices proj
-R89314:89332 omi_pi_proof <> triakis_tetrahedron def
-R89365:89367 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
-R89340:89353 omi_pi_proof <> tetra_vertices proj
-R89355:89364 omi_pi_proof <> tetra_unit def
-R89368:89381 omi_pi_proof <> tetra_vertices proj
-R89383:89392 omi_pi_proof <> tetra_unit def
-R89426:89431 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89403:89425 omi_pi_proof <> relation_encoding_audit def
-R89459:89464 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89432:89458 omi_pi_proof <> OMI_No_Stored_Constant_Core def
-R89492:89497 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89465:89491 omi_pi_proof <> OMI_Derived_Carriers_Unique def
-R89528:89533 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R89498:89527 omi_pi_proof <> OMI_Derived_Incidence_Balances def
-R89534:89561 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
-prf 89573:89600 <> omi_chat_provable_core_holds
-R89604:89625 omi_pi_proof <> OMI_Chat_Provable_Core def
-R89644:89665 omi_pi_proof <> OMI_Chat_Provable_Core def
-R89687:89710 omi_pi_proof <> omi_master_theorem_holds thm
-R89687:89710 omi_pi_proof <> omi_master_theorem_holds thm
-R89736:89752 omi_pi_proof <> OMI_SQRT5_squared thm
-R89736:89752 omi_pi_proof <> OMI_SQRT5_squared thm
-R89782:89799 omi_pi_proof <> OMI_SQRT5_from_phi thm
-R89782:89799 omi_pi_proof <> OMI_SQRT5_from_phi thm
-R89834:89875 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
-R89834:89875 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
-R89916:89928 omi_pi_proof <> omi_pi_bounds thm
-R89916:89928 omi_pi_proof <> omi_pi_bounds thm
-R89975:89997 omi_pi_proof <> cell5_incidence_balance thm
-R89975:89997 omi_pi_proof <> cell5_incidence_balance thm
-R90051:90074 omi_pi_proof <> cell24_incidence_balance thm
-R90051:90074 omi_pi_proof <> cell24_incidence_balance thm
-R90136:90160 omi_pi_proof <> cell600_incidence_balance thm
-R90136:90160 omi_pi_proof <> cell600_incidence_balance thm
-R90230:90254 omi_pi_proof <> cell120_incidence_balance thm
-R90230:90254 omi_pi_proof <> cell120_incidence_balance thm
-R90333:90352 omi_pi_proof <> cell120_dual_cell600 thm
-R90333:90352 omi_pi_proof <> cell120_dual_cell600 thm
-R90441:90463 omi_pi_proof <> cell8_incidence_balance thm
-R90441:90463 omi_pi_proof <> cell8_incidence_balance thm
-R90562:90585 omi_pi_proof <> cell16_incidence_balance thm
-R90562:90585 omi_pi_proof <> cell16_incidence_balance thm
-R90695:90711 omi_pi_proof <> cell8_cell16_dual thm
-R90695:90711 omi_pi_proof <> cell8_cell16_dual thm
-R90833:90858 omi_pi_proof <> triakis_centerline_balance thm
-R90833:90858 omi_pi_proof <> triakis_centerline_balance thm
-R90993:91021 omi_pi_proof <> relation_encoding_audit_holds thm
-R90993:91021 omi_pi_proof <> relation_encoding_audit_holds thm
-R91165:91197 omi_pi_proof <> omi_no_stored_constant_core_holds thm
-R91165:91197 omi_pi_proof <> omi_no_stored_constant_core_holds thm
-R91343:91375 omi_pi_proof <> omi_derived_carriers_unique_holds thm
-R91343:91375 omi_pi_proof <> omi_derived_carriers_unique_holds thm
-R91521:91555 omi_pi_proof <> omi_derived_incidence_balances_hold thm
-R91521:91555 omi_pi_proof <> omi_derived_incidence_balances_hold thm
-R91629:91661 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
-R91629:91661 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
+R84045:84049 Coq.Lists.List <> NoDup ind
+R84051:84071 omi_pi_proof <> derived_cell120_edges def
+R84105:84110 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R84078:84082 Coq.Lists.List <> NoDup ind
+R84084:84104 omi_pi_proof <> derived_cell120_faces def
+R84111:84115 Coq.Lists.List <> NoDup ind
+R84117:84137 omi_pi_proof <> derived_cell120_cells def
+prf 84149:84181 <> omi_derived_carriers_unique_holds
+R84187:84213 omi_pi_proof <> OMI_Derived_Carriers_Unique def
+R84232:84258 omi_pi_proof <> OMI_Derived_Carriers_Unique def
+R84272:84300 omi_pi_proof <> derived_cell5_carriers_unique thm
+R84382:84417 omi_pi_proof <> derived_cell600_rank_carriers_unique thm
+R84475:84510 omi_pi_proof <> derived_cell120_rank_carriers_unique thm
+R84589:84617 omi_pi_proof <> derived_tetra_vertices_unique thm
+R84589:84617 omi_pi_proof <> derived_tetra_vertices_unique thm
+R84774:84806 omi_pi_proof <> derived_tesseract_vertices_unique thm
+R84774:84806 omi_pi_proof <> derived_tesseract_vertices_unique thm
+R84828:84857 omi_pi_proof <> derived_cell16_vertices_unique thm
+R84828:84857 omi_pi_proof <> derived_cell16_vertices_unique thm
+R84879:84908 omi_pi_proof <> derived_cell24_vertices_unique thm
+R84879:84908 omi_pi_proof <> derived_cell24_vertices_unique thm
+R84930:84960 omi_pi_proof <> derived_cell600_vertices_unique thm
+R84930:84960 omi_pi_proof <> derived_cell600_vertices_unique thm
+R85075:85112 omi_pi_proof <> derived_cell600_geometric_edges_unique thm
+R85075:85112 omi_pi_proof <> derived_cell600_geometric_edges_unique thm
+R85134:85171 omi_pi_proof <> derived_cell600_geometric_faces_unique thm
+R85134:85171 omi_pi_proof <> derived_cell600_geometric_faces_unique thm
+def 85307:85336 <> OMI_Derived_Incidence_Balances
+R85383:85388 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85350:85382 omi_pi_proof <> derived_cell600_incidence_balance def
+R85422:85427 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85389:85421 omi_pi_proof <> derived_cell120_incidence_balance def
+R85455:85460 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85428:85454 omi_pi_proof <> derived_cell120_dual_counts def
+R85550:85555 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85501:85507 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85461:85466 omi_pi_proof <> countN def
+R85468:85500 omi_pi_proof <> derived_cell600_vertex_edge_slots def
+R85508:85513 omi_pi_proof <> countN def
+R85515:85549 omi_pi_proof <> derived_cell600_edge_endpoint_slots def
+R85639:85644 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85594:85600 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85556:85561 omi_pi_proof <> countN def
+R85563:85593 omi_pi_proof <> derived_cell600_edge_face_slots def
+R85601:85606 omi_pi_proof <> countN def
+R85608:85638 omi_pi_proof <> derived_cell600_face_edge_slots def
+R85728:85733 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85683:85689 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85645:85650 omi_pi_proof <> countN def
+R85652:85682 omi_pi_proof <> derived_cell600_face_cell_slots def
+R85690:85695 omi_pi_proof <> countN def
+R85697:85727 omi_pi_proof <> derived_cell600_cell_face_slots def
+R85780:85785 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85772:85774 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85734:85739 omi_pi_proof <> countN def
+R85741:85771 omi_pi_proof <> derived_cell600_geometric_edges def
+R85833:85838 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85824:85826 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85786:85791 omi_pi_proof <> countN def
+R85793:85823 omi_pi_proof <> derived_cell600_geometric_faces def
+R85928:85933 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85879:85885 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85839:85844 omi_pi_proof <> countN def
+R85846:85878 omi_pi_proof <> derived_cell120_vertex_edge_slots def
+R85886:85891 omi_pi_proof <> countN def
+R85893:85927 omi_pi_proof <> derived_cell120_edge_endpoint_slots def
+R86017:86022 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R85972:85978 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R85934:85939 omi_pi_proof <> countN def
+R85941:85971 omi_pi_proof <> derived_cell120_edge_face_slots def
+R85979:85984 omi_pi_proof <> countN def
+R85986:86016 omi_pi_proof <> derived_cell120_face_edge_slots def
+R86061:86067 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R86023:86028 omi_pi_proof <> countN def
+R86030:86060 omi_pi_proof <> derived_cell120_face_cell_slots def
+R86068:86073 omi_pi_proof <> countN def
+R86075:86105 omi_pi_proof <> derived_cell120_cell_face_slots def
+prf 86117:86151 <> omi_derived_incidence_balances_hold
+R86157:86186 omi_pi_proof <> OMI_Derived_Incidence_Balances def
+R86205:86234 omi_pi_proof <> OMI_Derived_Incidence_Balances def
+R86256:86294 omi_pi_proof <> derived_cell600_incidence_balance_holds thm
+R86256:86294 omi_pi_proof <> derived_cell600_incidence_balance_holds thm
+R86320:86358 omi_pi_proof <> derived_cell120_incidence_balance_holds thm
+R86320:86358 omi_pi_proof <> derived_cell120_incidence_balance_holds thm
+R86388:86420 omi_pi_proof <> derived_cell120_dual_counts_holds thm
+R86388:86420 omi_pi_proof <> derived_cell120_dual_counts_holds thm
+R86440:86485 omi_pi_proof <> derived_cell600_explicit_incidence_slot_counts thm
+R86543:86588 omi_pi_proof <> derived_cell120_explicit_incidence_slot_counts thm
+R86818:86853 omi_pi_proof <> derived_cell600_geometric_edge_count thm
+R86818:86853 omi_pi_proof <> derived_cell600_geometric_edge_count thm
+R86915:86950 omi_pi_proof <> derived_cell600_geometric_face_count thm
+R86915:86950 omi_pi_proof <> derived_cell600_geometric_face_count thm
+def 87177:87203 <> OMI_No_Stored_Constant_Core
+R87249:87254 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87243:87245 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87217:87242 omi_pi_proof <> derived_tetra_vertex_count def
+R87290:87295 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87284:87286 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87255:87260 omi_pi_proof <> countN def
+R87262:87283 omi_pi_proof <> derived_cell5_vertices def
+R87329:87334 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87322:87324 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87296:87301 omi_pi_proof <> countN def
+R87303:87321 omi_pi_proof <> derived_cell5_edges def
+R87368:87373 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87361:87363 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87335:87340 omi_pi_proof <> countN def
+R87342:87360 omi_pi_proof <> derived_cell5_faces def
+R87406:87411 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87400:87402 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87374:87379 omi_pi_proof <> countN def
+R87381:87399 omi_pi_proof <> derived_cell5_cells def
+R87449:87454 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87442:87444 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87412:87441 omi_pi_proof <> derived_tesseract_vertex_count def
+R87488:87493 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87482:87484 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87455:87481 omi_pi_proof <> derived_cell16_vertex_count def
+R87528:87533 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87521:87523 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87494:87520 omi_pi_proof <> derived_cell24_vertex_count def
+R87570:87575 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87562:87564 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87534:87561 omi_pi_proof <> derived_cell600_vertex_count def
+R87610:87615 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87602:87604 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87576:87601 omi_pi_proof <> derived_cell600_edge_count def
+R87651:87656 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87642:87644 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87616:87641 omi_pi_proof <> derived_cell600_face_count def
+R87691:87696 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87683:87685 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87657:87682 omi_pi_proof <> derived_cell600_cell_count def
+R87743:87748 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87735:87737 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87697:87702 omi_pi_proof <> countN def
+R87704:87734 omi_pi_proof <> derived_cell600_geometric_edges def
+R87796:87801 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87787:87789 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87749:87754 omi_pi_proof <> countN def
+R87756:87786 omi_pi_proof <> derived_cell600_geometric_faces def
+R87838:87843 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87830:87832 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87802:87829 omi_pi_proof <> derived_cell120_vertex_count def
+R87879:87884 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87870:87872 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87844:87869 omi_pi_proof <> derived_cell120_edge_count def
+R87919:87924 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87911:87913 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87885:87910 omi_pi_proof <> derived_cell120_face_count def
+R87959:87964 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87951:87953 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87925:87950 omi_pi_proof <> derived_cell120_cell_count def
+R88001:88006 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R87993:87995 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R87965:87970 omi_pi_proof <> countN def
+R87972:87992 omi_pi_proof <> derived_cell600_edges def
+R88044:88049 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88035:88037 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88007:88012 omi_pi_proof <> countN def
+R88014:88034 omi_pi_proof <> derived_cell600_faces def
+R88086:88091 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88078:88080 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88050:88055 omi_pi_proof <> countN def
+R88057:88077 omi_pi_proof <> derived_cell600_cells def
+R88131:88136 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88123:88125 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88092:88097 omi_pi_proof <> countN def
+R88099:88122 omi_pi_proof <> derived_cell120_vertices def
+R88174:88179 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88165:88167 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88137:88142 omi_pi_proof <> countN def
+R88144:88164 omi_pi_proof <> derived_cell120_edges def
+R88216:88221 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88208:88210 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88180:88185 omi_pi_proof <> countN def
+R88187:88207 omi_pi_proof <> derived_cell120_faces def
+R88258:88263 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88250:88252 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88222:88227 omi_pi_proof <> countN def
+R88229:88249 omi_pi_proof <> derived_cell120_cells def
+R88289:88291 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88264:88288 omi_pi_proof <> derived_fano_global_count def
+prf 88309:88341 <> omi_no_stored_constant_core_holds
+R88345:88371 omi_pi_proof <> OMI_No_Stored_Constant_Core def
+R88390:88416 omi_pi_proof <> OMI_No_Stored_Constant_Core def
+def 88707:88724 <> OMI_Master_Theorem
+R88738:88738 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88781:88787 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88739:88745 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R88753:88754 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R88752:88752 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 88746:88748 <> phi:486
+R88770:88773 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88760:88762 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88758:88758 Coq.Reals.Rfunctions <> ::R_scope:x_'^'_x not
+R88755:88757 omi_pi_proof <> phi:486 var
+R88766:88768 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R88763:88765 omi_pi_proof <> phi:486 var
+R88777:88779 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R88774:88776 omi_pi_proof <> phi:486 var
+R88788:88788 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89077:89083 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88882:88888 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R88789:88793 Coq.Reals.Rseries <> Un_cv def
+R88877:88879 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R88871:88876 omi_pi_proof <> OMI_PI def
+R88804:88806 Coq.Init.Datatypes <> nat ind
+binder 88800:88800 <> n:487
+R88811:88818 Coq.Reals.Rfunctions <> sum_f_R0 def
+R88820:88856 omi_pi_proof <> omi_pi_term_from_diagonal_accumulator def
+R88858:88858 omi_pi_proof <> n:487 var
+R89072:89074 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R88890:88893 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R89071:89071 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R88894:88902 Coq.Init.Specif <> proj1_sig def
+R88915:88919 Coq.Init.Specif <> exist constr
+R89048:89069 omi_pi_proof <> diagonal_acc_series_cv thm
+R89042:89044 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R89036:89041 Coq.Reals.AltSeries <> Alt_PI def
+R88930:88930 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 88926:88926 <> l:488
+R88935:88939 Coq.Reals.Rseries <> Un_cv def
+R89020:89020 omi_pi_proof <> l:488 var
+R88950:88952 Coq.Init.Datatypes <> nat ind
+binder 88946:88946 <> n:489
+R88970:88977 Coq.Reals.Rfunctions <> sum_f_R0 def
+R88979:89015 omi_pi_proof <> omi_pi_term_from_diagonal_accumulator def
+R89017:89017 omi_pi_proof <> n:489 var
+R89075:89076 Coq.Reals.Rtrigo1 <> PI def
+R89084:89084 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89151:89157 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89098:89098 Coq.Numbers.BinNums <> N ind
+binder 89092:89092 <> x:490
+binder 89094:89094 <> y:491
+R89108:89110 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89101:89103 omi_pi_proof <> bqf def
+R89105:89105 omi_pi_proof <> x:490 var
+R89107:89107 omi_pi_proof <> y:491 var
+R89113:89116 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89147:89147 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89139:89141 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R89127:89129 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R89123:89125 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89119:89121 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89122:89122 omi_pi_proof <> x:490 var
+R89126:89126 omi_pi_proof <> x:490 var
+R89135:89137 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89131:89133 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89134:89134 omi_pi_proof <> x:490 var
+R89138:89138 omi_pi_proof <> y:491 var
+R89143:89145 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89142:89142 omi_pi_proof <> y:491 var
+R89146:89146 omi_pi_proof <> y:491 var
+R89174:89179 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89158:89173 omi_pi_proof <> valid_fano_plane def
+R89226:89231 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89202:89204 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89198:89200 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89181:89191 omi_pi_proof <> c5_vertices proj
+R89193:89197 omi_pi_proof <> cell5 def
+R89219:89221 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89205:89212 omi_pi_proof <> c5_edges proj
+R89214:89218 omi_pi_proof <> cell5 def
+R89282:89287 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89256:89258 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89252:89254 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89233:89244 omi_pi_proof <> c24_vertices proj
+R89246:89251 omi_pi_proof <> cell24 def
+R89275:89277 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89259:89267 omi_pi_proof <> c24_edges proj
+R89269:89274 omi_pi_proof <> cell24 def
+R89343:89348 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89315:89317 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89310:89312 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89289:89301 omi_pi_proof <> c600_vertices proj
+R89303:89309 omi_pi_proof <> cell600 def
+R89336:89338 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89318:89327 omi_pi_proof <> c600_edges proj
+R89329:89335 omi_pi_proof <> cell600 def
+R89403:89408 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89375:89377 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89371:89373 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89350:89362 omi_pi_proof <> c120_vertices proj
+R89364:89370 omi_pi_proof <> cell120 def
+R89396:89398 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89378:89387 omi_pi_proof <> c120_edges proj
+R89389:89395 omi_pi_proof <> cell120 def
+R89455:89460 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89431:89433 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89410:89422 omi_pi_proof <> c600_vertices proj
+R89424:89430 omi_pi_proof <> cell600 def
+R89434:89443 omi_pi_proof <> c120_cells proj
+R89445:89451 omi_pi_proof <> cell120 def
+R89507:89512 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89483:89485 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89479:89481 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89462:89472 omi_pi_proof <> c8_vertices proj
+R89474:89478 omi_pi_proof <> cell8 def
+R89500:89502 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89486:89493 omi_pi_proof <> c8_edges proj
+R89495:89499 omi_pi_proof <> cell8 def
+R89563:89568 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89537:89539 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89533:89535 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89514:89525 omi_pi_proof <> c16_vertices proj
+R89527:89532 omi_pi_proof <> cell16 def
+R89556:89558 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89540:89548 omi_pi_proof <> c16_edges proj
+R89550:89555 omi_pi_proof <> cell16 def
+R89596:89601 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89588:89590 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89569:89587 omi_pi_proof <> local240_resolution def
+R89654:89659 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89623:89625 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89602:89622 omi_pi_proof <> global5040_resolution def
+R89628:89630 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R89631:89650 omi_pi_proof <> global720_resolution def
+R89676:89681 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89666:89668 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89660:89663 Coq.Arith.Factorial <> fact def
+R89682:89682 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89804:89810 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89720:89726 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89714:89716 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89683:89693 omi_pi_proof <> tt_vertices proj
+R89695:89713 omi_pi_proof <> triakis_tetrahedron def
+R89762:89768 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89755:89757 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89727:89734 omi_pi_proof <> tt_edges proj
+R89736:89754 omi_pi_proof <> triakis_tetrahedron def
+R89797:89799 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R89769:89776 omi_pi_proof <> tt_faces proj
+R89778:89796 omi_pi_proof <> triakis_tetrahedron def
+R89857:89862 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89811:89832 omi_pi_proof <> finite_incidence_exact proj
+R89834:89856 omi_pi_proof <> omi_projection_boundary def
+R89908:89913 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89863:89883 omi_pi_proof <> no_stored_pi_constant proj
+R89885:89907 omi_pi_proof <> omi_projection_boundary def
+R89954:89959 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89914:89929 omi_pi_proof <> no_hash_identity proj
+R89931:89953 omi_pi_proof <> omi_projection_boundary def
+R89983:89988 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89960:89982 omi_pi_proof <> relation_encoding_audit def
+R90016:90021 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R89989:90015 omi_pi_proof <> OMI_No_Stored_Constant_Core def
+R90049:90054 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R90022:90048 omi_pi_proof <> OMI_Derived_Carriers_Unique def
+R90085:90090 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R90055:90084 omi_pi_proof <> OMI_Derived_Incidence_Balances def
+R90091:90118 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
+prf 90130:90153 <> omi_master_theorem_holds
+R90157:90174 omi_pi_proof <> OMI_Master_Theorem def
+R90193:90210 omi_pi_proof <> OMI_Master_Theorem def
+R90233:90239 omi_pi_proof <> OMI_PHI def
+R90256:90282 omi_pi_proof <> OMI_PHI_satisfies_quadratic thm
+R90292:90303 omi_pi_proof <> OMI_PHI_gt_1 thm
+R90233:90239 omi_pi_proof <> OMI_PHI def
+R90256:90282 omi_pi_proof <> OMI_PHI_satisfies_quadratic thm
+R90292:90303 omi_pi_proof <> OMI_PHI_gt_1 thm
+R90345:90399 omi_pi_proof <> omi_pi_diagonal_accumulator_projection_series_converges thm
+R90345:90399 omi_pi_proof <> omi_pi_diagonal_accumulator_projection_series_converges thm
+R90416:90457 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
+R90416:90457 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
+R90485:90497 omi_pi_proof <> bqf_decompose thm
+R90485:90497 omi_pi_proof <> bqf_decompose thm
+R90525:90540 omi_pi_proof <> fano_plane_valid thm
+R90525:90540 omi_pi_proof <> fano_plane_valid thm
+R90569:90573 Coq.Init.Logic <> proj1 thm
+R90575:90597 omi_pi_proof <> cell5_incidence_balance thm
+R90569:90573 Coq.Init.Logic <> proj1 thm
+R90575:90597 omi_pi_proof <> cell5_incidence_balance thm
+R90627:90631 Coq.Init.Logic <> proj1 thm
+R90633:90656 omi_pi_proof <> cell24_incidence_balance thm
+R90627:90631 Coq.Init.Logic <> proj1 thm
+R90633:90656 omi_pi_proof <> cell24_incidence_balance thm
+R90686:90690 Coq.Init.Logic <> proj1 thm
+R90692:90716 omi_pi_proof <> cell600_incidence_balance thm
+R90686:90690 Coq.Init.Logic <> proj1 thm
+R90692:90716 omi_pi_proof <> cell600_incidence_balance thm
+R90746:90750 Coq.Init.Logic <> proj1 thm
+R90752:90776 omi_pi_proof <> cell120_incidence_balance thm
+R90746:90750 Coq.Init.Logic <> proj1 thm
+R90752:90776 omi_pi_proof <> cell120_incidence_balance thm
+R90806:90810 Coq.Init.Logic <> proj1 thm
+R90812:90831 omi_pi_proof <> cell120_dual_cell600 thm
+R90806:90810 Coq.Init.Logic <> proj1 thm
+R90812:90831 omi_pi_proof <> cell120_dual_cell600 thm
+R90861:90865 Coq.Init.Logic <> proj1 thm
+R90867:90889 omi_pi_proof <> cell8_incidence_balance thm
+R90861:90865 Coq.Init.Logic <> proj1 thm
+R90867:90889 omi_pi_proof <> cell8_incidence_balance thm
+R90919:90923 Coq.Init.Logic <> proj1 thm
+R90925:90948 omi_pi_proof <> cell16_incidence_balance thm
+R90919:90923 Coq.Init.Logic <> proj1 thm
+R90925:90948 omi_pi_proof <> cell16_incidence_balance thm
+R90977:91002 omi_pi_proof <> local240_is_two_5factorial thm
+R90977:91002 omi_pi_proof <> local240_is_two_5factorial thm
+R91030:91054 omi_pi_proof <> global5040_is_7_times_720 thm
+R91030:91054 omi_pi_proof <> global5040_is_7_times_720 thm
+R91082:91101 omi_pi_proof <> six_factorial_is_720 thm
+R91082:91101 omi_pi_proof <> six_factorial_is_720 thm
+R91129:91157 omi_pi_proof <> triakis_tetrahedron_incidence thm
+R91129:91157 omi_pi_proof <> triakis_tetrahedron_incidence thm
+R91197:91197 Coq.Init.Logic <> I constr
+R91197:91197 Coq.Init.Logic <> I constr
+R91237:91237 Coq.Init.Logic <> I constr
+R91237:91237 Coq.Init.Logic <> I constr
+R91277:91277 Coq.Init.Logic <> I constr
+R91277:91277 Coq.Init.Logic <> I constr
+R91305:91333 omi_pi_proof <> relation_encoding_audit_holds thm
+R91305:91333 omi_pi_proof <> relation_encoding_audit_holds thm
+R91361:91393 omi_pi_proof <> omi_no_stored_constant_core_holds thm
+R91361:91393 omi_pi_proof <> omi_no_stored_constant_core_holds thm
+R91421:91453 omi_pi_proof <> omi_derived_carriers_unique_holds thm
+R91421:91453 omi_pi_proof <> omi_derived_carriers_unique_holds thm
+R91481:91515 omi_pi_proof <> omi_derived_incidence_balances_hold thm
+R91481:91515 omi_pi_proof <> omi_derived_incidence_balances_hold thm
+R91530:91562 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
+R91530:91562 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
+def 91582:91603 <> OMI_Chat_Provable_Core
+R91635:91640 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91617:91634 omi_pi_proof <> OMI_Master_Theorem def
+R91660:91665 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91656:91658 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91647:91649 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R91641:91644 Coq.Reals.R_sqrt <> sqrt def
+R91650:91653 Coq.Reals.R_sqrt <> sqrt def
+R91690:91695 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91681:91683 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91677:91679 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R91667:91669 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R91670:91676 omi_pi_proof <> OMI_PHI def
+R91684:91687 Coq.Reals.R_sqrt <> sqrt def
+R91733:91738 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91728:91730 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91696:91727 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR def
+R91731:91732 Coq.Reals.Rtrigo1 <> PI def
+R91753:91758 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91740:91742 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
+R91749:91751 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
+R91743:91748 omi_pi_proof <> OMI_PI def
+R91743:91748 omi_pi_proof <> OMI_PI def
+R91759:91759 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91906:91912 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91806:91812 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91782:91784 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91778:91780 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91761:91771 omi_pi_proof <> c5_vertices proj
+R91773:91777 omi_pi_proof <> cell5 def
+R91799:91801 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91785:91792 omi_pi_proof <> c5_edges proj
+R91794:91798 omi_pi_proof <> cell5 def
+R91856:91862 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91832:91834 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91828:91830 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91814:91821 omi_pi_proof <> c5_edges proj
+R91823:91827 omi_pi_proof <> cell5 def
+R91849:91851 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91835:91842 omi_pi_proof <> c5_faces proj
+R91844:91848 omi_pi_proof <> cell5 def
+R91882:91884 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91878:91880 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91864:91871 omi_pi_proof <> c5_faces proj
+R91873:91877 omi_pi_proof <> cell5 def
+R91899:91901 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91885:91892 omi_pi_proof <> c5_cells proj
+R91894:91898 omi_pi_proof <> cell5 def
+R91913:91913 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92072:92078 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91964:91970 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91938:91940 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91934:91936 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91915:91926 omi_pi_proof <> c24_vertices proj
+R91928:91933 omi_pi_proof <> cell24 def
+R91957:91959 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91941:91949 omi_pi_proof <> c24_edges proj
+R91951:91956 omi_pi_proof <> cell24 def
+R92018:92024 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R91992:91994 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R91988:91990 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91972:91980 omi_pi_proof <> c24_edges proj
+R91982:91987 omi_pi_proof <> cell24 def
+R92011:92013 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R91995:92003 omi_pi_proof <> c24_faces proj
+R92005:92010 omi_pi_proof <> cell24 def
+R92046:92048 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92042:92044 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92026:92034 omi_pi_proof <> c24_faces proj
+R92036:92041 omi_pi_proof <> cell24 def
+R92065:92067 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92049:92057 omi_pi_proof <> c24_cells proj
+R92059:92064 omi_pi_proof <> cell24 def
+R92079:92079 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92251:92257 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92135:92141 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92107:92109 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92102:92104 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92081:92093 omi_pi_proof <> c600_vertices proj
+R92095:92101 omi_pi_proof <> cell600 def
+R92128:92130 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92110:92119 omi_pi_proof <> c600_edges proj
+R92121:92127 omi_pi_proof <> cell600 def
+R92193:92199 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92165:92167 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92161:92163 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92143:92152 omi_pi_proof <> c600_edges proj
+R92154:92160 omi_pi_proof <> cell600 def
+R92186:92188 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92168:92177 omi_pi_proof <> c600_faces proj
+R92179:92185 omi_pi_proof <> cell600 def
+R92223:92225 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92219:92221 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92201:92210 omi_pi_proof <> c600_faces proj
+R92212:92218 omi_pi_proof <> cell600 def
+R92244:92246 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92226:92235 omi_pi_proof <> c600_cells proj
+R92237:92243 omi_pi_proof <> cell600 def
+R92258:92258 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92430:92436 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92313:92319 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92285:92287 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92281:92283 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92260:92272 omi_pi_proof <> c120_vertices proj
+R92274:92280 omi_pi_proof <> cell120 def
+R92306:92308 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92288:92297 omi_pi_proof <> c120_edges proj
+R92299:92305 omi_pi_proof <> cell120 def
+R92371:92377 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92343:92345 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92339:92341 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92321:92330 omi_pi_proof <> c120_edges proj
+R92332:92338 omi_pi_proof <> cell120 def
+R92364:92366 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92346:92355 omi_pi_proof <> c120_faces proj
+R92357:92363 omi_pi_proof <> cell120 def
+R92401:92403 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92397:92399 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92379:92388 omi_pi_proof <> c120_faces proj
+R92390:92396 omi_pi_proof <> cell120 def
+R92422:92424 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92404:92413 omi_pi_proof <> c120_cells proj
+R92415:92421 omi_pi_proof <> cell120 def
+R92437:92437 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92537:92543 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92484:92490 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92460:92462 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92439:92451 omi_pi_proof <> c600_vertices proj
+R92453:92459 omi_pi_proof <> cell600 def
+R92463:92472 omi_pi_proof <> c120_cells proj
+R92474:92480 omi_pi_proof <> cell120 def
+R92513:92515 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92492:92504 omi_pi_proof <> c120_vertices proj
+R92506:92512 omi_pi_proof <> cell120 def
+R92516:92525 omi_pi_proof <> c600_cells proj
+R92527:92533 omi_pi_proof <> cell600 def
+R92544:92544 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92691:92697 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92591:92597 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92567:92569 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92563:92565 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92546:92556 omi_pi_proof <> c8_vertices proj
+R92558:92562 omi_pi_proof <> cell8 def
+R92584:92586 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92570:92577 omi_pi_proof <> c8_edges proj
+R92579:92583 omi_pi_proof <> cell8 def
+R92641:92647 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92617:92619 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92613:92615 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92599:92606 omi_pi_proof <> c8_edges proj
+R92608:92612 omi_pi_proof <> cell8 def
+R92634:92636 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92620:92627 omi_pi_proof <> c8_faces proj
+R92629:92633 omi_pi_proof <> cell8 def
+R92667:92669 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92663:92665 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92649:92656 omi_pi_proof <> c8_faces proj
+R92658:92662 omi_pi_proof <> cell8 def
+R92684:92686 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92670:92677 omi_pi_proof <> c8_cells proj
+R92679:92683 omi_pi_proof <> cell8 def
+R92698:92698 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92857:92863 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92749:92755 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92723:92725 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92719:92721 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92700:92711 omi_pi_proof <> c16_vertices proj
+R92713:92718 omi_pi_proof <> cell16 def
+R92742:92744 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92726:92734 omi_pi_proof <> c16_edges proj
+R92736:92741 omi_pi_proof <> cell16 def
+R92803:92809 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92777:92779 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92773:92775 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92757:92765 omi_pi_proof <> c16_edges proj
+R92767:92772 omi_pi_proof <> cell16 def
+R92796:92798 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92780:92788 omi_pi_proof <> c16_faces proj
+R92790:92795 omi_pi_proof <> cell16 def
+R92831:92833 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92827:92829 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92811:92819 omi_pi_proof <> c16_faces proj
+R92821:92826 omi_pi_proof <> cell16 def
+R92850:92852 Coq.NArith.BinNat <> ::N_scope:x_'*'_x not
+R92834:92842 omi_pi_proof <> c16_cells proj
+R92844:92849 omi_pi_proof <> cell16 def
+R92864:92864 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92952:92958 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92905:92911 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92883:92885 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92866:92876 omi_pi_proof <> c8_vertices proj
+R92878:92882 omi_pi_proof <> cell8 def
+R92886:92894 omi_pi_proof <> c16_cells proj
+R92896:92901 omi_pi_proof <> cell16 def
+R92932:92934 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92913:92924 omi_pi_proof <> c16_vertices proj
+R92926:92931 omi_pi_proof <> cell16 def
+R92935:92942 omi_pi_proof <> c8_cells proj
+R92944:92948 omi_pi_proof <> cell8 def
+R92959:92959 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93162:93168 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92993:92999 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R92986:92988 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R92961:92974 omi_pi_proof <> tetra_vertices proj
+R92976:92985 omi_pi_proof <> tetra_unit def
+R93025:93031 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93018:93020 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R93001:93011 omi_pi_proof <> c5_vertices proj
+R93013:93017 omi_pi_proof <> cell5 def
+R93060:93066 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93052:93054 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R93033:93044 omi_pi_proof <> c24_vertices proj
+R93046:93051 omi_pi_proof <> cell24 def
+R93099:93105 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R93068:93078 omi_pi_proof <> tt_vertices proj
+R93080:93098 omi_pi_proof <> triakis_tetrahedron def
+R93131:93133 Coq.NArith.BinNat <> ::N_scope:x_'+'_x not
+R93106:93119 omi_pi_proof <> tetra_vertices proj
+R93121:93130 omi_pi_proof <> tetra_unit def
+R93134:93147 omi_pi_proof <> tetra_vertices proj
+R93149:93158 omi_pi_proof <> tetra_unit def
+R93192:93197 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93169:93191 omi_pi_proof <> relation_encoding_audit def
+R93225:93230 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93198:93224 omi_pi_proof <> OMI_No_Stored_Constant_Core def
+R93258:93263 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93231:93257 omi_pi_proof <> OMI_Derived_Carriers_Unique def
+R93294:93299 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R93264:93293 omi_pi_proof <> OMI_Derived_Incidence_Balances def
+R93300:93327 omi_pi_proof <> OMI_Derived_Adjacency_Audits def
+prf 93339:93366 <> omi_chat_provable_core_holds
+R93370:93391 omi_pi_proof <> OMI_Chat_Provable_Core def
+R93410:93431 omi_pi_proof <> OMI_Chat_Provable_Core def
+R93453:93476 omi_pi_proof <> omi_master_theorem_holds thm
+R93453:93476 omi_pi_proof <> omi_master_theorem_holds thm
+R93502:93518 omi_pi_proof <> OMI_SQRT5_squared thm
+R93502:93518 omi_pi_proof <> OMI_SQRT5_squared thm
+R93548:93565 omi_pi_proof <> OMI_SQRT5_from_phi thm
+R93548:93565 omi_pi_proof <> OMI_SQRT5_from_phi thm
+R93600:93641 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
+R93600:93641 omi_pi_proof <> OMI_PI_FROM_DIAGONAL_ACCUMULATOR_EQUALS_PI thm
+R93682:93694 omi_pi_proof <> omi_pi_bounds thm
+R93682:93694 omi_pi_proof <> omi_pi_bounds thm
+R93741:93763 omi_pi_proof <> cell5_incidence_balance thm
+R93741:93763 omi_pi_proof <> cell5_incidence_balance thm
+R93817:93840 omi_pi_proof <> cell24_incidence_balance thm
+R93817:93840 omi_pi_proof <> cell24_incidence_balance thm
+R93902:93926 omi_pi_proof <> cell600_incidence_balance thm
+R93902:93926 omi_pi_proof <> cell600_incidence_balance thm
+R93996:94020 omi_pi_proof <> cell120_incidence_balance thm
+R93996:94020 omi_pi_proof <> cell120_incidence_balance thm
+R94099:94118 omi_pi_proof <> cell120_dual_cell600 thm
+R94099:94118 omi_pi_proof <> cell120_dual_cell600 thm
+R94207:94229 omi_pi_proof <> cell8_incidence_balance thm
+R94207:94229 omi_pi_proof <> cell8_incidence_balance thm
+R94328:94351 omi_pi_proof <> cell16_incidence_balance thm
+R94328:94351 omi_pi_proof <> cell16_incidence_balance thm
+R94461:94477 omi_pi_proof <> cell8_cell16_dual thm
+R94461:94477 omi_pi_proof <> cell8_cell16_dual thm
+R94599:94624 omi_pi_proof <> triakis_centerline_balance thm
+R94599:94624 omi_pi_proof <> triakis_centerline_balance thm
+R94759:94787 omi_pi_proof <> relation_encoding_audit_holds thm
+R94759:94787 omi_pi_proof <> relation_encoding_audit_holds thm
+R94931:94963 omi_pi_proof <> omi_no_stored_constant_core_holds thm
+R94931:94963 omi_pi_proof <> omi_no_stored_constant_core_holds thm
+R95109:95141 omi_pi_proof <> omi_derived_carriers_unique_holds thm
+R95109:95141 omi_pi_proof <> omi_derived_carriers_unique_holds thm
+R95287:95321 omi_pi_proof <> omi_derived_incidence_balances_hold thm
+R95287:95321 omi_pi_proof <> omi_derived_incidence_balances_hold thm
+R95395:95427 omi_pi_proof <> omi_derived_adjacency_audits_hold thm
+R95395:95427 omi_pi_proof <> omi_derived_adjacency_audits_hold thm

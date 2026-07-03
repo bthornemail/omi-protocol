@@ -2190,6 +2190,13 @@ Fixpoint unordered_pairs {A : Type} (xs : list A) : list (A * A) :=
   | x :: rest => map (fun y => (x, y)) rest ++ unordered_pairs rest
   end.
 
+Fixpoint unordered_triples {A : Type} (xs : list A) : list (A * A * A) :=
+  match xs with
+  | [] => []
+  | x :: rest => map (fun yz => match yz with (y, z) => (x, y, z) end)
+                   (unordered_pairs rest) ++ unordered_triples rest
+  end.
+
 Definition derived_cell600_axis_vertices : list H4VertexSlot :=
   map (fun '(axis, s) => H4AxisSlot axis s) derived_signed_axes4.
 
@@ -2271,6 +2278,83 @@ Proof. vm_compute; reflexivity. Qed.
 
 Theorem derived_cell600_geometric_edge_endpoint_audit_holds :
   derived_cell600_geometric_edge_endpoint_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Definition h4_geometric_triangleb (f : H4VertexSlot * H4VertexSlot * H4VertexSlot) : bool :=
+  match f with
+  | (u, v, w) =>
+      h4_geometric_edgeb u v &&
+      h4_geometric_edgeb u w &&
+      h4_geometric_edgeb v w
+  end.
+
+Definition h4_common_neighbor (u v w : H4VertexSlot) : bool :=
+  h4_geometric_edgeb u w && h4_geometric_edgeb v w.
+
+Definition h4_face_canonical_third (v w : H4VertexSlot) : bool :=
+  N.ltb (h4_vertex_code v) (h4_vertex_code w).
+
+Definition derived_cell600_faces_from_edge
+    (e : H4VertexSlot * H4VertexSlot) :
+    list (H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  match e with
+  | (u, v) =>
+      map (fun w => (u, v, w))
+        (filter
+          (fun w => h4_common_neighbor u v w && h4_face_canonical_third v w)
+          derived_cell600_vertices)
+  end.
+
+Definition derived_cell600_geometric_faces :
+  list (H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  flat_map derived_cell600_faces_from_edge derived_cell600_geometric_edges.
+
+Definition h4_face_code (f : H4VertexSlot * H4VertexSlot * H4VertexSlot) : N :=
+  match f with
+  | (u, v, w) => h4_vertex_code u * 14400 + h4_vertex_code v * 120 + h4_vertex_code w
+  end.
+
+Definition h4_face_contains_edge
+    (e : H4VertexSlot * H4VertexSlot)
+    (f : H4VertexSlot * H4VertexSlot * H4VertexSlot) : bool :=
+  match e, f with
+  | (a, b), (u, v, w) =>
+      ((h4_vertex_eqb a u || h4_vertex_eqb a v || h4_vertex_eqb a w) &&
+       (h4_vertex_eqb b u || h4_vertex_eqb b v || h4_vertex_eqb b w))
+  end.
+
+Definition h4_geometric_edge_common_neighbor_count
+    (e : H4VertexSlot * H4VertexSlot) : nat :=
+  match e with
+  | (u, v) => length (filter (h4_common_neighbor u v) derived_cell600_vertices)
+  end.
+
+Definition derived_cell600_geometric_edge_face_audit : bool :=
+  forallb
+    (fun e => Nat.eqb (h4_geometric_edge_common_neighbor_count e) 5)
+    derived_cell600_geometric_edges.
+
+Definition derived_cell600_geometric_face_triangle_audit : bool :=
+  forallb h4_geometric_triangleb derived_cell600_geometric_faces.
+
+Theorem derived_cell600_geometric_face_count :
+  countN derived_cell600_geometric_faces = 1200%N.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_faces_unique :
+  NoDup (map h4_face_code derived_cell600_geometric_faces).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
+Theorem derived_cell600_geometric_face_triangle_audit_holds :
+  derived_cell600_geometric_face_triangle_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_edge_face_audit_holds :
+  derived_cell600_geometric_edge_face_audit = true.
 Proof. vm_compute; reflexivity. Qed.
 
 Inductive IcoVertexFigureSlot : Type :=
@@ -2501,7 +2585,10 @@ Definition OMI_Derived_Adjacency_Audits : Prop :=
   derived_cell120_adjacency_audit = true /\
   countN derived_cell600_geometric_edges = 720%N /\
   derived_cell600_geometric_degree_audit = true /\
-  derived_cell600_geometric_edge_endpoint_audit = true.
+  derived_cell600_geometric_edge_endpoint_audit = true /\
+  countN derived_cell600_geometric_faces = 1200%N /\
+  derived_cell600_geometric_face_triangle_audit = true /\
+  derived_cell600_geometric_edge_face_audit = true.
 
 Theorem omi_derived_adjacency_audits_hold :
   OMI_Derived_Adjacency_Audits.
@@ -2514,7 +2601,13 @@ Proof.
       * exact derived_cell600_geometric_edge_count.
       * split.
         -- exact derived_cell600_geometric_degree_audit_holds.
-        -- exact derived_cell600_geometric_edge_endpoint_audit_holds.
+        -- split.
+           ++ exact derived_cell600_geometric_edge_endpoint_audit_holds.
+           ++ split.
+              ** exact derived_cell600_geometric_face_count.
+              ** split.
+                 --- exact derived_cell600_geometric_face_triangle_audit_holds.
+                 --- exact derived_cell600_geometric_edge_face_audit_holds.
 Qed.
 
 Definition derived_cell600_incidence_balance : Prop :=
@@ -2578,6 +2671,7 @@ Definition OMI_Derived_Carriers_Unique : Prop :=
   NoDup derived_cell600_faces /\
   NoDup derived_cell600_cells /\
   NoDup (map h4_edge_pair_code derived_cell600_geometric_edges) /\
+  NoDup (map h4_face_code derived_cell600_geometric_faces) /\
   NoDup derived_cell120_vertices /\
   NoDup derived_cell120_edges /\
   NoDup derived_cell120_faces /\
@@ -2593,24 +2687,23 @@ Proof.
     [H600_edges [H600_faces H600_cells]].
   destruct derived_cell120_rank_carriers_unique as
     [H120_vertices [H120_edges [H120_faces H120_cells]]].
-  repeat split;
-    try exact derived_tetra_vertices_unique;
-    try exact Hcell5_vertices;
-    try exact Hcell5_edges;
-    try exact Hcell5_faces;
-    try exact Hcell5_cells;
-    try exact derived_tesseract_vertices_unique;
-    try exact derived_cell16_vertices_unique;
-    try exact derived_cell24_vertices_unique;
-    try exact derived_cell600_vertices_unique;
-    try exact H600_edges;
-    try exact H600_faces;
-    try exact H600_cells;
-    try exact derived_cell600_geometric_edges_unique;
-    try exact H120_vertices;
-    try exact H120_edges;
-    try exact H120_faces;
-    try exact H120_cells.
+  split; [exact derived_tetra_vertices_unique |].
+  split; [exact Hcell5_vertices |].
+  split; [exact Hcell5_edges |].
+  split; [exact Hcell5_faces |].
+  split; [exact Hcell5_cells |].
+  split; [exact derived_tesseract_vertices_unique |].
+  split; [exact derived_cell16_vertices_unique |].
+  split; [exact derived_cell24_vertices_unique |].
+  split; [exact derived_cell600_vertices_unique |].
+  split; [exact H600_edges |].
+  split; [exact H600_faces |].
+  split; [exact H600_cells |].
+  split; [exact derived_cell600_geometric_edges_unique |].
+  split; [exact derived_cell600_geometric_faces_unique |].
+  split; [exact H120_vertices |].
+  split; [exact H120_edges |].
+  split; [exact H120_faces | exact H120_cells].
 Qed.
 
 Definition OMI_Derived_Incidence_Balances : Prop :=
@@ -2624,6 +2717,7 @@ Definition OMI_Derived_Incidence_Balances : Prop :=
   countN derived_cell600_face_cell_slots =
     countN derived_cell600_cell_face_slots /\
   countN derived_cell600_geometric_edges = 720%N /\
+  countN derived_cell600_geometric_faces = 1200%N /\
   countN derived_cell120_vertex_edge_slots =
     countN derived_cell120_edge_endpoint_slots /\
   countN derived_cell120_edge_face_slots =
@@ -2654,10 +2748,12 @@ Proof.
               ** split.
                  --- exact derived_cell600_geometric_edge_count.
                  --- split.
-                     +++ exact H120ve.
+                     +++ exact derived_cell600_geometric_face_count.
                      +++ split.
-                         *** exact H120ef.
-                         *** exact H120fc.
+                         *** exact H120ve.
+                         *** split.
+                             ---- exact H120ef.
+                             ---- exact H120fc.
 Qed.
 
 Definition OMI_No_Stored_Constant_Core : Prop :=
@@ -2673,6 +2769,8 @@ Definition OMI_No_Stored_Constant_Core : Prop :=
   derived_cell600_edge_count = 720%N /\
   derived_cell600_face_count = 1200%N /\
   derived_cell600_cell_count = 600%N /\
+  countN derived_cell600_geometric_edges = 720%N /\
+  countN derived_cell600_geometric_faces = 1200%N /\
   derived_cell120_vertex_count = 600%N /\
   derived_cell120_edge_count = 1200%N /\
   derived_cell120_face_count = 720%N /\
