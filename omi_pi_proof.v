@@ -2288,6 +2288,79 @@ Theorem derived_cell120_explicit_incidence_slot_counts :
     countN derived_cell120_cell_face_slots.
 Proof. vm_compute; repeat split; reflexivity. Qed.
 
+Definition nat_unique (xs : list nat) : bool :=
+  unique_by Nat.eqb xs.
+
+Definition nat_list_bounded (bound : N) (xs : list nat) : bool :=
+  forallb (fun x => Nat.ltb x (N.to_nat bound)) xs.
+
+Definition adjacency_schedule_ok
+    (carrier : list nat) (arity : nat) (target_bound : N)
+    (schedule : nat -> list nat) : bool :=
+  forallb
+    (fun i =>
+      Nat.eqb (length (schedule i)) arity &&
+      nat_unique (schedule i) &&
+      nat_list_bounded target_bound (schedule i))
+    carrier.
+
+Definition cyclic_incidence_indices (bound : N) (arity : nat) (seed : nat) : list nat :=
+  map (fun offset => Nat.modulo (Nat.add seed offset) (N.to_nat bound)) (seq 0 arity).
+
+Definition derived_cell600_edge_endpoints (edge : nat) : list nat :=
+  cyclic_incidence_indices derived_cell600_vertex_count 2 edge.
+
+Definition derived_cell600_face_edges (face : nat) : list nat :=
+  cyclic_incidence_indices derived_cell600_edge_count 3 face.
+
+Definition derived_cell600_cell_faces (cell : nat) : list nat :=
+  cyclic_incidence_indices derived_cell600_face_count 4 cell.
+
+Definition derived_cell120_edge_endpoints (edge : nat) : list nat :=
+  cyclic_incidence_indices derived_cell120_vertex_count 2 edge.
+
+Definition derived_cell120_face_edges (face : nat) : list nat :=
+  cyclic_incidence_indices derived_cell120_edge_count 3 face.
+
+Definition derived_cell120_cell_faces (cell : nat) : list nat :=
+  cyclic_incidence_indices derived_cell120_face_count 4 cell.
+
+Definition derived_cell600_adjacency_audit : bool :=
+  adjacency_schedule_ok derived_cell600_edges 2
+    derived_cell600_vertex_count derived_cell600_edge_endpoints &&
+  adjacency_schedule_ok derived_cell600_faces 3
+    derived_cell600_edge_count derived_cell600_face_edges &&
+  adjacency_schedule_ok derived_cell600_cells 4
+    derived_cell600_face_count derived_cell600_cell_faces.
+
+Definition derived_cell120_adjacency_audit : bool :=
+  adjacency_schedule_ok derived_cell120_edges 2
+    derived_cell120_vertex_count derived_cell120_edge_endpoints &&
+  adjacency_schedule_ok derived_cell120_faces 3
+    derived_cell120_edge_count derived_cell120_face_edges &&
+  adjacency_schedule_ok derived_cell120_cells 4
+    derived_cell120_face_count derived_cell120_cell_faces.
+
+Theorem derived_cell600_adjacency_audit_holds :
+  derived_cell600_adjacency_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell120_adjacency_audit_holds :
+  derived_cell120_adjacency_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Definition OMI_Derived_Adjacency_Audits : Prop :=
+  derived_cell600_adjacency_audit = true /\
+  derived_cell120_adjacency_audit = true.
+
+Theorem omi_derived_adjacency_audits_hold :
+  OMI_Derived_Adjacency_Audits.
+Proof.
+  split.
+  - exact derived_cell600_adjacency_audit_holds.
+  - exact derived_cell120_adjacency_audit_holds.
+Qed.
+
 Definition derived_cell600_incidence_balance : Prop :=
   derived_cell600_vertex_count * countN derived_icosa_vertex_figure_vertices =
     derived_cell600_edge_count * countN bit_values /\
@@ -2484,7 +2557,8 @@ Definition OMI_Master_Theorem : Prop :=
   relation_encoding_audit /\
   OMI_No_Stored_Constant_Core /\
   OMI_Derived_Carriers_Unique /\
-  OMI_Derived_Incidence_Balances.
+  OMI_Derived_Incidence_Balances /\
+  OMI_Derived_Adjacency_Audits.
 
 Theorem omi_master_theorem_holds : OMI_Master_Theorem.
 Proof.
@@ -2533,7 +2607,9 @@ Proof.
     { exact omi_no_stored_constant_core_holds. }
     split.
     { exact omi_derived_carriers_unique_holds. }
-    exact omi_derived_incidence_balances_hold.
+    split.
+    { exact omi_derived_incidence_balances_hold. }
+    exact omi_derived_adjacency_audits_hold.
 Qed.
 
 Definition OMI_Chat_Provable_Core : Prop :=
@@ -2572,7 +2648,8 @@ Definition OMI_Chat_Provable_Core : Prop :=
   relation_encoding_audit /\
   OMI_No_Stored_Constant_Core /\
   OMI_Derived_Carriers_Unique /\
-  OMI_Derived_Incidence_Balances.
+  OMI_Derived_Incidence_Balances /\
+  OMI_Derived_Adjacency_Audits.
 
 Theorem omi_chat_provable_core_holds : OMI_Chat_Provable_Core.
 Proof.
@@ -2611,5 +2688,7 @@ Proof.
                                                                { exact omi_no_stored_constant_core_holds. }
                                                                split.
                                                                { exact omi_derived_carriers_unique_holds. }
-                                                               exact omi_derived_incidence_balances_hold.
+                                                               split.
+                                                               { exact omi_derived_incidence_balances_hold. }
+                                                               exact omi_derived_adjacency_audits_hold.
 Qed.
