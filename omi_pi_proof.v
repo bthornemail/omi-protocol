@@ -2357,6 +2357,137 @@ Theorem derived_cell600_geometric_edge_face_audit_holds :
   derived_cell600_geometric_edge_face_audit = true.
 Proof. vm_compute; reflexivity. Qed.
 
+Definition h4_face_common_neighbor
+    (f : H4VertexSlot * H4VertexSlot * H4VertexSlot)
+    (x : H4VertexSlot) : bool :=
+  match f with
+  | (u, v, w) =>
+      h4_geometric_edgeb u x &&
+      h4_geometric_edgeb v x &&
+      h4_geometric_edgeb w x
+  end.
+
+Definition h4_cell_canonical_fourth (w x : H4VertexSlot) : bool :=
+  N.ltb (h4_vertex_code w) (h4_vertex_code x).
+
+Definition derived_cell600_cells_from_face
+    (f : H4VertexSlot * H4VertexSlot * H4VertexSlot) :
+    list (H4VertexSlot * H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  match f with
+  | (u, v, w) =>
+      map (fun x => (u, v, w, x))
+        (filter
+          (fun x => h4_face_common_neighbor f x && h4_cell_canonical_fourth w x)
+          derived_cell600_vertices)
+  end.
+
+Definition derived_cell600_geometric_cells :
+  list (H4VertexSlot * H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  flat_map derived_cell600_cells_from_face derived_cell600_geometric_faces.
+
+Definition h4_cell_code
+    (c : H4VertexSlot * H4VertexSlot * H4VertexSlot * H4VertexSlot) : N :=
+  match c with
+  | (u, v, w, x) =>
+      h4_vertex_code u * 1728000 +
+      h4_vertex_code v * 14400 +
+      h4_vertex_code w * 120 +
+      h4_vertex_code x
+  end.
+
+Definition h4_geometric_tetrahedronb
+    (c : H4VertexSlot * H4VertexSlot * H4VertexSlot * H4VertexSlot) : bool :=
+  match c with
+  | (u, v, w, x) =>
+      h4_geometric_triangleb (u, v, w) &&
+      h4_face_common_neighbor (u, v, w) x
+  end.
+
+Definition h4_geometric_face_common_neighbor_count
+    (f : H4VertexSlot * H4VertexSlot * H4VertexSlot) : nat :=
+  length (filter (h4_face_common_neighbor f) derived_cell600_vertices).
+
+Definition derived_cell600_geometric_cell_tetrahedron_audit : bool :=
+  forallb h4_geometric_tetrahedronb derived_cell600_geometric_cells.
+
+Definition derived_cell600_geometric_face_cell_audit : bool :=
+  forallb
+    (fun f => Nat.eqb (h4_geometric_face_common_neighbor_count f) 2)
+    derived_cell600_geometric_faces.
+
+Theorem derived_cell600_geometric_cell_count :
+  countN derived_cell600_geometric_cells = 600%N.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_cells_unique :
+  NoDup (map h4_cell_code derived_cell600_geometric_cells).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
+Theorem derived_cell600_geometric_cell_tetrahedron_audit_holds :
+  derived_cell600_geometric_cell_tetrahedron_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_face_cell_audit_holds :
+  derived_cell600_geometric_face_cell_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Definition derived_cell120_dual_vertices :
+  list (H4VertexSlot * H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  derived_cell600_geometric_cells.
+
+Definition derived_cell120_dual_edges :
+  list (H4VertexSlot * H4VertexSlot * H4VertexSlot) :=
+  derived_cell600_geometric_faces.
+
+Definition derived_cell120_dual_faces :
+  list (H4VertexSlot * H4VertexSlot) :=
+  derived_cell600_geometric_edges.
+
+Definition derived_cell120_dual_cells : list H4VertexSlot :=
+  derived_cell600_vertices.
+
+Definition derived_cell120_geometric_dual_counts : Prop :=
+  countN derived_cell120_dual_vertices = 600%N /\
+  countN derived_cell120_dual_edges = 1200%N /\
+  countN derived_cell120_dual_faces = 720%N /\
+  countN derived_cell120_dual_cells = 120%N.
+
+Theorem derived_cell120_geometric_dual_counts_holds :
+  derived_cell120_geometric_dual_counts.
+Proof.
+  unfold derived_cell120_geometric_dual_counts.
+  split.
+  - exact derived_cell600_geometric_cell_count.
+  - split.
+    + exact derived_cell600_geometric_face_count.
+    + split.
+      * exact derived_cell600_geometric_edge_count.
+      * exact derived_cell600_forces_120_vertices.
+Qed.
+
+Definition derived_cell120_geometric_dual_carriers_unique : Prop :=
+  NoDup (map h4_cell_code derived_cell120_dual_vertices) /\
+  NoDup (map h4_face_code derived_cell120_dual_edges) /\
+  NoDup (map h4_edge_pair_code derived_cell120_dual_faces) /\
+  NoDup (map h4_vertex_code derived_cell120_dual_cells).
+
+Theorem derived_cell120_geometric_dual_carriers_unique_holds :
+  derived_cell120_geometric_dual_carriers_unique.
+Proof.
+  unfold derived_cell120_geometric_dual_carriers_unique.
+  split.
+  - exact derived_cell600_geometric_cells_unique.
+  - split.
+    + exact derived_cell600_geometric_faces_unique.
+    + split.
+      * exact derived_cell600_geometric_edges_unique.
+      * exact derived_cell600_vertices_unique.
+Qed.
+
 Inductive IcoVertexFigureSlot : Type :=
 | IV0 | IV1 | IV2 | IV3 | IV4 | IV5
 | IV6 | IV7 | IV8 | IV9 | IV10 | IV11.
@@ -2588,7 +2719,10 @@ Definition OMI_Derived_Adjacency_Audits : Prop :=
   derived_cell600_geometric_edge_endpoint_audit = true /\
   countN derived_cell600_geometric_faces = 1200%N /\
   derived_cell600_geometric_face_triangle_audit = true /\
-  derived_cell600_geometric_edge_face_audit = true.
+  derived_cell600_geometric_edge_face_audit = true /\
+  countN derived_cell600_geometric_cells = 600%N /\
+  derived_cell600_geometric_cell_tetrahedron_audit = true /\
+  derived_cell600_geometric_face_cell_audit = true.
 
 Theorem omi_derived_adjacency_audits_hold :
   OMI_Derived_Adjacency_Audits.
@@ -2607,7 +2741,13 @@ Proof.
               ** exact derived_cell600_geometric_face_count.
               ** split.
                  --- exact derived_cell600_geometric_face_triangle_audit_holds.
-                 --- exact derived_cell600_geometric_edge_face_audit_holds.
+                 --- split.
+                     +++ exact derived_cell600_geometric_edge_face_audit_holds.
+                     +++ split.
+                         *** exact derived_cell600_geometric_cell_count.
+                         *** split.
+                             ---- exact derived_cell600_geometric_cell_tetrahedron_audit_holds.
+                             ---- exact derived_cell600_geometric_face_cell_audit_holds.
 Qed.
 
 Definition derived_cell600_incidence_balance : Prop :=
@@ -2644,6 +2784,44 @@ Theorem derived_cell120_dual_counts_holds :
   derived_cell120_dual_counts.
 Proof. repeat split; reflexivity. Qed.
 
+Definition derived_cell120_geometric_dual_aliases : Prop :=
+  derived_cell120_dual_vertices = derived_cell600_geometric_cells /\
+  derived_cell120_dual_edges = derived_cell600_geometric_faces /\
+  derived_cell120_dual_faces = derived_cell600_geometric_edges /\
+  derived_cell120_dual_cells = derived_cell600_vertices.
+
+Theorem derived_cell120_geometric_dual_aliases_holds :
+  derived_cell120_geometric_dual_aliases.
+Proof.
+  unfold derived_cell120_geometric_dual_aliases.
+  split.
+  - reflexivity.
+  - split.
+    + reflexivity.
+    + split.
+      * reflexivity.
+      * reflexivity.
+Qed.
+
+Definition OMI_Derived_Duality_Audits : Prop :=
+  derived_cell120_dual_counts /\
+  derived_cell120_geometric_dual_counts /\
+  derived_cell120_geometric_dual_carriers_unique /\
+  derived_cell120_geometric_dual_aliases.
+
+Theorem omi_derived_duality_audits_hold :
+  OMI_Derived_Duality_Audits.
+Proof.
+  unfold OMI_Derived_Duality_Audits.
+  split.
+  - exact derived_cell120_dual_counts_holds.
+  - split.
+    + exact derived_cell120_geometric_dual_counts_holds.
+    + split.
+      * exact derived_cell120_geometric_dual_carriers_unique_holds.
+      * exact derived_cell120_geometric_dual_aliases_holds.
+Qed.
+
 Definition derived_fano_family_count : N :=
   countN fano_points.
 
@@ -2672,6 +2850,7 @@ Definition OMI_Derived_Carriers_Unique : Prop :=
   NoDup derived_cell600_cells /\
   NoDup (map h4_edge_pair_code derived_cell600_geometric_edges) /\
   NoDup (map h4_face_code derived_cell600_geometric_faces) /\
+  NoDup (map h4_cell_code derived_cell600_geometric_cells) /\
   NoDup derived_cell120_vertices /\
   NoDup derived_cell120_edges /\
   NoDup derived_cell120_faces /\
@@ -2701,6 +2880,7 @@ Proof.
   split; [exact H600_cells |].
   split; [exact derived_cell600_geometric_edges_unique |].
   split; [exact derived_cell600_geometric_faces_unique |].
+  split; [exact derived_cell600_geometric_cells_unique |].
   split; [exact H120_vertices |].
   split; [exact H120_edges |].
   split; [exact H120_faces | exact H120_cells].
@@ -2718,6 +2898,7 @@ Definition OMI_Derived_Incidence_Balances : Prop :=
     countN derived_cell600_cell_face_slots /\
   countN derived_cell600_geometric_edges = 720%N /\
   countN derived_cell600_geometric_faces = 1200%N /\
+  countN derived_cell600_geometric_cells = 600%N /\
   countN derived_cell120_vertex_edge_slots =
     countN derived_cell120_edge_endpoint_slots /\
   countN derived_cell120_edge_face_slots =
@@ -2750,10 +2931,12 @@ Proof.
                  --- split.
                      +++ exact derived_cell600_geometric_face_count.
                      +++ split.
-                         *** exact H120ve.
+                         *** exact derived_cell600_geometric_cell_count.
                          *** split.
-                             ---- exact H120ef.
-                             ---- exact H120fc.
+                             ---- exact H120ve.
+                             ---- split.
+                                  ++++ exact H120ef.
+                                  ++++ exact H120fc.
 Qed.
 
 Definition OMI_No_Stored_Constant_Core : Prop :=
@@ -2771,6 +2954,7 @@ Definition OMI_No_Stored_Constant_Core : Prop :=
   derived_cell600_cell_count = 600%N /\
   countN derived_cell600_geometric_edges = 720%N /\
   countN derived_cell600_geometric_faces = 1200%N /\
+  countN derived_cell600_geometric_cells = 600%N /\
   derived_cell120_vertex_count = 600%N /\
   derived_cell120_edge_count = 1200%N /\
   derived_cell120_face_count = 720%N /\
@@ -2827,6 +3011,7 @@ Definition OMI_Master_Theorem : Prop :=
   OMI_No_Stored_Constant_Core /\
   OMI_Derived_Carriers_Unique /\
   OMI_Derived_Incidence_Balances /\
+  OMI_Derived_Duality_Audits /\
   OMI_Derived_Adjacency_Audits.
 
 Theorem omi_master_theorem_holds : OMI_Master_Theorem.
@@ -2878,6 +3063,8 @@ Proof.
     { exact omi_derived_carriers_unique_holds. }
     split.
     { exact omi_derived_incidence_balances_hold. }
+    split.
+    { exact omi_derived_duality_audits_hold. }
     exact omi_derived_adjacency_audits_hold.
 Qed.
 
@@ -2918,6 +3105,7 @@ Definition OMI_Chat_Provable_Core : Prop :=
   OMI_No_Stored_Constant_Core /\
   OMI_Derived_Carriers_Unique /\
   OMI_Derived_Incidence_Balances /\
+  OMI_Derived_Duality_Audits /\
   OMI_Derived_Adjacency_Audits.
 
 Theorem omi_chat_provable_core_holds : OMI_Chat_Provable_Core.
@@ -2959,5 +3147,7 @@ Proof.
                                                                { exact omi_derived_carriers_unique_holds. }
                                                                split.
                                                                { exact omi_derived_incidence_balances_hold. }
+                                                               split.
+                                                               { exact omi_derived_duality_audits_hold. }
                                                                exact omi_derived_adjacency_audits_hold.
 Qed.
