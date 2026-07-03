@@ -1779,6 +1779,29 @@ Qed.
 Definition countN {A : Type} (xs : list A) : N :=
   N.of_nat (length xs).
 
+Definition index_carrier (n : N) : list nat :=
+  seq 0 (N.to_nat n).
+
+Theorem index_carrier_count : forall n : N,
+  countN (index_carrier n) = n.
+Proof.
+  intro n.
+  unfold countN, index_carrier.
+  rewrite seq_length.
+  apply N2Nat.id.
+Qed.
+
+Theorem index_carrier_unique : forall n : N,
+  NoDup (index_carrier n).
+Proof.
+  intro n.
+  unfold index_carrier.
+  apply seq_NoDup.
+Qed.
+
+Definition product_list {A B : Type} (xs : list A) (ys : list B) : list (A * B) :=
+  flat_map (fun x => map (fun y => (x, y)) ys) xs.
+
 Fixpoint unique_by {A : Type} (eqb : A -> A -> bool) (xs : list A) : bool :=
   match xs with
   | [] => true
@@ -2154,6 +2177,117 @@ Theorem derived_cell120_counts :
   derived_cell120_cell_count = 120%N.
 Proof. vm_compute; repeat split; reflexivity. Qed.
 
+Definition derived_cell600_edges : list nat :=
+  index_carrier derived_cell600_edge_count.
+
+Definition derived_cell600_faces : list nat :=
+  index_carrier derived_cell600_face_count.
+
+Definition derived_cell600_cells : list nat :=
+  index_carrier derived_cell600_cell_count.
+
+Definition derived_cell120_vertices : list nat :=
+  index_carrier derived_cell120_vertex_count.
+
+Definition derived_cell120_edges : list nat :=
+  index_carrier derived_cell120_edge_count.
+
+Definition derived_cell120_faces : list nat :=
+  index_carrier derived_cell120_face_count.
+
+Definition derived_cell120_cells : list nat :=
+  index_carrier derived_cell120_cell_count.
+
+Theorem derived_cell600_rank_carrier_counts :
+  countN derived_cell600_edges = 720%N /\
+  countN derived_cell600_faces = 1200%N /\
+  countN derived_cell600_cells = 600%N.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
+Theorem derived_cell120_rank_carrier_counts :
+  countN derived_cell120_vertices = 600%N /\
+  countN derived_cell120_edges = 1200%N /\
+  countN derived_cell120_faces = 720%N /\
+  countN derived_cell120_cells = 120%N.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
+Theorem derived_cell600_rank_carriers_unique :
+  NoDup derived_cell600_edges /\
+  NoDup derived_cell600_faces /\
+  NoDup derived_cell600_cells.
+Proof.
+  repeat split; apply index_carrier_unique.
+Qed.
+
+Theorem derived_cell120_rank_carriers_unique :
+  NoDup derived_cell120_vertices /\
+  NoDup derived_cell120_edges /\
+  NoDup derived_cell120_faces /\
+  NoDup derived_cell120_cells.
+Proof.
+  repeat split; apply index_carrier_unique.
+Qed.
+
+Definition derived_cell600_vertex_edge_slots :
+  list (H4VertexSlot * IcoVertexFigureSlot) :=
+  product_list derived_cell600_vertices derived_icosa_vertex_figure_vertices.
+
+Definition derived_cell600_edge_endpoint_slots : list (nat * bool) :=
+  product_list derived_cell600_edges bit_values.
+
+Definition derived_cell600_edge_face_slots :
+  list (nat * DerivedCell5Vertex) :=
+  product_list derived_cell600_edges derived_cell5_vertices.
+
+Definition derived_cell600_face_edge_slots : list (nat * TriangleSlot) :=
+  product_list derived_cell600_faces derived_triangle_vertices.
+
+Definition derived_cell600_face_cell_slots : list (nat * bool) :=
+  product_list derived_cell600_faces bit_values.
+
+Definition derived_cell600_cell_face_slots :
+  list (nat * DerivedTetraVertex) :=
+  product_list derived_cell600_cells derived_tetra_vertices.
+
+Theorem derived_cell600_explicit_incidence_slot_counts :
+  countN derived_cell600_vertex_edge_slots =
+    countN derived_cell600_edge_endpoint_slots /\
+  countN derived_cell600_edge_face_slots =
+    countN derived_cell600_face_edge_slots /\
+  countN derived_cell600_face_cell_slots =
+    countN derived_cell600_cell_face_slots.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
+Definition derived_cell120_vertex_edge_slots :
+  list (nat * DerivedTetraVertex) :=
+  product_list derived_cell120_vertices derived_tetra_vertices.
+
+Definition derived_cell120_edge_endpoint_slots : list (nat * bool) :=
+  product_list derived_cell120_edges bit_values.
+
+Definition derived_cell120_edge_face_slots : list (nat * TriangleSlot) :=
+  product_list derived_cell120_edges derived_triangle_vertices.
+
+Definition derived_cell120_face_edge_slots :
+  list (nat * DerivedCell5Vertex) :=
+  product_list derived_cell120_faces derived_cell5_vertices.
+
+Definition derived_cell120_face_cell_slots : list (nat * bool) :=
+  product_list derived_cell120_faces bit_values.
+
+Definition derived_cell120_cell_face_slots :
+  list (nat * IcoVertexFigureSlot) :=
+  product_list derived_cell120_cells derived_icosa_vertex_figure_vertices.
+
+Theorem derived_cell120_explicit_incidence_slot_counts :
+  countN derived_cell120_vertex_edge_slots =
+    countN derived_cell120_edge_endpoint_slots /\
+  countN derived_cell120_edge_face_slots =
+    countN derived_cell120_face_edge_slots /\
+  countN derived_cell120_face_cell_slots =
+    countN derived_cell120_cell_face_slots.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
 Definition derived_cell600_incidence_balance : Prop :=
   derived_cell600_vertex_count * countN derived_icosa_vertex_figure_vertices =
     derived_cell600_edge_count * countN bit_values /\
@@ -2210,37 +2344,60 @@ Definition OMI_Derived_Carriers_Unique : Prop :=
   NoDup (map bool4_code derived_tesseract_vertices) /\
   NoDup (map axis_bool_code derived_signed_axes4) /\
   NoDup (map cell24_vertex_code derived_cell24_vertices) /\
-  NoDup (map h4_vertex_code derived_cell600_vertices).
+  NoDup (map h4_vertex_code derived_cell600_vertices) /\
+  NoDup derived_cell600_edges /\
+  NoDup derived_cell600_faces /\
+  NoDup derived_cell600_cells /\
+  NoDup derived_cell120_vertices /\
+  NoDup derived_cell120_edges /\
+  NoDup derived_cell120_faces /\
+  NoDup derived_cell120_cells.
 
 Theorem omi_derived_carriers_unique_holds :
   OMI_Derived_Carriers_Unique.
 Proof.
   unfold OMI_Derived_Carriers_Unique.
-  split.
-  - exact derived_tetra_vertices_unique.
-  - destruct derived_cell5_carriers_unique as
-      [Hcell5_vertices [Hcell5_edges [Hcell5_faces Hcell5_cells]]].
-    split.
-    + exact Hcell5_vertices.
-    + split.
-      * exact Hcell5_edges.
-      * split.
-        -- exact Hcell5_faces.
-        -- split.
-           ++ exact Hcell5_cells.
-           ++ split.
-              ** exact derived_tesseract_vertices_unique.
-              ** split.
-                 --- exact derived_cell16_vertices_unique.
-                 --- split.
-                     +++ exact derived_cell24_vertices_unique.
-                     +++ exact derived_cell600_vertices_unique.
+  destruct derived_cell5_carriers_unique as
+    [Hcell5_vertices [Hcell5_edges [Hcell5_faces Hcell5_cells]]].
+  destruct derived_cell600_rank_carriers_unique as
+    [H600_edges [H600_faces H600_cells]].
+  destruct derived_cell120_rank_carriers_unique as
+    [H120_vertices [H120_edges [H120_faces H120_cells]]].
+  repeat split;
+    try exact derived_tetra_vertices_unique;
+    try exact Hcell5_vertices;
+    try exact Hcell5_edges;
+    try exact Hcell5_faces;
+    try exact Hcell5_cells;
+    try exact derived_tesseract_vertices_unique;
+    try exact derived_cell16_vertices_unique;
+    try exact derived_cell24_vertices_unique;
+    try exact derived_cell600_vertices_unique;
+    try exact H600_edges;
+    try exact H600_faces;
+    try exact H600_cells;
+    try exact H120_vertices;
+    try exact H120_edges;
+    try exact H120_faces;
+    try exact H120_cells.
 Qed.
 
 Definition OMI_Derived_Incidence_Balances : Prop :=
   derived_cell600_incidence_balance /\
   derived_cell120_incidence_balance /\
-  derived_cell120_dual_counts.
+  derived_cell120_dual_counts /\
+  countN derived_cell600_vertex_edge_slots =
+    countN derived_cell600_edge_endpoint_slots /\
+  countN derived_cell600_edge_face_slots =
+    countN derived_cell600_face_edge_slots /\
+  countN derived_cell600_face_cell_slots =
+    countN derived_cell600_cell_face_slots /\
+  countN derived_cell120_vertex_edge_slots =
+    countN derived_cell120_edge_endpoint_slots /\
+  countN derived_cell120_edge_face_slots =
+    countN derived_cell120_face_edge_slots /\
+  countN derived_cell120_face_cell_slots =
+    countN derived_cell120_cell_face_slots.
 
 Theorem omi_derived_incidence_balances_hold :
   OMI_Derived_Incidence_Balances.
@@ -2250,7 +2407,13 @@ Proof.
   - exact derived_cell600_incidence_balance_holds.
   - split.
     + exact derived_cell120_incidence_balance_holds.
-    + exact derived_cell120_dual_counts_holds.
+    + split.
+      * exact derived_cell120_dual_counts_holds.
+      * destruct derived_cell600_explicit_incidence_slot_counts as
+          [H600ve [H600ef H600fc]].
+        destruct derived_cell120_explicit_incidence_slot_counts as
+          [H120ve [H120ef H120fc]].
+        repeat split; assumption.
 Qed.
 
 Definition OMI_No_Stored_Constant_Core : Prop :=
@@ -2270,6 +2433,13 @@ Definition OMI_No_Stored_Constant_Core : Prop :=
   derived_cell120_edge_count = 1200%N /\
   derived_cell120_face_count = 720%N /\
   derived_cell120_cell_count = 120%N /\
+  countN derived_cell600_edges = 720%N /\
+  countN derived_cell600_faces = 1200%N /\
+  countN derived_cell600_cells = 600%N /\
+  countN derived_cell120_vertices = 600%N /\
+  countN derived_cell120_edges = 1200%N /\
+  countN derived_cell120_faces = 720%N /\
+  countN derived_cell120_cells = 120%N /\
   derived_fano_global_count = 5040%N.
 
 Theorem omi_no_stored_constant_core_holds : OMI_No_Stored_Constant_Core.
