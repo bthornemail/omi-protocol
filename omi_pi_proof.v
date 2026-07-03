@@ -1779,11 +1779,56 @@ Qed.
 Definition countN {A : Type} (xs : list A) : N :=
   N.of_nat (length xs).
 
+Fixpoint unique_by {A : Type} (eqb : A -> A -> bool) (xs : list A) : bool :=
+  match xs with
+  | [] => true
+  | x :: rest => negb (existsb (eqb x) rest) && unique_by eqb rest
+  end.
+
+Lemma unique_by_NoDup :
+  forall (A : Type) (eqb : A -> A -> bool) (xs : list A),
+    (forall x : A, eqb x x = true) ->
+    unique_by eqb xs = true ->
+    NoDup xs.
+Proof.
+  intros A eqb xs Heq_refl.
+  induction xs as [| x rest IH]; intro Huniq.
+  - constructor.
+  - simpl in Huniq.
+    apply andb_true_iff in Huniq as [Hfresh Hrest].
+    constructor.
+    + intro Hin.
+      apply negb_true_iff in Hfresh.
+      assert (Hfound : existsb (eqb x) rest = true).
+      { apply existsb_exists.
+        exists x; split; [exact Hin | apply Heq_refl]. }
+      rewrite Hfresh in Hfound.
+      discriminate.
+    + apply IH.
+      exact Hrest.
+Qed.
+
+Definition uniqueN (xs : list N) : bool := unique_by N.eqb xs.
+
+Lemma uniqueN_NoDup : forall xs : list N,
+  uniqueN xs = true -> NoDup xs.
+Proof.
+  intros xs H.
+  apply unique_by_NoDup with (eqb := N.eqb).
+  - intro x. apply N.eqb_refl.
+  - exact H.
+Qed.
+
 Inductive DerivedTetraVertex : Type :=
 | DTV0 | DTV1 | DTV2 | DTV3.
 
 Definition derived_tetra_vertices : list DerivedTetraVertex :=
   [DTV0; DTV1; DTV2; DTV3].
+
+Definition derived_tetra_vertex_code (v : DerivedTetraVertex) : N :=
+  match v with
+  | DTV0 => 0 | DTV1 => 1 | DTV2 => 2 | DTV3 => 3
+  end.
 
 Definition derived_tetra_vertex_count : N :=
   countN derived_tetra_vertices.
@@ -1792,16 +1837,34 @@ Theorem derived_tetra_forces_4 :
   derived_tetra_vertex_count = 4%N.
 Proof. vm_compute; reflexivity. Qed.
 
+Theorem derived_tetra_vertices_unique :
+  NoDup (map derived_tetra_vertex_code derived_tetra_vertices).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
 Inductive DerivedCell5Vertex : Type :=
 | DC5V0 | DC5V1 | DC5V2 | DC5V3 | DC5V4.
 
 Definition derived_cell5_vertices : list DerivedCell5Vertex :=
   [DC5V0; DC5V1; DC5V2; DC5V3; DC5V4].
 
+Definition derived_cell5_vertex_code (v : DerivedCell5Vertex) : N :=
+  match v with
+  | DC5V0 => 0 | DC5V1 => 1 | DC5V2 => 2 | DC5V3 => 3 | DC5V4 => 4
+  end.
+
 Definition derived_cell5_edges : list (DerivedCell5Vertex * DerivedCell5Vertex) :=
   [(DC5V0, DC5V1); (DC5V0, DC5V2); (DC5V0, DC5V3); (DC5V0, DC5V4);
    (DC5V1, DC5V2); (DC5V1, DC5V3); (DC5V1, DC5V4);
    (DC5V2, DC5V3); (DC5V2, DC5V4); (DC5V3, DC5V4)].
+
+Definition derived_cell5_edge_code (e : DerivedCell5Vertex * DerivedCell5Vertex) : N :=
+  match e with
+  | (a, b) => derived_cell5_vertex_code a * 5 + derived_cell5_vertex_code b
+  end.
 
 Definition derived_cell5_faces :
   list (DerivedCell5Vertex * DerivedCell5Vertex * DerivedCell5Vertex) :=
@@ -1810,6 +1873,15 @@ Definition derived_cell5_faces :
    (DC5V0, DC5V2, DC5V4); (DC5V0, DC5V3, DC5V4);
    (DC5V1, DC5V2, DC5V3); (DC5V1, DC5V2, DC5V4);
    (DC5V1, DC5V3, DC5V4); (DC5V2, DC5V3, DC5V4)].
+
+Definition derived_cell5_face_code
+    (f : DerivedCell5Vertex * DerivedCell5Vertex * DerivedCell5Vertex) : N :=
+  match f with
+  | (a, b, c) =>
+      derived_cell5_vertex_code a * 25 +
+      derived_cell5_vertex_code b * 5 +
+      derived_cell5_vertex_code c
+  end.
 
 Definition derived_cell5_cells :
   list (DerivedCell5Vertex * DerivedCell5Vertex *
@@ -1820,6 +1892,17 @@ Definition derived_cell5_cells :
    (DC5V0, DC5V2, DC5V3, DC5V4);
    (DC5V1, DC5V2, DC5V3, DC5V4)].
 
+Definition derived_cell5_cell_code
+    (c : DerivedCell5Vertex * DerivedCell5Vertex *
+         DerivedCell5Vertex * DerivedCell5Vertex) : N :=
+  match c with
+  | (a, b, c, d) =>
+      derived_cell5_vertex_code a * 125 +
+      derived_cell5_vertex_code b * 25 +
+      derived_cell5_vertex_code c * 5 +
+      derived_cell5_vertex_code d
+  end.
+
 Theorem derived_cell5_counts :
   countN derived_cell5_vertices = 5%N /\
   countN derived_cell5_edges = 10%N /\
@@ -1827,7 +1910,24 @@ Theorem derived_cell5_counts :
   countN derived_cell5_cells = 5%N.
 Proof. vm_compute; repeat split; reflexivity. Qed.
 
+Theorem derived_cell5_carriers_unique :
+  NoDup (map derived_cell5_vertex_code derived_cell5_vertices) /\
+  NoDup (map derived_cell5_edge_code derived_cell5_edges) /\
+  NoDup (map derived_cell5_face_code derived_cell5_faces) /\
+  NoDup (map derived_cell5_cell_code derived_cell5_cells).
+Proof.
+  split.
+  - apply uniqueN_NoDup; vm_compute; reflexivity.
+  - split.
+    + apply uniqueN_NoDup; vm_compute; reflexivity.
+    + split.
+      * apply uniqueN_NoDup; vm_compute; reflexivity.
+      * apply uniqueN_NoDup; vm_compute; reflexivity.
+Qed.
+
 Definition bit_values : list bool := [false; true].
+
+Definition bool_code (b : bool) : N := if b then 1 else 0.
 
 Definition derived_tesseract_vertices : list (bool * bool * bool * bool) :=
   flat_map
@@ -1840,6 +1940,12 @@ Definition derived_tesseract_vertices : list (bool * bool * bool * bool) :=
         bit_values)
     bit_values.
 
+Definition bool4_code (v : bool * bool * bool * bool) : N :=
+  match v with
+  | (a, b, c, d) =>
+      bool_code a * 8 + bool_code b * 4 + bool_code c * 2 + bool_code d
+  end.
+
 Definition derived_tesseract_vertex_count : N :=
   countN derived_tesseract_vertices.
 
@@ -1847,12 +1953,30 @@ Theorem derived_tesseract_forces_16 :
   derived_tesseract_vertex_count = 16%N.
 Proof. vm_compute; reflexivity. Qed.
 
+Theorem derived_tesseract_vertices_unique :
+  NoDup (map bool4_code derived_tesseract_vertices).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
 Inductive Axis4 : Type := AxisX | AxisY | AxisZ | AxisW.
 
 Definition axes4 : list Axis4 := [AxisX; AxisY; AxisZ; AxisW].
 
+Definition axis4_code (a : Axis4) : N :=
+  match a with
+  | AxisX => 0 | AxisY => 1 | AxisZ => 2 | AxisW => 3
+  end.
+
 Definition derived_signed_axes4 : list (Axis4 * bool) :=
   flat_map (fun axis => map (fun s => (axis, s)) bit_values) axes4.
+
+Definition axis_bool_code (v : Axis4 * bool) : N :=
+  match v with
+  | (axis, s) => axis4_code axis * 2 + bool_code s
+  end.
 
 Definition derived_cell16_vertex_count : N :=
   countN derived_signed_axes4.
@@ -1861,9 +1985,22 @@ Theorem derived_cell16_forces_8_vertices :
   derived_cell16_vertex_count = 8%N.
 Proof. vm_compute; reflexivity. Qed.
 
+Theorem derived_cell16_vertices_unique :
+  NoDup (map axis_bool_code derived_signed_axes4).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
 Definition axis_pairs4 : list (Axis4 * Axis4) :=
   [(AxisX, AxisY); (AxisX, AxisZ); (AxisX, AxisW);
    (AxisY, AxisZ); (AxisY, AxisW); (AxisZ, AxisW)].
+
+Definition axis_pair_code (p : Axis4 * Axis4) : N :=
+  match p with
+  | (a, b) => axis4_code a * 4 + axis4_code b
+  end.
 
 Definition derived_cell24_vertices : list (Axis4 * Axis4 * bool * bool) :=
   flat_map
@@ -1873,12 +2010,26 @@ Definition derived_cell24_vertices : list (Axis4 * Axis4 * bool * bool) :=
         bit_values)
     axis_pairs4.
 
+Definition cell24_vertex_code (v : Axis4 * Axis4 * bool * bool) : N :=
+  match v with
+  | (a1, a2, s1, s2) =>
+      axis_pair_code (a1, a2) * 4 + bool_code s1 * 2 + bool_code s2
+  end.
+
 Definition derived_cell24_vertex_count : N :=
   countN derived_cell24_vertices.
 
 Theorem derived_cell24_forces_24_vertices :
   derived_cell24_vertex_count = 24%N.
 Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell24_vertices_unique :
+  NoDup (map cell24_vertex_code derived_cell24_vertices).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
 
 Inductive EvenPermutation4 : Type :=
 | EP0123 | EP0231 | EP0312 | EP1032 | EP1203 | EP1320
@@ -1888,6 +2039,13 @@ Definition even_permutations4 : list EvenPermutation4 :=
   [EP0123; EP0231; EP0312; EP1032; EP1203; EP1320;
    EP2013; EP2130; EP2301; EP3021; EP3102; EP3210].
 
+Definition even_permutation4_code (p : EvenPermutation4) : N :=
+  match p with
+  | EP0123 => 0 | EP0231 => 1 | EP0312 => 2 | EP1032 => 3
+  | EP1203 => 4 | EP1320 => 5 | EP2013 => 6 | EP2130 => 7
+  | EP2301 => 8 | EP3021 => 9 | EP3102 => 10 | EP3210 => 11
+  end.
+
 Definition sign_triples : list (bool * bool * bool) :=
   flat_map
     (fun a =>
@@ -1896,10 +2054,22 @@ Definition sign_triples : list (bool * bool * bool) :=
         bit_values)
     bit_values.
 
+Definition bool3_code (v : bool * bool * bool) : N :=
+  match v with
+  | (a, b, c) => bool_code a * 4 + bool_code b * 2 + bool_code c
+  end.
+
 Inductive H4VertexSlot : Type :=
 | H4AxisSlot : Axis4 -> bool -> H4VertexSlot
 | H4HalfSlot : bool -> bool -> bool -> bool -> H4VertexSlot
 | H4GoldenSlot : EvenPermutation4 -> bool -> bool -> bool -> H4VertexSlot.
+
+Definition h4_vertex_code (v : H4VertexSlot) : N :=
+  match v with
+  | H4AxisSlot axis s => axis_bool_code (axis, s)
+  | H4HalfSlot a b c d => 8 + bool4_code (a, b, c, d)
+  | H4GoldenSlot p a b c => 24 + even_permutation4_code p * 8 + bool3_code (a, b, c)
+  end.
 
 Definition derived_cell600_axis_vertices : list H4VertexSlot :=
   map (fun '(axis, s) => H4AxisSlot axis s) derived_signed_axes4.
@@ -1924,6 +2094,14 @@ Definition derived_cell600_vertex_count : N :=
 Theorem derived_cell600_forces_120_vertices :
   derived_cell600_vertex_count = 120%N.
 Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_vertices_unique :
+  NoDup (map h4_vertex_code derived_cell600_vertices).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
 
 Inductive IcoVertexFigureSlot : Type :=
 | IV0 | IV1 | IV2 | IV3 | IV4 | IV5
@@ -1976,6 +2154,40 @@ Theorem derived_cell120_counts :
   derived_cell120_cell_count = 120%N.
 Proof. vm_compute; repeat split; reflexivity. Qed.
 
+Definition derived_cell600_incidence_balance : Prop :=
+  derived_cell600_vertex_count * countN derived_icosa_vertex_figure_vertices =
+    derived_cell600_edge_count * countN bit_values /\
+  derived_cell600_edge_count * countN derived_cell5_vertices =
+    derived_cell600_face_count * countN derived_triangle_vertices /\
+  derived_cell600_face_count * countN bit_values =
+    derived_cell600_cell_count * derived_tetra_vertex_count.
+
+Theorem derived_cell600_incidence_balance_holds :
+  derived_cell600_incidence_balance.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
+Definition derived_cell120_incidence_balance : Prop :=
+  derived_cell120_vertex_count * derived_tetra_vertex_count =
+    derived_cell120_edge_count * countN bit_values /\
+  derived_cell120_edge_count * countN derived_triangle_vertices =
+    derived_cell120_face_count * countN derived_cell5_vertices /\
+  derived_cell120_face_count * countN bit_values =
+    derived_cell120_cell_count * countN derived_icosa_vertex_figure_vertices.
+
+Theorem derived_cell120_incidence_balance_holds :
+  derived_cell120_incidence_balance.
+Proof. vm_compute; repeat split; reflexivity. Qed.
+
+Definition derived_cell120_dual_counts : Prop :=
+  derived_cell120_vertex_count = derived_cell600_cell_count /\
+  derived_cell120_edge_count = derived_cell600_face_count /\
+  derived_cell120_face_count = derived_cell600_edge_count /\
+  derived_cell120_cell_count = derived_cell600_vertex_count.
+
+Theorem derived_cell120_dual_counts_holds :
+  derived_cell120_dual_counts.
+Proof. repeat split; reflexivity. Qed.
+
 Definition derived_fano_family_count : N :=
   countN fano_points.
 
@@ -1988,6 +2200,58 @@ Definition derived_fano_global_count : N :=
 Theorem derived_fano_global_forces_5040 :
   derived_fano_global_count = 5040%N.
 Proof. vm_compute; reflexivity. Qed.
+
+Definition OMI_Derived_Carriers_Unique : Prop :=
+  NoDup (map derived_tetra_vertex_code derived_tetra_vertices) /\
+  NoDup (map derived_cell5_vertex_code derived_cell5_vertices) /\
+  NoDup (map derived_cell5_edge_code derived_cell5_edges) /\
+  NoDup (map derived_cell5_face_code derived_cell5_faces) /\
+  NoDup (map derived_cell5_cell_code derived_cell5_cells) /\
+  NoDup (map bool4_code derived_tesseract_vertices) /\
+  NoDup (map axis_bool_code derived_signed_axes4) /\
+  NoDup (map cell24_vertex_code derived_cell24_vertices) /\
+  NoDup (map h4_vertex_code derived_cell600_vertices).
+
+Theorem omi_derived_carriers_unique_holds :
+  OMI_Derived_Carriers_Unique.
+Proof.
+  unfold OMI_Derived_Carriers_Unique.
+  split.
+  - exact derived_tetra_vertices_unique.
+  - destruct derived_cell5_carriers_unique as
+      [Hcell5_vertices [Hcell5_edges [Hcell5_faces Hcell5_cells]]].
+    split.
+    + exact Hcell5_vertices.
+    + split.
+      * exact Hcell5_edges.
+      * split.
+        -- exact Hcell5_faces.
+        -- split.
+           ++ exact Hcell5_cells.
+           ++ split.
+              ** exact derived_tesseract_vertices_unique.
+              ** split.
+                 --- exact derived_cell16_vertices_unique.
+                 --- split.
+                     +++ exact derived_cell24_vertices_unique.
+                     +++ exact derived_cell600_vertices_unique.
+Qed.
+
+Definition OMI_Derived_Incidence_Balances : Prop :=
+  derived_cell600_incidence_balance /\
+  derived_cell120_incidence_balance /\
+  derived_cell120_dual_counts.
+
+Theorem omi_derived_incidence_balances_hold :
+  OMI_Derived_Incidence_Balances.
+Proof.
+  unfold OMI_Derived_Incidence_Balances.
+  split.
+  - exact derived_cell600_incidence_balance_holds.
+  - split.
+    + exact derived_cell120_incidence_balance_holds.
+    + exact derived_cell120_dual_counts_holds.
+Qed.
 
 Definition OMI_No_Stored_Constant_Core : Prop :=
   derived_tetra_vertex_count = 4%N /\
@@ -2048,7 +2312,9 @@ Definition OMI_Master_Theorem : Prop :=
   no_stored_pi_constant omi_projection_boundary /\
   no_hash_identity omi_projection_boundary /\
   relation_encoding_audit /\
-  OMI_No_Stored_Constant_Core.
+  OMI_No_Stored_Constant_Core /\
+  OMI_Derived_Carriers_Unique /\
+  OMI_Derived_Incidence_Balances.
 
 Theorem omi_master_theorem_holds : OMI_Master_Theorem.
 Proof.
@@ -2093,7 +2359,11 @@ Proof.
     { vm_compute; exact I. }
     split.
     { exact relation_encoding_audit_holds. }
-    exact omi_no_stored_constant_core_holds.
+    split.
+    { exact omi_no_stored_constant_core_holds. }
+    split.
+    { exact omi_derived_carriers_unique_holds. }
+    exact omi_derived_incidence_balances_hold.
 Qed.
 
 Definition OMI_Chat_Provable_Core : Prop :=
@@ -2130,7 +2400,9 @@ Definition OMI_Chat_Provable_Core : Prop :=
    (tt_vertices triakis_tetrahedron =
     tetra_vertices tetra_unit + tetra_vertices tetra_unit)%N) /\
   relation_encoding_audit /\
-  OMI_No_Stored_Constant_Core.
+  OMI_No_Stored_Constant_Core /\
+  OMI_Derived_Carriers_Unique /\
+  OMI_Derived_Incidence_Balances.
 
 Theorem omi_chat_provable_core_holds : OMI_Chat_Provable_Core.
 Proof.
@@ -2165,5 +2437,9 @@ Proof.
                                                   +++++ exact triakis_centerline_balance.
                                                   +++++ split.
                                                         ****** exact relation_encoding_audit_holds.
-                                                        ****** exact omi_no_stored_constant_core_holds.
+                                                        ****** split.
+                                                               { exact omi_no_stored_constant_core_holds. }
+                                                               split.
+                                                               { exact omi_derived_carriers_unique_holds. }
+                                                               exact omi_derived_incidence_balances_hold.
 Qed.
