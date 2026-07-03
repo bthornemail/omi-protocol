@@ -8,6 +8,7 @@
 
 From Coq Require Import Reals.Reals.
 From Coq Require Import NArith.NArith.
+From Coq Require Import ZArith.ZArith.
 From Coq Require Import Lists.List.
 From Coq Require Import Arith.PeanoNat.
 From Coq Require Import Arith.Factorial.
@@ -2094,6 +2095,101 @@ Definition h4_vertex_code (v : H4VertexSlot) : N :=
   | H4GoldenSlot p a b c => 24 + even_permutation4_code p * 8 + bool3_code (a, b, c)
   end.
 
+Definition QPhi : Type := (Z * Z)%type.
+
+Definition Coord4 : Type := (QPhi * QPhi * QPhi * QPhi)%type.
+
+Definition qphi_zero : QPhi := (0%Z, 0%Z).
+Definition qphi_one : QPhi := (1%Z, 0%Z).
+Definition qphi_two : QPhi := (2%Z, 0%Z).
+Definition qphi_phi : QPhi := (0%Z, 1%Z).
+Definition qphi_inv_phi : QPhi := (Z.opp 1, 1%Z).
+
+Definition qphi_eqb (x y : QPhi) : bool :=
+  match x, y with
+  | (xa, xb), (ya, yb) => Z.eqb xa ya && Z.eqb xb yb
+  end.
+
+Definition qphi_add (x y : QPhi) : QPhi :=
+  match x, y with
+  | (xa, xb), (ya, yb) => ((xa + ya)%Z, (xb + yb)%Z)
+  end.
+
+Definition qphi_neg (x : QPhi) : QPhi :=
+  match x with
+  | (xa, xb) => ((- xa)%Z, (- xb)%Z)
+  end.
+
+Definition qphi_sub (x y : QPhi) : QPhi :=
+  qphi_add x (qphi_neg y).
+
+Definition qphi_mul (x y : QPhi) : QPhi :=
+  match x, y with
+  | (xa, xb), (ya, yb) =>
+      ((xa * ya + xb * yb)%Z,
+       (xa * yb + xb * ya + xb * yb)%Z)
+  end.
+
+Definition qphi_sq (x : QPhi) : QPhi := qphi_mul x x.
+
+Definition qphi_sign (s : bool) (x : QPhi) : QPhi :=
+  if s then x else qphi_neg x.
+
+Definition qphi_sum4 (a b c d : QPhi) : QPhi :=
+  qphi_add (qphi_add a b) (qphi_add c d).
+
+Definition permute_even4
+    (p : EvenPermutation4) (v0 v1 v2 v3 : QPhi) : Coord4 :=
+  match p with
+  | EP0123 => (v0, v1, v2, v3)
+  | EP0231 => (v0, v2, v3, v1)
+  | EP0312 => (v0, v3, v1, v2)
+  | EP1032 => (v1, v0, v3, v2)
+  | EP1203 => (v1, v2, v0, v3)
+  | EP1320 => (v1, v3, v2, v0)
+  | EP2013 => (v2, v0, v1, v3)
+  | EP2130 => (v2, v1, v3, v0)
+  | EP2301 => (v2, v3, v0, v1)
+  | EP3021 => (v3, v0, v2, v1)
+  | EP3102 => (v3, v1, v0, v2)
+  | EP3210 => (v3, v2, v1, v0)
+  end.
+
+Definition h4_vertex_coord (v : H4VertexSlot) : Coord4 :=
+  match v with
+  | H4AxisSlot AxisX s => (qphi_sign s qphi_two, qphi_zero, qphi_zero, qphi_zero)
+  | H4AxisSlot AxisY s => (qphi_zero, qphi_sign s qphi_two, qphi_zero, qphi_zero)
+  | H4AxisSlot AxisZ s => (qphi_zero, qphi_zero, qphi_sign s qphi_two, qphi_zero)
+  | H4AxisSlot AxisW s => (qphi_zero, qphi_zero, qphi_zero, qphi_sign s qphi_two)
+  | H4HalfSlot a b c d =>
+      (qphi_sign a qphi_one, qphi_sign b qphi_one,
+       qphi_sign c qphi_one, qphi_sign d qphi_one)
+  | H4GoldenSlot p a b c =>
+      permute_even4 p qphi_zero (qphi_sign a qphi_one)
+        (qphi_sign b qphi_phi) (qphi_sign c qphi_inv_phi)
+  end.
+
+Definition coord4_dist2 (x y : Coord4) : QPhi :=
+  match x, y with
+  | (x0, x1, x2, x3), (y0, y1, y2, y3) =>
+      qphi_sum4
+        (qphi_sq (qphi_sub x0 y0))
+        (qphi_sq (qphi_sub x1 y1))
+        (qphi_sq (qphi_sub x2 y2))
+        (qphi_sq (qphi_sub x3 y3))
+  end.
+
+Definition h4_edge_dist2 : QPhi := (8%Z, Z.opp 4).
+
+Definition h4_geometric_edgeb (u v : H4VertexSlot) : bool :=
+  qphi_eqb (coord4_dist2 (h4_vertex_coord u) (h4_vertex_coord v)) h4_edge_dist2.
+
+Fixpoint unordered_pairs {A : Type} (xs : list A) : list (A * A) :=
+  match xs with
+  | [] => []
+  | x :: rest => map (fun y => (x, y)) rest ++ unordered_pairs rest
+  end.
+
 Definition derived_cell600_axis_vertices : list H4VertexSlot :=
   map (fun '(axis, s) => H4AxisSlot axis s) derived_signed_axes4.
 
@@ -2125,6 +2221,57 @@ Proof.
   vm_compute.
   reflexivity.
 Qed.
+
+Definition derived_cell600_geometric_edges : list (H4VertexSlot * H4VertexSlot) :=
+  filter
+    (fun '(u, v) => h4_geometric_edgeb u v)
+    (unordered_pairs derived_cell600_vertices).
+
+Definition h4_edge_pair_code (e : H4VertexSlot * H4VertexSlot) : N :=
+  match e with
+  | (u, v) => h4_vertex_code u * 120 + h4_vertex_code v
+  end.
+
+Definition h4_vertex_eqb (u v : H4VertexSlot) : bool :=
+  N.eqb (h4_vertex_code u) (h4_vertex_code v).
+
+Definition h4_edge_incident (v : H4VertexSlot) (e : H4VertexSlot * H4VertexSlot) : bool :=
+  match e with
+  | (u0, u1) => h4_vertex_eqb v u0 || h4_vertex_eqb v u1
+  end.
+
+Definition h4_geometric_degree (v : H4VertexSlot) : nat :=
+  length (filter (h4_edge_incident v) derived_cell600_geometric_edges).
+
+Definition derived_cell600_geometric_degree_audit : bool :=
+  forallb
+    (fun v => Nat.eqb (h4_geometric_degree v) 12)
+    derived_cell600_vertices.
+
+Definition derived_cell600_geometric_edge_endpoint_audit : bool :=
+  forallb
+    (fun '(u, v) => negb (h4_vertex_eqb u v))
+    derived_cell600_geometric_edges.
+
+Theorem derived_cell600_geometric_edge_count :
+  countN derived_cell600_geometric_edges = 720%N.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_edges_unique :
+  NoDup (map h4_edge_pair_code derived_cell600_geometric_edges).
+Proof.
+  apply uniqueN_NoDup.
+  vm_compute.
+  reflexivity.
+Qed.
+
+Theorem derived_cell600_geometric_degree_audit_holds :
+  derived_cell600_geometric_degree_audit = true.
+Proof. vm_compute; reflexivity. Qed.
+
+Theorem derived_cell600_geometric_edge_endpoint_audit_holds :
+  derived_cell600_geometric_edge_endpoint_audit = true.
+Proof. vm_compute; reflexivity. Qed.
 
 Inductive IcoVertexFigureSlot : Type :=
 | IV0 | IV1 | IV2 | IV3 | IV4 | IV5
@@ -2351,14 +2498,23 @@ Proof. vm_compute; reflexivity. Qed.
 
 Definition OMI_Derived_Adjacency_Audits : Prop :=
   derived_cell600_adjacency_audit = true /\
-  derived_cell120_adjacency_audit = true.
+  derived_cell120_adjacency_audit = true /\
+  countN derived_cell600_geometric_edges = 720%N /\
+  derived_cell600_geometric_degree_audit = true /\
+  derived_cell600_geometric_edge_endpoint_audit = true.
 
 Theorem omi_derived_adjacency_audits_hold :
   OMI_Derived_Adjacency_Audits.
 Proof.
   split.
   - exact derived_cell600_adjacency_audit_holds.
-  - exact derived_cell120_adjacency_audit_holds.
+  - split.
+    + exact derived_cell120_adjacency_audit_holds.
+    + split.
+      * exact derived_cell600_geometric_edge_count.
+      * split.
+        -- exact derived_cell600_geometric_degree_audit_holds.
+        -- exact derived_cell600_geometric_edge_endpoint_audit_holds.
 Qed.
 
 Definition derived_cell600_incidence_balance : Prop :=
@@ -2421,6 +2577,7 @@ Definition OMI_Derived_Carriers_Unique : Prop :=
   NoDup derived_cell600_edges /\
   NoDup derived_cell600_faces /\
   NoDup derived_cell600_cells /\
+  NoDup (map h4_edge_pair_code derived_cell600_geometric_edges) /\
   NoDup derived_cell120_vertices /\
   NoDup derived_cell120_edges /\
   NoDup derived_cell120_faces /\
@@ -2449,6 +2606,7 @@ Proof.
     try exact H600_edges;
     try exact H600_faces;
     try exact H600_cells;
+    try exact derived_cell600_geometric_edges_unique;
     try exact H120_vertices;
     try exact H120_edges;
     try exact H120_faces;
@@ -2465,6 +2623,7 @@ Definition OMI_Derived_Incidence_Balances : Prop :=
     countN derived_cell600_face_edge_slots /\
   countN derived_cell600_face_cell_slots =
     countN derived_cell600_cell_face_slots /\
+  countN derived_cell600_geometric_edges = 720%N /\
   countN derived_cell120_vertex_edge_slots =
     countN derived_cell120_edge_endpoint_slots /\
   countN derived_cell120_edge_face_slots =
@@ -2486,7 +2645,19 @@ Proof.
           [H600ve [H600ef H600fc]].
         destruct derived_cell120_explicit_incidence_slot_counts as
           [H120ve [H120ef H120fc]].
-        repeat split; assumption.
+        split.
+        -- exact H600ve.
+        -- split.
+           ++ exact H600ef.
+           ++ split.
+              ** exact H600fc.
+              ** split.
+                 --- exact derived_cell600_geometric_edge_count.
+                 --- split.
+                     +++ exact H120ve.
+                     +++ split.
+                         *** exact H120ef.
+                         *** exact H120fc.
 Qed.
 
 Definition OMI_No_Stored_Constant_Core : Prop :=
